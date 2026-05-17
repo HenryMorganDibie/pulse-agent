@@ -355,6 +355,6 @@ pytest tests/ -v
 | Member | Role | Ownership |
 |---|---|---|
 | Henry | Team Lead · Task A · Architecture | LangGraph orchestration, PersonaConstructionAgent, ReviewSimAgent, Docker, shared schemas |
-| Michael | Task B · Data Engineering | Unified ingestion pipeline, cross-domain preprocessing, train/test datasets |
-| Kenneth | Recommendation Systems | ReasoningAgent, RankingAgent, retrieval, cold-start handling |
+| Kenneth | Task B · Data Engineering | Unified ingestion pipeline, cross-domain preprocessing, train/test datasets |
+| Michael | Recommendation Systems | ReasoningAgent, RankingAgent, retrieval, cold-start handling |
 | Kindness | API · Frontend · Solution Paper | FastAPI, Streamlit UI, testing, paper writing |
