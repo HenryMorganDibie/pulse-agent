@@ -30,8 +30,8 @@ from src.schemas.models import (
 
 logger = logging.getLogger(__name__)
 
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-MODEL = "claude-sonnet-4-20250514"
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+MODEL = "llama-3.3-70b-versatile"
 
 
 # ---------------------------------------------------------------------------
@@ -39,25 +39,26 @@ MODEL = "claude-sonnet-4-20250514"
 # ---------------------------------------------------------------------------
 
 async def _call_claude(system: str, user: str, max_tokens: int = 512) -> str:
-    """Minimal async Claude API call. Returns raw text content."""
+    """Async LLM call via Groq (OpenAI-compatible). Returns raw text content."""
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
-            "https://api.anthropic.com/v1/messages",
+            "https://api.groq.com/openai/v1/chat/completions",
             headers={
-                "x-api-key": ANTHROPIC_API_KEY,
-                "anthropic-version": "2023-06-01",
+                "Authorization": f"Bearer {GROQ_API_KEY}",
                 "content-type": "application/json",
             },
             json={
                 "model": MODEL,
                 "max_tokens": max_tokens,
-                "system": system,
-                "messages": [{"role": "user", "content": user}],
+                "messages": [
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user},
+                ],
             },
         )
         response.raise_for_status()
         data = response.json()
-        return data["content"][0]["text"]
+        return data["choices"][0]["message"]["content"]
 
 
 def _parse_json(raw: str) -> Dict[str, Any]:

@@ -82,12 +82,13 @@ def _render_terminal_b(result: dict) -> None:
     table.add_column("Explanation")
 
     for rec in recs:
+        r = rec.model_dump() if hasattr(rec, "model_dump") else rec
         table.add_row(
-            str(rec.get("rank", "")),
-            rec.get("name", ""),
-            rec.get("category", ""),
-            f"{rec.get('predicted_rating', 0):.1f}",
-            rec.get("explanation", ""),
+            str(r.get("rank", "")),
+            r.get("name", ""),
+            r.get("category", ""),
+            f"{r.get('predicted_rating', 0):.1f}",
+            r.get("explanation", ""),
         )
     console.print(table)
 
