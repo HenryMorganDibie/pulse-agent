@@ -1,6 +1,65 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
 
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables
 .env
+.env.*
+*.env
 
+# Data files — too large for git
 data/
+!data/.gitkeep
+
+# Model artifacts
+models/
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.onnx
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Docker
+.dockerignore
+
+# Evaluation outputs
+data/eval_results.json
+
+# Solution paper drafts (only final PDF tracked)
+paper/*.docx
+paper/*.draft.*
