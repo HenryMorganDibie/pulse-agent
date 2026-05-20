@@ -27,33 +27,38 @@ from src.schemas.models import (
 
 logger = logging.getLogger(__name__)
 
+# ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+# MODEL = "claude-sonnet-4-20250514"
+
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 MODEL = "llama-3.3-70b-versatile"
-
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
-async def _call_claude(system: str, user: str, max_tokens: int = 800) -> str:
-    """Async LLM call via Groq (OpenAI-compatible). Returns raw text content."""
+async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
             "https://api.groq.com/openai/v1/chat/completions",
             headers={
                 "Authorization": f"Bearer {GROQ_API_KEY}",
-                "content-type": "application/json",
+                "Content-Type": "application/json",
             },
             json={
                 "model": MODEL,
-                "max_tokens": max_tokens,
                 "messages": [
                     {"role": "system", "content": system},
                     {"role": "user", "content": user},
                 ],
+                "max_tokens": max_tokens,
+                "temperature": 0.2,
             },
         )
-        response.raise_for_status()
+
+        # IMPORTANT: print real error if it fails
+        if response.status_code != 200:
+            raise Exception(f"{response.status_code}: {response.text}")
+
         return response.json()["choices"][0]["message"]["content"]
 
 
@@ -131,7 +136,7 @@ Return JSON with exactly these keys:
 - confidence: float (0.0–1.0)
 - reasoning: string (one sentence explaining the prediction)"""
 
-    raw = await _call_claude(system, user_prompt, max_tokens=200)
+    raw = await _call_groq(system, user_prompt, max_tokens=200)
     data = _parse_json(raw)
 
     predicted = float(data.get("predicted_rating", adjusted_anchor))
@@ -194,7 +199,7 @@ Return JSON with exactly these keys:
 - review_text: string (the generated review, matching the user's style)
 - word_count: integer"""
 
-    raw = await _call_claude(system, user_prompt, max_tokens=600)
+    raw = await _call_groq(system, user_prompt, max_tokens=600)
     data = _parse_json(raw)
 
     review_text = data.get("review_text", "")
@@ -240,7 +245,7 @@ Return JSON with exactly these keys:
 - quality_score: float (0.0–1.0, where 1.0 = perfect behavioural match)
 - notes: string (one sentence on what could be improved)"""
 
-    raw = await _call_claude(system, user_prompt, max_tokens=200)
+    raw = await _call_groq(system, user_prompt, max_tokens=200)
     data = _parse_json(raw)
 
     score = float(data.get("quality_score", 0.75))

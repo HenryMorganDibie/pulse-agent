@@ -34,28 +34,32 @@ MODEL = "llama-3.3-70b-versatile"
 
 
 # ---------------------------------------------------------------------------
-# Helpers — same pattern as Member 1's agents
+# Helpers
 # ---------------------------------------------------------------------------
 
-async def _call_claude(system: str, user: str, max_tokens: int = 600) -> str:
-    """Async LLM call via Groq (OpenAI-compatible). Returns raw text content."""
+async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
             "https://api.groq.com/openai/v1/chat/completions",
             headers={
                 "Authorization": f"Bearer {GROQ_API_KEY}",
-                "content-type": "application/json",
+                "Content-Type": "application/json",
             },
             json={
                 "model": MODEL,
-                "max_tokens": max_tokens,
                 "messages": [
                     {"role": "system", "content": system},
                     {"role": "user", "content": user},
                 ],
+                "max_tokens": max_tokens,
+                "temperature": 0.2,
             },
         )
-        response.raise_for_status()
+
+        # IMPORTANT: print real error if it fails
+        if response.status_code != 200:
+            raise Exception(f"{response.status_code}: {response.text}")
+
         return response.json()["choices"][0]["message"]["content"]
 
 
@@ -119,7 +123,7 @@ Return JSON with exactly these keys:
 - mood_keywords: list of strings (vibe words extracted from the conversation, e.g. ["chill", "relaxed"])
 - is_cross_domain: boolean (true if the request spans a new category for this user)"""
 
-    raw = await _call_claude(system, user_prompt, max_tokens=300)
+    raw = await _call_groq(system, user_prompt, max_tokens=300)
     data = _parse_json(raw)
 
     intent = data.get("intent", "general recommendation")

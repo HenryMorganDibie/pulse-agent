@@ -30,35 +30,39 @@ from src.schemas.models import (
 
 logger = logging.getLogger(__name__)
 
+# ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+# MODEL = "claude-sonnet-4-20250514"
+
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 MODEL = "llama-3.3-70b-versatile"
-
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
-async def _call_claude(system: str, user: str, max_tokens: int = 512) -> str:
-    """Async LLM call via Groq (OpenAI-compatible). Returns raw text content."""
+async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
             "https://api.groq.com/openai/v1/chat/completions",
             headers={
                 "Authorization": f"Bearer {GROQ_API_KEY}",
-                "content-type": "application/json",
+                "Content-Type": "application/json",
             },
             json={
                 "model": MODEL,
-                "max_tokens": max_tokens,
                 "messages": [
                     {"role": "system", "content": system},
                     {"role": "user", "content": user},
                 ],
+                "max_tokens": max_tokens,
+                "temperature": 0.2,
             },
         )
-        response.raise_for_status()
-        data = response.json()
-        return data["choices"][0]["message"]["content"]
+
+        # IMPORTANT: print real error if it fails
+        if response.status_code != 200:
+            raise Exception(f"{response.status_code}: {response.text}")
+
+        return response.json()["choices"][0]["message"]["content"]
 
 
 def _parse_json(raw: str) -> Dict[str, Any]:
@@ -178,7 +182,7 @@ async def _textual_pipeline(persona: UserPersona) -> Optional[TextualProfile]:
 Reviews:
 {corpus}"""
 
-        raw = await _call_claude(system, user, max_tokens=400)
+        raw = await _call_groq(system, user, max_tokens=400)
         data = _parse_json(raw)
 
         return TextualProfile(
