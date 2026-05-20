@@ -17,27 +17,10 @@ from langgraph.graph import END, START, StateGraph
 from src.agents.persona_agent import persona_construction_agent
 from src.agents.review_agent import review_sim_agent
 from src.schemas.models import AgentState
+from src.agents.reasoning_agent import reasoning_agent
+from src.agents.ranking_agent import ranking_agent
 
 logger = logging.getLogger(__name__)
-
-
-# ---------------------------------------------------------------------------
-# Stub imports for Member 2's agents
-# These will be replaced once reasoning_agent.py and ranking_agent.py exist.
-# ---------------------------------------------------------------------------
-
-try:
-    from src.agents.reasoning_agent import reasoning_agent
-    from src.agents.ranking_agent import ranking_agent
-except ImportError:
-    logger.warning("Member 2 agents not yet available — Task B will be stubbed")
-
-    async def reasoning_agent(state: AgentState) -> AgentState:  # type: ignore[misc]
-        return {**state, "inferred_intent": "stub", "candidate_items": []}
-
-    async def ranking_agent(state: AgentState) -> AgentState:  # type: ignore[misc]
-        return {**state, "ranked_recommendations": [], "explanation": "stub"}
-
 
 # ---------------------------------------------------------------------------
 # Routing logic
