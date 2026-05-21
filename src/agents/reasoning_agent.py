@@ -29,7 +29,7 @@ from src.tools.retrieval_tool import retrieve_candidates
 
 logger = logging.getLogger(__name__)
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
 MODEL = "llama-3.3-70b-versatile"
 
 # ---------------------------------------------------------------------------
@@ -104,32 +104,39 @@ async def _extract_intent(
     )
 
     user_prompt = f"""Extract the user's recommendation intent from the conversation below.
+Be specific — capture the actual mood, occasion, constraints, and preferences expressed.
+Do not produce vague intents like "general recommendation" or "something fun".
 
 User profile:
-- Preferred categories: {list(beh.category_affinities.keys())}
-- Is cold-start (new user): {ctx.is_cold_start}
-- Active categories: {ctx.active_categories}
-- Cross-domain history: {ctx.cross_domain_signals}
-- Avg rating (generous/harsh): {beh.avg_rating} (generous={beh.is_generous_rater}, harsh={beh.is_harsh_rater})
+- Known categories (most reviewed first): {list(beh.category_affinities.keys())}
+- Is new user (cold-start): {ctx.is_cold_start}
+- Avg rating: {beh.avg_rating} | generous_rater: {beh.is_generous_rater} | harsh_rater: {beh.is_harsh_rater}
+- Cross-domain signals (categories explored outside their main ones): {ctx.cross_domain_signals}
 
 Conversation history:
 {_format_conversation(conversation_history)}
 
 Return JSON with exactly these keys:
-- intent: string (concise description of what the user wants, e.g. "casual weekend outing, budget-conscious")
-- target_categories: list of strings (1–3 most relevant categories to search)
-- budget_sensitivity: string ("budget", "moderate", "splurge", or "unknown")
-- mood_keywords: list of strings (vibe words extracted from the conversation, e.g. ["chill", "relaxed"])
-- is_cross_domain: boolean (true if the request spans a new category for this user)"""
+- intent: string — specific intent capturing occasion + mood + constraints (e.g. "relaxed Saturday evening out, budget under $$, prefers cozy low-noise venues" not just "casual outing")
+- target_categories: list of 1–3 category strings most relevant to this request
+- budget_sensitivity: one of "budget" | "moderate" | "splurge" | "unknown"
+- mood_keywords: list of 3–5 specific vibe words pulled directly from the conversation (e.g. ["chill", "low-key", "not too loud"])
+- occasion: string — what kind of outing/activity this is (e.g. "solo weekend wind-down", "date night", "group hangout", "quick lunch")
+- is_cross_domain: boolean — true if the request targets a category the user has rarely or never reviewed"""
 
     raw = await _call_groq(system, user_prompt, max_tokens=300)
     data = _parse_json(raw)
 
     intent = data.get("intent", "general recommendation")
+    occasion = data.get("occasion", "")
     target_cats = data.get("target_categories", list(beh.category_affinities.keys())[:2])
     budget = data.get("budget_sensitivity", "unknown")
     mood_kws = data.get("mood_keywords", [])
     is_cross = data.get("is_cross_domain", False)
+
+    # Enrich intent string with occasion for the ranking agent
+    if occasion and occasion.lower() not in intent.lower():
+        intent = f"{intent} ({occasion})"
 
     trace.append(f"Intent extracted: \"{intent}\"")
     trace.append(f"  target_categories={target_cats}, budget={budget}, mood={mood_kws}")

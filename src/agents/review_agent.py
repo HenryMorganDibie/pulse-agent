@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 # ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 # MODEL = "claude-sonnet-4-20250514"
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
 MODEL = "llama-3.3-70b-versatile"
 
 # ---------------------------------------------------------------------------
