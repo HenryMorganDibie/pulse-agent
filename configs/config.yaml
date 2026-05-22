@@ -1,7 +1,8 @@
 data:
-  amazon_path: "data/amazon_reviews.jsonl"
-  goodreads_path: "data/goodreads.jsonl"
-  yelp_review_path: "data/yelp.jsonl"
+  amazon_path: "datasets/amazon_reviews.jsonl"
+  goodreads_path: "datasets/goodreads_books_mystery_thriller_crime.json"
+  yelp_review_path: "datasets/yelp.jsonl"
+  yelp_business_path: "datasets/yelp_business.json"
 
 model:
   embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
