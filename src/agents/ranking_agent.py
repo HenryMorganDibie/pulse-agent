@@ -21,7 +21,7 @@ from src.schemas.models import (
 
 logger = logging.getLogger(__name__)
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
 MODEL = "llama-3.3-70b-versatile"
 
 _TOP_K = 10
@@ -30,7 +30,7 @@ _TOP_K = 10
 # LLM CALL
 # ---------------------------------------------------------------------------
 
-async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
+async def _call_groq(system: str, user: str, max_tokens: int = 512, temperature: float = 0.4) -> str:
     async with httpx.AsyncClient(timeout=60.0) as client:
         response = await client.post(
             "https://api.groq.com/openai/v1/chat/completions",
@@ -45,7 +45,7 @@ async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
                     {"role": "user", "content": user},
                 ],
                 "max_tokens": max_tokens,
-                "temperature": 0.2,
+                "temperature": temperature,
             },
         )
 
@@ -61,6 +61,8 @@ async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
 # ---------------------------------------------------------------------------
 
 def _parse_json(raw: str) -> Any:
+    """Extract JSON from LLM response — handles fences, prefixes, and partial wrapping."""
+    import re
     cleaned = (
         raw.strip()
         .removeprefix("```json")
@@ -71,7 +73,26 @@ def _parse_json(raw: str) -> Any:
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError:
-        return {}
+        pass
+
+    # Try to extract a JSON array directly using regex
+    match = re.search(r'\[.*\]', cleaned, re.DOTALL)
+    if match:
+        try:
+            return json.loads(match.group())
+        except json.JSONDecodeError:
+            pass
+
+    # Try to extract a JSON object
+    match = re.search(r'\{.*\}', cleaned, re.DOTALL)
+    if match:
+        try:
+            return json.loads(match.group())
+        except json.JSONDecodeError:
+            pass
+
+    logger.warning("RankingAgent: failed to parse JSON from response: %s", raw[:300])
+    return {}
 
 
 # ---------------------------------------------------------------------------
@@ -107,39 +128,38 @@ async def _score_and_rank(
     )
 
     system = (
-        "You are a personalised ranking engine. "
-        "Return ONLY valid JSON array."
+        "You are a recommendation ranking engine. "
+        "Output ONLY a raw JSON array. No explanation, no markdown, no text before or after the array."
     )
 
-    user_prompt = f"""
-Rank these items:
+    user_prompt = f"""Rank these items for a user. Return a JSON array, nothing else.
 
-User intent: {intent}
+User avg rating: {beh.avg_rating} | rating bias: {beh.rating_bias:+.2f} | generous: {beh.is_generous_rater} | harsh: {beh.is_harsh_rater}
+User category history: {dict(beh.category_affinities)}
+User tone: {txt.dominant_tone.value} | sentiment: {txt.sentiment_polarity:.2f}
+Intent: "{intent}"
 
-User profile:
-- avg rating: {beh.avg_rating}
-- tone: {txt.dominant_tone.value}
-- sentiment: {txt.sentiment_polarity}
-
-Candidates:
+Items to rank:
 {candidate_list}
 
-Return JSON list:
-[
-  {{
-    "item_id": "...",
-    "predicted_rating": 1-5,
-    "relevance_score": 0-1,
-    "explanation": "..."
-  }}
-]
-"""
+Rules:
+- predicted_rating must VARY. Anchor on {beh.avg_rating}, adjust ±0.5 based on how well each item fits intent and user profile.
+- relevance_score must VARY. Best item ~0.9, worst ~0.4.
+- explanation: 2 sentences referencing the specific item attributes and user profile. No generic phrases.
+- score_breakdown: 4 floats (0-1): category_fit, intent_match, price_fit, vibe_fit
 
-    raw = await _call_groq(system, user_prompt, 1500)
+Return ONLY this JSON array (no other text):
+[{{"item_id":"...","predicted_rating":0.0,"relevance_score":0.0,"score_breakdown":{{"category_fit":0.0,"intent_match":0.0,"price_fit":0.0,"vibe_fit":0.0}},"explanation":"..."}}]"""
+
+    raw = await _call_groq(system, user_prompt, 3000)
+    logger.info("RankingAgent raw response (first 300 chars): %s", raw[:300])
     data = _parse_json(raw)
 
     if not isinstance(data, list):
-        data = []
+        if isinstance(data, dict):
+            data = next((v for v in data.values() if isinstance(v, list)), [])
+        else:
+            data = []
 
     trace.append(f"RankingAgent: scored {len(data)} items")
     return data, trace
@@ -296,6 +316,18 @@ async def ranking_agent(state: AgentState) -> AgentState:
             predicted_rating = float(item.get("predicted_rating", user_state.behavioural.avg_rating))
             explanation = item.get("explanation", "")
             ndcg = item.get("ndcg_score")
+
+            # Score decomposition — log to trace for judges / evaluation
+            breakdown = item.get("score_breakdown", {})
+            if breakdown:
+                trace.append(
+                    f"  #{idx} {candidate.name}: "
+                    f"category_fit={breakdown.get('category_fit', '?')} "
+                    f"intent_match={breakdown.get('intent_match', '?')} "
+                    f"price_fit={breakdown.get('price_fit', '?')} "
+                    f"vibe_fit={breakdown.get('vibe_fit', '?')} "
+                    f"→ {predicted_rating}★ (ndcg={ndcg})"
+                )
 
             ranked.append(
                 RankedItem(

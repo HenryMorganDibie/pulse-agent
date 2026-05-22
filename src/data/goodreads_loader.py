@@ -1,14 +1,37 @@
+import json
 import pandas as pd
 
 
 class GoodreadsLoader:
+
     def __init__(self, config):
         self.path = config["data"]["goodreads_path"]
 
     def load(self, nrows=None):
+
         print(f"Loading Goodreads data from: {self.path}")
 
-        df = pd.read_json(self.path, lines=True, nrows=nrows)
+        records = []
+
+        with open(self.path, "r", encoding="utf-8") as f:
+
+            for i, line in enumerate(f):
+
+                if nrows and i >= nrows:
+                    break
+
+                line = line.strip()
+
+                if not line:
+                    continue
+
+                try:
+                    records.append(json.loads(line))
+                except Exception:
+                    # skip bad rows instead of crashing
+                    continue
+
+        df = pd.DataFrame(records)
 
         print("Goodreads columns:", df.columns.tolist())
 
