@@ -69,13 +69,42 @@
 
     .logo span { color: var(--accent); }
 
-    .badge {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--muted);
+    /* ── API Environment Toggle ── */
+    .env-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--paper);
       border: 1px solid var(--border);
-      padding: 0.3rem 0.8rem;
       border-radius: 100px;
+      padding: 3px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      user-select: none;
+    }
+
+    .env-toggle-btn {
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      transition: all 0.18s;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    .env-toggle-btn.active {
+      background: var(--accent2);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .env-toggle-btn:not(.active):hover {
+      color: var(--ink);
     }
 
     /* ── hero ── */
@@ -223,6 +252,39 @@
 
     .star.on { color: #e8a020; }
 
+    /* ── preset buttons ── */
+    .preset-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .preset-chip {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.18s;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .preset-chip:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .preset-chip.active {
+      background: var(--accent2);
+      border-color: var(--accent2);
+      color: #fff;
+    }
+
     /* ── review history ── */
     .history-list { margin-bottom: 1rem; }
 
@@ -262,6 +324,22 @@
       flex-shrink: 0;
     }
     .del-btn:hover { color: var(--accent); }
+
+    /* ── history stats row ── */
+    .history-stats {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      padding: 0.4rem 0 0.6rem;
+      letter-spacing: 0.01em;
+      opacity: 0.85;
+      min-height: 1.2rem;
+    }
+
+    .history-stats .stat-cats {
+      color: var(--accent2);
+      opacity: 0.8;
+    }
 
     /* ── add review toggle ── */
     .add-review-toggle {
@@ -350,11 +428,37 @@
 
     .rating-stars { font-size: 1.2rem; color: #e8a020; }
 
+    /* ── confidence bar + label ── */
+    .confidence-wrapper {
+      margin-bottom: 1.5rem;
+    }
+
+    .confidence-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.45rem;
+    }
+
+    .confidence-label-text {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .confidence-pct {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent2);
+    }
+
     .confidence-bar {
       height: 4px;
       background: var(--border);
       border-radius: 2px;
-      margin-bottom: 1.5rem;
       overflow: hidden;
     }
 
@@ -412,30 +516,49 @@
     /* ── recommendation cards ── */
     .rec-card {
       display: grid;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: 2rem 1fr auto;
       gap: 1rem;
       align-items: start;
-      padding: 1rem 0;
+      padding: 1rem 0.6rem;
       border-bottom: 1px solid var(--border);
+      border-left: 3px solid transparent;
       animation: fadeIn 0.4s ease forwards;
       opacity: 0;
+      transition: border-left-color 0.18s, background 0.18s, padding-left 0.18s;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .rec-card:hover {
+      border-left-color: var(--accent2);
+      background: rgba(46,95,138,0.03);
+      padding-left: 0.85rem;
     }
 
     .rec-rank {
-      font-family: var(--display);
-      font-size: 1.8rem;
-      font-weight: 800;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 400;
       color: var(--border);
       line-height: 1;
       width: 2rem;
       text-align: right;
+      padding-top: 0.2rem;
+      letter-spacing: 0.05em;
     }
 
     .rec-name {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.05rem;
       margin-bottom: 0.3rem;
+      color: var(--ink);
+    }
+
+    .rec-author {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
     }
 
     .rec-expl {
@@ -460,6 +583,7 @@
       font-size: 1rem;
       color: var(--ink);
       white-space: nowrap;
+      margin-bottom: 0.4rem;
     }
 
     /* ── intent badge ── */
@@ -505,6 +629,31 @@
       color: var(--muted);
       text-align: center;
       line-height: 1.8;
+      position: relative;
+      height: 1.4em;
+      overflow: hidden;
+    }
+
+    .loader-step {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      animation: stepFade 2.4s ease infinite;
+    }
+
+    .loader-step:nth-child(1) { animation-delay: 0s; }
+    .loader-step:nth-child(2) { animation-delay: 0.8s; }
+    .loader-step:nth-child(3) { animation-delay: 1.6s; }
+
+    @keyframes stepFade {
+      0%   { opacity: 0; transform: translateY(4px); }
+      10%  { opacity: 1; transform: translateY(0); }
+      30%  { opacity: 1; transform: translateY(0); }
+      40%  { opacity: 0; transform: translateY(-4px); }
+      100% { opacity: 0; }
     }
 
     /* ── error ── */
@@ -548,6 +697,12 @@
       border-bottom: 1px solid var(--border);
     }
 
+    /* ── output panel padding ── */
+    #a-output,
+    #b-output {
+      padding: 2.5rem 3rem;
+    }
+
     /* ── animations ── */
     @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -576,6 +731,17 @@
       text-decoration: none;
     }
 
+    .footer-env {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      opacity: 0.75;
+    }
+
+    .footer-env .footer-env-val {
+      color: var(--accent2);
+    }
+
     /* ── responsive ── */
     @media (max-width: 768px) {
       header { padding: 1rem 1.5rem; }
@@ -584,7 +750,9 @@
       .tab-content.active,
       .main { grid-template-columns: 1fr; }
       .panel { padding: 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+      #a-output, #b-output { padding: 1.5rem; }
       footer { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .preset-chips { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -593,7 +761,10 @@
 <!-- ── Header ── -->
 <header>
   <div class="logo">Pulse<span>Agent</span></div>
-  <div class="badge">Team HOKM · DSN × BCT Hackathon 3.0</div>
+  <div class="env-toggle" id="env-toggle">
+    <button class="env-toggle-btn" id="env-local" onclick="setEnv('local')">Local :8000</button>
+    <button class="env-toggle-btn active" id="env-prod" onclick="setEnv('prod')">Production</button>
+  </div>
 </header>
 
 <!-- ── Hero ── -->
@@ -624,7 +795,7 @@
     <div class="row">
       <div class="field">
         <label>User ID</label>
-        <input type="text" id="a-user-id" value="u_001" />
+        <input type="text" id="a-user-id" value="Xm8HXE1JHqscXe5BKf0GFQ" />
       </div>
       <div class="field">
         <label>Tone Profile</label>
@@ -634,7 +805,19 @@
           <option value="analytical">Analytical</option>
           <option value="terse">Terse</option>
           <option value="narrative">Narrative</option>
+          <option value="nigerian">Nigerian</option>
         </select>
+      </div>
+    </div>
+
+    <!-- Preset user loader — pill buttons -->
+    <div class="field">
+      <label>Load Real User from Dataset</label>
+      <div class="preset-chips" id="a-preset-chips">
+        <button class="preset-chip active" data-preset="yelp_1" onclick="loadPreset('a', 'yelp_1')">Yelp — Food &amp; Nightlife</button>
+        <button class="preset-chip" data-preset="yelp_2" onclick="loadPreset('a', 'yelp_2')">Yelp — Food Lover</button>
+        <button class="preset-chip" data-preset="amazon_1" onclick="loadPreset('a', 'amazon_1')">Amazon — Beauty</button>
+        <button class="preset-chip" data-preset="nigerian_1" onclick="loadPreset('a', 'nigerian_1')">Nigerian — Lagos Foodie</button>
       </div>
     </div>
 
@@ -642,6 +825,7 @@
     <div class="field">
       <label>Review History</label>
       <div class="history-list" id="a-history-list"></div>
+      <div class="history-stats" id="a-history-stats"></div>
       <button class="add-review-toggle" onclick="toggleAddReview('a')">+ Add a review</button>
       <div class="add-review-form" id="a-add-form">
         <div class="row">
@@ -702,7 +886,7 @@
     </div>
 
     <div class="error-box" id="a-error"></div>
-    <button class="submit-btn" onclick="runTaskA()" id="a-btn">▶ Simulate Review</button>
+    <button class="submit-btn" onclick="runTaskA()" id="a-btn">&#9654; Simulate Review</button>
   </div>
 
   <!-- Output -->
@@ -714,9 +898,9 @@
     <div class="loader" id="a-loader">
       <div class="spinner"></div>
       <div class="loader-text">
-        Running PersonaConstructionAgent...<br />
-        Building behavioural + textual + contextual profiles<br />
-        ReviewSimAgent inferring rating + generating review
+        <span class="loader-step">Running PersonaConstructionAgent...</span>
+        <span class="loader-step">Building behavioural + textual + contextual profiles</span>
+        <span class="loader-step">ReviewSimAgent inferring rating + generating review</span>
       </div>
     </div>
     <div id="a-output" style="display:none">
@@ -725,12 +909,18 @@
         <div class="rating-big" id="a-out-rating">—</div>
         <div class="rating-stars" id="a-out-stars"></div>
       </div>
-      <div class="confidence-bar">
-        <div class="confidence-fill" id="a-out-conf" style="width:0%"></div>
+      <div class="confidence-wrapper">
+        <div class="confidence-header">
+          <span class="confidence-label-text">Confidence</span>
+          <span class="confidence-pct" id="a-out-conf-pct">—</span>
+        </div>
+        <div class="confidence-bar">
+          <div class="confidence-fill" id="a-out-conf" style="width:0%"></div>
+        </div>
       </div>
       <div id="a-out-review" class="review-text"></div>
       <button class="trace-toggle" onclick="toggleTrace('a')">
-        <span id="a-trace-arrow">▶</span> Reasoning Trace
+        <span id="a-trace-arrow">&#9654;</span> Reasoning Trace
       </button>
       <div class="trace-list" id="a-trace"></div>
     </div>
@@ -752,7 +942,7 @@
     <div class="row">
       <div class="field">
         <label>User ID</label>
-        <input type="text" id="b-user-id" value="u_042" />
+        <input type="text" id="b-user-id" value="N3L6SDymSRkYQtTiSDmXSg" />
       </div>
       <div class="field">
         <label>Tone Profile</label>
@@ -762,13 +952,26 @@
           <option value="analytical">Analytical</option>
           <option value="terse">Terse</option>
           <option value="narrative">Narrative</option>
+          <option value="nigerian">Nigerian</option>
         </select>
+      </div>
+    </div>
+
+    <!-- Preset user loader — pill buttons -->
+    <div class="field">
+      <label>Load Real User from Dataset</label>
+      <div class="preset-chips" id="b-preset-chips">
+        <button class="preset-chip" data-preset="yelp_1" onclick="loadPreset('b', 'yelp_1')">Yelp — Food &amp; Nightlife</button>
+        <button class="preset-chip active" data-preset="yelp_2" onclick="loadPreset('b', 'yelp_2')">Yelp — Food Lover</button>
+        <button class="preset-chip" data-preset="amazon_1" onclick="loadPreset('b', 'amazon_1')">Amazon — Beauty</button>
+        <button class="preset-chip" data-preset="nigerian_1" onclick="loadPreset('b', 'nigerian_1')">Nigerian — Lagos Foodie</button>
       </div>
     </div>
 
     <div class="field">
       <label>Review History</label>
       <div class="history-list" id="b-history-list"></div>
+      <div class="history-stats" id="b-history-stats"></div>
       <button class="add-review-toggle" onclick="toggleAddReview('b')">+ Add a review</button>
       <div class="add-review-form" id="b-add-form">
         <div class="row">
@@ -805,7 +1008,7 @@
     </div>
 
     <div class="error-box" id="b-error"></div>
-    <button class="submit-btn" onclick="runTaskB()" id="b-btn">▶ Get Recommendations</button>
+    <button class="submit-btn" onclick="runTaskB()" id="b-btn">&#9654; Get Recommendations</button>
   </div>
 
   <!-- Output -->
@@ -817,9 +1020,9 @@
     <div class="loader" id="b-loader">
       <div class="spinner"></div>
       <div class="loader-text">
-        Running ReasoningAgent...<br />
-        Extracting intent · detecting cold-start<br />
-        RankingAgent scoring + injecting diversity
+        <span class="loader-step">Running ReasoningAgent...</span>
+        <span class="loader-step">Extracting intent · detecting cold-start</span>
+        <span class="loader-step">RankingAgent scoring + injecting diversity</span>
       </div>
     </div>
     <div id="b-output" style="display:none">
@@ -827,7 +1030,7 @@
       <div id="b-intent-badge" class="intent-badge"></div>
       <div id="b-recs"></div>
       <button class="trace-toggle" onclick="toggleTrace('b')" style="margin-top:1rem">
-        <span id="b-trace-arrow">▶</span> Reasoning Trace
+        <span id="b-trace-arrow">&#9654;</span> Reasoning Trace
       </button>
       <div class="trace-list" id="b-trace"></div>
     </div>
@@ -838,6 +1041,7 @@
 <!-- ── Footer ── -->
 <footer>
   <p>PulseAgent · Team HOKM · DSN × BCT Hackathon 3.0</p>
+  <p class="footer-env">API: <span class="footer-env-val" id="footer-env-val">production</span></p>
   <p>
     <a href="https://pulse-agent-5rg3.onrender.com/docs" target="_blank">API Docs ↗</a>
     &nbsp;·&nbsp;
@@ -846,17 +1050,93 @@
 </footer>
 
 <script>
-  const API = 'https://pulse-agent-5rg3.onrender.com';
+  // ── API Environment ──
+  const ENVS = {
+    local: 'http://localhost:8000',
+    prod:  'https://pulse-agent-5rg3.onrender.com',
+  };
+
+  let currentEnv = 'prod';
+  let API = ENVS[currentEnv];
+
+  function setEnv(env) {
+    currentEnv = env;
+    API = ENVS[env];
+    document.getElementById('env-local').classList.toggle('active', env === 'local');
+    document.getElementById('env-prod').classList.toggle('active', env === 'prod');
+    document.getElementById('footer-env-val').textContent =
+      env === 'local' ? 'localhost:8000' : 'production';
+  }
+
+  // ── Real dataset user presets (Yelp + Amazon) ──
+  const PRESETS = {
+    yelp_1: {
+      user_id: 'Xm8HXE1JHqscXe5BKf0GFQ',
+      label: 'Yelp — Food & Nightlife',
+      source: 'yelp',
+      history: [
+        { item_id: 'WGNIYMeXPyoWav1APUq7jA', category: 'Services',  rating: 4, text: 'Good tattoo shop. Clean space, multiple artists to choose from and books of their work are available for you to look through and decide whose style most mirrors yours.' },
+        { item_id: '9U7_UWXXJZOW14L0kAdCNA', category: 'Nightlife', rating: 2, text: 'No cover and outdoor misters. Decent crowd, overpriced drinks, teeny dance floor, good selection of d\'bags to giggle at. It\'s a club in a chain hotel — go in with low expectations.' },
+        { item_id: 'tdeHd2AVYlEnz9F1UGb84Q', category: 'Food',      rating: 5, text: 'This place is fantastic. Great food, superior service, gorgeous decor. I had a Breakfast Casserole and a generous side of Cheesy Grits. My girlfriend had the French toast — both outstanding.' },
+      ],
+    },
+    yelp_2: {
+      user_id: 'SBbftLzfYYKItOMFwOTIJg',
+      label: 'Yelp — Food Lover',
+      source: 'yelp',
+      history: [
+        { item_id: 'supigcPNO9IKo6olaTNV-g', category: 'Food', rating: 3, text: 'We went here on a Saturday afternoon and this place was incredibly empty. They had brunch specials going on, including $2 bloody marys and mimosas, but we were not impressed.' },
+        { item_id: 'cN6aBxe2mQvrQlzk26LyRQ', category: 'Food', rating: 5, text: 'My birthday always falls right around Mother\'s Day. Every time I want to go out it\'s packed. We thought ahead this year and made a reservation — absolutely worth it. Stellar service.' },
+        { item_id: 'K8pM6qQdYu5h6buRE1-_sw', category: 'Food', rating: 5, text: 'If I still lived in Phoenix, LoLo\'s Chicken & Waffles would be one of my three vices. Best fried chicken I\'ve ever had. The waffles are perfect. Lines out the door for a reason.' },
+        { item_id: 'YKDyaK3TKoZRCEgwnhczkA', category: 'Technology', rating: 5, text: 'Two weeks after I dropped off my computer for service with the Geek Squad I got it back with a new screen and hand rest. Said 3 weeks, delivered in two. Extremely happy.' },
+      ],
+    },
+    amazon_1: {
+      user_id: 'AHGAOIZVODNHYMNCBV4DECZH42UQ',
+      label: 'Amazon — Beauty & Personal Care (cross-domain)',
+      source: 'amazon',
+      history: [
+        { item_id: 'B082QX2HP6', category: 'Beauty & Personal Care', rating: 5, text: 'I had a small one that just got destroyed. These wires are much longer and bigger — I expect them to live a lot longer than the tiny one I had!' },
+        { item_id: 'B077SRDVG9', category: 'Beauty & Personal Care', rating: 3, text: 'It\'s OK, not as good as the original Wet Brush. Just a knock-off — does the job but doesn\'t feel as premium.' },
+        { item_id: 'B01AKTGHFW', category: 'Beauty & Personal Care', rating: 1, text: 'Nothing special. Unfortunately I waited too long to return them. No results at all. Don\'t waste your money.' },
+      ],
+    },
+    nigerian_1: {
+      user_id: 'ng_user_lagos_01',
+      label: 'Nigerian — Lagos Foodie',
+      source: 'nigerian',
+      tone: 'nigerian',
+      history: [
+        { item_id: 'ng_f07', category: 'Food', rating: 5, text: 'This jollof rice no be small thing! The pepper just dey right, the chicken well done. I go come back with my guys for sure. If you dey Lagos, abeg try this place.' },
+        { item_id: 'ng_f04', category: 'Food', rating: 4, text: 'The suya here is proper. Nice and spicy, the yaji well balanced. Only thing — the wait time too long sha. But when the food land, e sweet me.' },
+        { item_id: 'ng_f02', category: 'Food', rating: 3, text: 'Amala was okay but I expected more for the price. The ewedu could have been smoother. Service was fine though, the place clean and the AC was working well.' },
+        { item_id: 'ng_n02', category: 'Nightlife', rating: 5, text: 'The vibes here are mad! Live band was playing Fela and Burna Boy covers. Drinks were reasonably priced for the area. Perfect spot for a chill Saturday night.' },
+      ],
+    },
+  };
 
   // ── State ──
   const state = {
-    a: { history: [
-      { item_id: 'i_001', category: 'Food',     rating: 4.0, text: 'Really solid spot. Food was fresh and service was quick.' },
-      { item_id: 'i_002', category: 'Food',     rating: 3.5, text: 'Decent enough but nothing special. Wouldn\'t rush back.' },
-      { item_id: 'i_003', category: 'Nightlife',rating: 4.5, text: 'Great atmosphere. Exactly what I needed.' },
-    ], starRating: 4 },
-    b: { history: [], starRating: 4 },
+    a: { history: [...PRESETS.yelp_1.history], starRating: 4, activePreset: 'yelp_1' },
+    b: { history: [...PRESETS.yelp_2.history], starRating: 4, activePreset: 'yelp_2' },
   };
+
+  // ── Load preset user into a task ──
+  function loadPreset(task, presetKey) {
+    if (!presetKey) return;
+    const preset = PRESETS[presetKey];
+    state[task].history = [...preset.history];
+    state[task].activePreset = presetKey;
+    document.getElementById(task + '-user-id').value = preset.user_id;
+    if (preset.tone) {
+      document.getElementById(task + '-tone').value = preset.tone;
+    }
+    // Update chip highlight
+    document.querySelectorAll('#' + task + '-preset-chips .preset-chip').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.preset === presetKey);
+    });
+    renderHistory(task);
+  }
 
   // ── Tab switching ──
   function switchTab(tab) {
@@ -864,6 +1144,21 @@
     document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
     document.getElementById('tab-' + tab).classList.add('active');
     document.querySelectorAll('.tab-btn')[tab === 'a' ? 0 : 1].classList.add('active');
+  }
+
+  // ── Render history stats ──
+  function renderHistoryStats(task) {
+    const statsEl = document.getElementById(task + '-history-stats');
+    const history = state[task].history;
+    if (!history.length) {
+      statsEl.textContent = '';
+      return;
+    }
+    const avg = (history.reduce((s, r) => s + r.rating, 0) / history.length).toFixed(1);
+    const cats = [...new Set(history.map(r => r.category))];
+    const catStr = cats.slice(0, 4).join(', ') + (cats.length > 4 ? ` +${cats.length - 4}` : '');
+    statsEl.innerHTML =
+      `avg ★ ${avg} &nbsp;·&nbsp; ${history.length} review${history.length !== 1 ? 's' : ''} &nbsp;·&nbsp; <span class="stat-cats">${catStr}</span>`;
   }
 
   // ── Render history ──
@@ -882,6 +1177,7 @@
           <button class="del-btn" onclick="deleteReview('${task}', ${i})">×</button>
         </div>`;
     });
+    renderHistoryStats(task);
   }
 
   function deleteReview(task, i) {
@@ -1019,10 +1315,11 @@
     const conf   = Math.round((data.confidence || 0) * 100);
     const stars  = '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
 
-    document.getElementById('a-out-rating').textContent = rating.toFixed(1);
-    document.getElementById('a-out-stars').textContent  = stars;
-    document.getElementById('a-out-conf').style.width   = conf + '%';
-    document.getElementById('a-out-review').textContent = data.simulated_review || '(no review generated)';
+    document.getElementById('a-out-rating').textContent    = rating.toFixed(1);
+    document.getElementById('a-out-stars').textContent     = stars;
+    document.getElementById('a-out-conf').style.width      = '0%';
+    document.getElementById('a-out-conf-pct').textContent  = conf + '%';
+    document.getElementById('a-out-review').textContent    = data.simulated_review || '(no review generated)';
 
     const traceEl = document.getElementById('a-trace');
     traceEl.innerHTML = (data.reasoning_trace || [])
@@ -1072,6 +1369,21 @@
     }
   }
 
+  // ── Extract author hint from name/explanation ──
+  function extractAuthor(name, explanation) {
+    // Look for patterns like "by Author", "from Author", "Author's"
+    const patterns = [
+      /\bby\s+([A-Z][a-zA-Z\s]{2,30}?)(?:[,\.;]|$)/,
+      /\bfrom\s+([A-Z][a-zA-Z\s]{2,20}?)(?:[,\.;]|$)/,
+      /^([A-Z][a-zA-Z\s]{2,20}?)'s\b/,
+    ];
+    for (const pat of patterns) {
+      const m = (name + ' ' + (explanation || '')).match(pat);
+      if (m) return m[1].trim();
+    }
+    return null;
+  }
+
   function renderTaskB(data) {
     const intent    = data.inferred_intent || '—';
     const coldStart = data.cold_start;
@@ -1081,18 +1393,25 @@
       `🎯 ${intent} <span class="cold-pill ${coldStart ? 'cold' : 'warm'}">${coldStart ? 'cold-start' : 'warm user'}</span>`;
 
     const recsEl = document.getElementById('b-recs');
-    recsEl.innerHTML = recs.map((r, i) => `
+    recsEl.innerHTML = recs.map((r, i) => {
+      const author = extractAuthor(r.name || '', r.explanation || '');
+      const authorHtml = author
+        ? `<div class="rec-author">by ${author}</div>`
+        : '';
+      return `
       <div class="rec-card" style="animation-delay:${i * 0.08}s">
-        <div class="rec-rank">${r.rank}</div>
+        <div class="rec-rank">#${r.rank}</div>
         <div>
           <div class="rec-name">${r.name}</div>
+          ${authorHtml}
           <div class="rec-expl">${r.explanation}</div>
         </div>
         <div style="text-align:right">
           <div class="rec-rating">★ ${r.predicted_rating}</div>
           <div class="rec-cat">${r.category}</div>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
 
     const traceEl = document.getElementById('b-trace');
     traceEl.innerHTML = (data.reasoning_trace || [])

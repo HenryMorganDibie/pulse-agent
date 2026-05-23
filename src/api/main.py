@@ -9,8 +9,13 @@ Then visit: http://localhost:8000/docs
 """
 from __future__ import annotations
 
+import json
 import logging
 import time
+from pathlib import Path
+
+from dotenv import load_dotenv
+load_dotenv()  # Load .env before any agent imports read GROQ_API_KEY
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,6 +28,7 @@ from src.api.schemas import (
     SimulateReviewRequest,
     SimulateReviewResponse,
 )
+from src.tools.retrieval_tool import load_catalog
 
 logger = logging.getLogger(__name__)
 
@@ -42,6 +48,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.on_event("startup")
+def _load_real_catalog() -> None:
+    catalog_path = Path(__file__).parent.parent / "data" / "catalog.json"
+    if catalog_path.exists():
+        with open(catalog_path, encoding="utf-8") as f:
+            items = json.load(f)
+        load_catalog(items)
+        logger.info("Loaded real catalog: %d items from %s", len(items), catalog_path)
+    else:
+        logger.warning("catalog.json not found — using mock catalog")
 
 
 # ---------------------------------------------------------------------------

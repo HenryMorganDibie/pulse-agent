@@ -1,0 +1,8088 @@
+[
+  {
+    "item_id": "gr_0",
+    "name": "To Kill a Mockingbird",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Harper Lee",
+      "avg_rating": 4.27,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_1",
+    "name": "Harry Potter and the Philosopher\u2019s Stone (Harry Potter, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.K. Rowling",
+      "avg_rating": 4.47,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_2",
+    "name": "Pride and Prejudice",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jane Austen",
+      "avg_rating": 4.28,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_3",
+    "name": "The Diary of a Young Girl",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Anne Frank",
+      "avg_rating": 4.18,
+      "genres": [
+        "Classics",
+        "Nonfiction",
+        "History"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_4",
+    "name": "Animal Farm",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "George Orwell",
+      "avg_rating": 3.98,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Dystopia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_5",
+    "name": "The Little Prince",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Antoine de Saint-Exup\u00e9ry",
+      "avg_rating": 4.32,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_6",
+    "name": "1984",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "George Orwell",
+      "avg_rating": 4.19,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_7",
+    "name": "The Great Gatsby",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "F. Scott Fitzgerald",
+      "avg_rating": 3.93,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "School"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_8",
+    "name": "The Catcher in the Rye",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "J.D. Salinger",
+      "avg_rating": 3.81,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_9",
+    "name": "The Lord of the Rings",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.R.R. Tolkien",
+      "avg_rating": 4.52,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_10",
+    "name": "The Book Thief",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Markus Zusak",
+      "avg_rating": 4.39,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_11",
+    "name": "Jane Eyre",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Charlotte Bront\u00eb",
+      "avg_rating": 4.14,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_12",
+    "name": "The Chronicles of Narnia (Chronicles of Narnia, #1-7)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "C.S. Lewis",
+      "avg_rating": 4.27,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_13",
+    "name": "Lord of the Flies",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Golding",
+      "avg_rating": 3.69,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_14",
+    "name": "Romeo and Juliet",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 3.74,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_15",
+    "name": "Harry Potter and the Deathly Hallows (Harry Potter, #7)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.K. Rowling",
+      "avg_rating": 4.62,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_16",
+    "name": "The Kite Runner",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Khaled Hosseini",
+      "avg_rating": 4.33,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_17",
+    "name": "The Giver (The Giver, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Lois Lowry",
+      "avg_rating": 4.12,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_18",
+    "name": "The Giving Tree",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Shel Silverstein",
+      "avg_rating": 4.38,
+      "genres": [
+        "Childrens",
+        "Fiction",
+        "Picture Books"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_19",
+    "name": "Charlotte's Web",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "E.B. White",
+      "avg_rating": 4.19,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_20",
+    "name": "Little Women",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Louisa May Alcott",
+      "avg_rating": 4.14,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_21",
+    "name": "The Hunger Games (The Hunger Games, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Suzanne Collins",
+      "avg_rating": 4.33,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Dystopia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_22",
+    "name": "The Hobbit (The Lord of the Rings, #0)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.R.R. Tolkien",
+      "avg_rating": 4.28,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_23",
+    "name": "Of Mice and Men",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "John Steinbeck",
+      "avg_rating": 3.88,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "School"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_24",
+    "name": "Fahrenheit 451",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Ray Bradbury",
+      "avg_rating": 3.97,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_25",
+    "name": "Green Eggs and Ham",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Dr. Seuss",
+      "avg_rating": 4.3,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_26",
+    "name": "Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.K. Rowling",
+      "avg_rating": 4.58,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_27",
+    "name": "Wuthering Heights",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Emily Bront\u00eb",
+      "avg_rating": 3.88,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_28",
+    "name": "Alice's Adventures in Wonderland / Through the Looking-Glass",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Lewis Carroll",
+      "avg_rating": 4.06,
+      "genres": [
+        "Classics",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_29",
+    "name": "The Picture of Dorian Gray",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Oscar Wilde",
+      "avg_rating": 4.12,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Horror"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_30",
+    "name": "Night  (The Night Trilogy, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Elie Wiesel",
+      "avg_rating": 4.36,
+      "genres": [
+        "Nonfiction",
+        "Classics",
+        "History"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_31",
+    "name": "Gone with the Wind",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Margaret Mitchell",
+      "avg_rating": 4.3,
+      "genres": [
+        "Classics",
+        "Historical Fiction",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_32",
+    "name": "The Holy Bible: King James Version",
+    "category": "Books",
+    "attributes": {
+      "genre": "Religion",
+      "author": "Anonymous",
+      "avg_rating": 4.43,
+      "genres": [
+        "Religion",
+        "Classics",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_33",
+    "name": "Harry Potter and the Goblet of Fire (Harry Potter, #4)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.K. Rowling",
+      "avg_rating": 4.56,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_34",
+    "name": "The Hitchhiker's Guide to the Galaxy (The Hitchhiker's Guide to the Galaxy, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Douglas Adams",
+      "avg_rating": 4.23,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Humor"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_35",
+    "name": "Hamlet",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 4.02,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_36",
+    "name": "Harry Potter and the Half-Blood Prince (Harry Potter, #6)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.K. Rowling",
+      "avg_rating": 4.58,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_37",
+    "name": "The Adventures of Huckleberry Finn",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Mark Twain",
+      "avg_rating": 3.83,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_39",
+    "name": "Les Mis\u00e9rables",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Victor Hugo",
+      "avg_rating": 4.2,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_40",
+    "name": "The Alchemist",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Paulo Coelho",
+      "avg_rating": 3.9,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_41",
+    "name": "Brave New World / Brave New World Revisited",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Aldous Huxley",
+      "avg_rating": 4.16,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_42",
+    "name": "Crime and Punishment",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Fyodor Dostoevsky",
+      "avg_rating": 4.26,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Russia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_43",
+    "name": "The Help",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Kathryn Stockett",
+      "avg_rating": 4.47,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Historical"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_44",
+    "name": "The Secret Garden",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Frances Hodgson Burnett",
+      "avg_rating": 4.15,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_45",
+    "name": "Memoirs of a Geisha",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Arthur Golden",
+      "avg_rating": 4.14,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_46",
+    "name": "The Lion, the Witch and the Wardrobe (Chronicles of Narnia, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "C.S. Lewis",
+      "avg_rating": 4.23,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_47",
+    "name": "The Odyssey",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Homer",
+      "avg_rating": 3.8,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Poetry"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_48",
+    "name": "A Christmas Carol",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Charles Dickens",
+      "avg_rating": 4.07,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Christmas"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_49",
+    "name": "The Cat in the Hat (The Cat in the Hat, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Dr. Seuss",
+      "avg_rating": 4.18,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_50",
+    "name": "The Outsiders",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "S.E. Hinton",
+      "avg_rating": 4.12,
+      "genres": [
+        "Classics",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_51",
+    "name": "One Hundred Years of Solitude",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Gabriel Garc\u00eda M\u00e1rquez",
+      "avg_rating": 4.11,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Magical Realism"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_52",
+    "name": "The Grapes of Wrath",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "John Steinbeck",
+      "avg_rating": 4.0,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_53",
+    "name": "A Thousand Splendid Suns",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Khaled Hosseini",
+      "avg_rating": 4.42,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_54",
+    "name": "Anne of Green Gables (Anne of Green Gables, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "L.M. Montgomery",
+      "avg_rating": 4.3,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_55",
+    "name": "Where the Sidewalk Ends",
+    "category": "Books",
+    "attributes": {
+      "genre": "Poetry",
+      "author": "Shel Silverstein",
+      "avg_rating": 4.32,
+      "genres": [
+        "Poetry",
+        "Childrens",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_56",
+    "name": "The Count of Monte Cristo",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Alexandre Dumas",
+      "avg_rating": 4.29,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_57",
+    "name": "Ender\u2019s Game (Ender's Saga, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Orson Scott Card",
+      "avg_rating": 4.31,
+      "genres": [
+        "Science Fiction",
+        "Young Adult",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_58",
+    "name": "Where the Wild Things Are",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Maurice Sendak",
+      "avg_rating": 4.24,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_59",
+    "name": "The Color Purple",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Alice Walker",
+      "avg_rating": 4.26,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_60",
+    "name": "A Tale of Two Cities",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Charles Dickens",
+      "avg_rating": 3.86,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_61",
+    "name": "The Adventures of Tom Sawyer",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Mark Twain",
+      "avg_rating": 3.92,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Adventure"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_62",
+    "name": "Life of Pi",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Yann Martel",
+      "avg_rating": 3.93,
+      "genres": [
+        "Fiction",
+        "Fantasy",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_63",
+    "name": "The Handmaid\u2019s Tale (The Handmaid's Tale, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Margaret Atwood",
+      "avg_rating": 4.13,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Dystopia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_64",
+    "name": "One Flew Over the Cuckoo's Nest",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Ken Kesey",
+      "avg_rating": 4.2,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Psychology"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_65",
+    "name": "Frankenstein: The 1818 Text",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Mary Wollstonecraft Shelley",
+      "avg_rating": 3.85,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Horror"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_66",
+    "name": "Flowers for Algernon",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Daniel Keyes",
+      "avg_rating": 4.19,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_67",
+    "name": "Oh, the Places You'll Go!",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Dr. Seuss",
+      "avg_rating": 4.36,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_68",
+    "name": "Anna Karenina",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Leo Tolstoy",
+      "avg_rating": 4.08,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_69",
+    "name": "Tuesdays with Morrie",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Mitch Albom",
+      "avg_rating": 4.16,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_70",
+    "name": "Winnie-the-Pooh (Winnie-the-Pooh #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "A.A. Milne",
+      "avg_rating": 4.35,
+      "genres": [
+        "Classics",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_71",
+    "name": "The Fellowship of the Ring (The Lord of the Rings, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.R.R. Tolkien",
+      "avg_rating": 4.38,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_72",
+    "name": "Slaughterhouse-Five",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Kurt Vonnegut Jr.",
+      "avg_rating": 4.09,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_73",
+    "name": "The Old Man and the Sea",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Ernest Hemingway",
+      "avg_rating": 3.8,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_74",
+    "name": "Catch-22",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Joseph Heller",
+      "avg_rating": 3.99,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_75",
+    "name": "The Scarlet Letter",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Nathaniel Hawthorne",
+      "avg_rating": 3.43,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_76",
+    "name": "Macbeth",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 3.9,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_77",
+    "name": "Twilight (The Twilight Saga, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Stephenie Meyer",
+      "avg_rating": 3.64,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_78",
+    "name": "Lolita",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Vladimir Nabokov",
+      "avg_rating": 3.88,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_79",
+    "name": "The Metamorphosis",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Franz Kafka",
+      "avg_rating": 3.85,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_80",
+    "name": "The Time Traveler's Wife",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Audrey Niffenegger",
+      "avg_rating": 3.99,
+      "genres": [
+        "Fiction",
+        "Romance",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_81",
+    "name": "Siddhartha",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Hermann Hesse",
+      "avg_rating": 4.06,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_82",
+    "name": "The Stranger",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Albert Camus",
+      "avg_rating": 4.01,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_83",
+    "name": "Goodnight Moon",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Margaret Wise Brown",
+      "avg_rating": 4.3,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_84",
+    "name": "Harry Potter and the Chamber of Secrets (Harry Potter, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.K. Rowling",
+      "avg_rating": 4.43,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_85",
+    "name": "A Tree Grows in Brooklyn",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Betty  Smith",
+      "avg_rating": 4.29,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_86",
+    "name": "War and Peace",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Leo Tolstoy",
+      "avg_rating": 4.15,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_87",
+    "name": "The Little House Collection (Little House, #1-9)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Laura Ingalls Wilder",
+      "avg_rating": 4.35,
+      "genres": [
+        "Classics",
+        "Historical Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_88",
+    "name": "A Clockwork Orange",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Anthony Burgess",
+      "avg_rating": 4.0,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_89",
+    "name": "All Quiet on the Western Front",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Erich Maria Remarque",
+      "avg_rating": 4.05,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_90",
+    "name": "The Stand",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Stephen King",
+      "avg_rating": 4.34,
+      "genres": [
+        "Horror",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_91",
+    "name": "Don Quixote",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Miguel de Cervantes Saavedra",
+      "avg_rating": 3.89,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_92",
+    "name": "Uncle Tom's Cabin",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Harriet Beecher Stowe",
+      "avg_rating": 3.9,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_93",
+    "name": "\u0627\u0644\u0642\u0631\u0622\u0646 \u0627\u0644\u0643\u0631\u064a\u0645",
+    "category": "Books",
+    "attributes": {
+      "genre": "Religion",
+      "author": "Anonymous",
+      "avg_rating": 4.38,
+      "genres": [
+        "Religion",
+        "Islam",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_94",
+    "name": "Atlas Shrugged",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Ayn Rand",
+      "avg_rating": 3.69,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_95",
+    "name": "The Brothers Karamazov",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Fyodor Dostoevsky",
+      "avg_rating": 4.36,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Russia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_96",
+    "name": "The Poisonwood Bible",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Barbara Kingsolver",
+      "avg_rating": 4.09,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Africa"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_97",
+    "name": "I Know Why the Caged Bird Sings (Maya Angelou's Autobiography, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Maya Angelou",
+      "avg_rating": 4.28,
+      "genres": [
+        "Nonfiction",
+        "Classics",
+        "Memoir"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_98",
+    "name": "The Book of Mormon: Another Testament of Jesus Christ",
+    "category": "Books",
+    "attributes": {
+      "genre": "Religion",
+      "author": "Joseph Smith Jr.",
+      "avg_rating": 4.26,
+      "genres": [
+        "Religion",
+        "Nonfiction",
+        "Lds"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_99",
+    "name": "Moby-Dick or, the Whale",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Herman Melville",
+      "avg_rating": 3.53,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_100",
+    "name": "The Da Vinci Code (Robert Langdon, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Dan Brown",
+      "avg_rating": 3.9,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_101",
+    "name": "Great Expectations",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Charles Dickens",
+      "avg_rating": 3.79,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_102",
+    "name": "The Good Earth (House of Earth, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Pearl S. Buck",
+      "avg_rating": 4.0,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_103",
+    "name": "The Hiding Place: The Triumphant True Story of Corrie Ten Boom",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Corrie ten Boom",
+      "avg_rating": 4.45,
+      "genres": [
+        "Nonfiction",
+        "Biography",
+        "History"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_104",
+    "name": "Dracula",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Bram Stoker",
+      "avg_rating": 4.01,
+      "genres": [
+        "Classics",
+        "Horror",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_105",
+    "name": "A Wrinkle in Time (Time Quintet, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Madeleine L'Engle",
+      "avg_rating": 3.99,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_106",
+    "name": "The Fault in Our Stars",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "John Green",
+      "avg_rating": 4.15,
+      "genres": [
+        "Young Adult",
+        "Romance",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_107",
+    "name": "Matilda",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Roald Dahl",
+      "avg_rating": 4.33,
+      "genres": [
+        "Childrens",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_108",
+    "name": "The Perks of Being a Wallflower",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Stephen Chbosky",
+      "avg_rating": 4.22,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_109",
+    "name": "Brave New World",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Aldous Huxley",
+      "avg_rating": 3.99,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_110",
+    "name": "Sense and Sensibility",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jane Austen",
+      "avg_rating": 4.08,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_111",
+    "name": "The Princess Bride",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "William Goldman",
+      "avg_rating": 4.26,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_112",
+    "name": "The Iliad",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Homer",
+      "avg_rating": 3.9,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_113",
+    "name": "East of Eden",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "John Steinbeck",
+      "avg_rating": 4.4,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_114",
+    "name": "Where the Red Fern Grows",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Wilson Rawls",
+      "avg_rating": 4.1,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_115",
+    "name": "The Tell-Tale Heart and Other Writings",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Edgar Allan Poe",
+      "avg_rating": 4.19,
+      "genres": [
+        "Classics",
+        "Horror",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_116",
+    "name": "Man's Search for Meaning",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Viktor E. Frankl",
+      "avg_rating": 4.37,
+      "genres": [
+        "Nonfiction",
+        "Psychology",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_117",
+    "name": "The Lorax",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Dr. Seuss",
+      "avg_rating": 4.34,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_118",
+    "name": "Catching Fire (The Hunger Games, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Suzanne Collins",
+      "avg_rating": 4.31,
+      "genres": [
+        "Young Adult",
+        "Dystopia",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_119",
+    "name": "The Curious Incident of the Dog in the Night-Time",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Mark Haddon",
+      "avg_rating": 3.89,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_120",
+    "name": "The Declaration of Independence / The Constitution of the United States",
+    "category": "Books",
+    "attributes": {
+      "genre": "History",
+      "author": "Founding Fathers",
+      "avg_rating": 4.44,
+      "genres": [
+        "History",
+        "Nonfiction",
+        "Politics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_121",
+    "name": "A Game of Thrones (A Song of Ice and Fire, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "George R.R. Martin",
+      "avg_rating": 4.44,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Epic Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_122",
+    "name": "Watership Down (Watership Down, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Richard  Adams",
+      "avg_rating": 4.08,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_123",
+    "name": "The Bell Jar",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Sylvia Plath",
+      "avg_rating": 4.04,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Feminism"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_124",
+    "name": "Charlie and the Chocolate Factory (Charlie Bucket, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Roald Dahl",
+      "avg_rating": 4.15,
+      "genres": [
+        "Childrens",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_125",
+    "name": "The Last Lecture",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Randy Pausch",
+      "avg_rating": 4.26,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_126",
+    "name": "Rebecca",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Daphne du Maurier",
+      "avg_rating": 4.24,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Mystery"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_127",
+    "name": "The Velveteen Rabbit",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Margery Williams Bianco",
+      "avg_rating": 4.29,
+      "genres": [
+        "Classics",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_128",
+    "name": "Dune (Dune, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Frank Herbert",
+      "avg_rating": 4.26,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_129",
+    "name": "And Then There Were None",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Agatha Christie",
+      "avg_rating": 4.28,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Crime"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_130",
+    "name": "The Fountainhead",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Ayn Rand",
+      "avg_rating": 3.88,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_131",
+    "name": "The Lovely Bones",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Alice Sebold",
+      "avg_rating": 3.84,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_132",
+    "name": "Alice in Wonderland",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jane Carruth",
+      "avg_rating": 4.03,
+      "genres": [
+        "Classics",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_133",
+    "name": "The Call of the Wild",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jack London",
+      "avg_rating": 3.9,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Adventure"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_134",
+    "name": "The Girl with the Dragon Tattoo (Millennium, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Stieg Larsson",
+      "avg_rating": 4.16,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_135",
+    "name": "The Return of the King (The Lord of the Rings, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.R.R. Tolkien",
+      "avg_rating": 4.56,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_136",
+    "name": "The Five People You Meet in Heaven",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Mitch Albom",
+      "avg_rating": 3.98,
+      "genres": [
+        "Fiction",
+        "Inspirational",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_137",
+    "name": "Animal Farm / 1984",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "George Orwell",
+      "avg_rating": 4.3,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Dystopia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_138",
+    "name": "Perfume: The Story of a Murderer",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Patrick S\u00fcskind",
+      "avg_rating": 4.03,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_139",
+    "name": "Angela's Ashes (Frank McCourt, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Frank McCourt",
+      "avg_rating": 4.14,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_140",
+    "name": "The Wonderful Wizard of Oz (Oz, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "L. Frank Baum",
+      "avg_rating": 3.99,
+      "genres": [
+        "Classics",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_141",
+    "name": "The Two Towers (The Lord of the Rings, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.R.R. Tolkien",
+      "avg_rating": 4.47,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_142",
+    "name": "Love You Forever",
+    "category": "Books",
+    "attributes": {
+      "genre": "Picture Books",
+      "author": "Robert Munsch",
+      "avg_rating": 4.37,
+      "genres": [
+        "Picture Books",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_143",
+    "name": "Bridge to Terabithia",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Katherine Paterson",
+      "avg_rating": 4.04,
+      "genres": [
+        "Fiction",
+        "Young Adult",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_144",
+    "name": "A Prayer for Owen Meany",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "John Irving",
+      "avg_rating": 4.24,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_145",
+    "name": "The Road",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Cormac McCarthy",
+      "avg_rating": 3.98,
+      "genres": [
+        "Fiction",
+        "Science Fiction",
+        "Dystopia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_146",
+    "name": "The Divine Comedy",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Dante Alighieri",
+      "avg_rating": 4.07,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_147",
+    "name": "A Midsummer Night's Dream",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 3.95,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_148",
+    "name": "A Story of Yesterday",
+    "category": "Books",
+    "attributes": {
+      "genre": "Spanish Literature",
+      "author": "Sergio Cobo",
+      "avg_rating": 4.6,
+      "genres": [
+        "Spanish Literature",
+        "Thriller",
+        "European Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_149",
+    "name": "The Prophet",
+    "category": "Books",
+    "attributes": {
+      "genre": "Poetry",
+      "author": "Kahlil Gibran",
+      "avg_rating": 4.23,
+      "genres": [
+        "Poetry",
+        "Classics",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_150",
+    "name": "Persuasion",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jane Austen",
+      "avg_rating": 4.15,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_151",
+    "name": "The Name of the Rose",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Umberto Eco",
+      "avg_rating": 4.13,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Mystery"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_152",
+    "name": "The Three Musketeers (The D'Artagnan Romances, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Alexandre Dumas",
+      "avg_rating": 4.09,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_153",
+    "name": "Water for Elephants",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Sara Gruen",
+      "avg_rating": 4.1,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_154",
+    "name": "The Golden Compass (His Dark Materials, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Philip Pullman",
+      "avg_rating": 4.01,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_155",
+    "name": "The Boy in the Striped Pajamas",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "John Boyne",
+      "avg_rating": 4.15,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_156",
+    "name": "The Pillars of the Earth (Kingsbridge, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Ken Follett",
+      "avg_rating": 4.33,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Historical"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_157",
+    "name": "How the Grinch Stole Christmas!",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Dr. Seuss",
+      "avg_rating": 4.37,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Christmas"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_158",
+    "name": "Jonathan Livingston Seagull",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Richard Bach",
+      "avg_rating": 3.85,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_159",
+    "name": "Oliver Twist",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Charles Dickens",
+      "avg_rating": 3.88,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_160",
+    "name": "The Secret Life of Bees",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Sue Monk Kidd",
+      "avg_rating": 4.08,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_161",
+    "name": "The Notebook (The Notebook, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Romance",
+      "author": "Nicholas Sparks",
+      "avg_rating": 4.14,
+      "genres": [
+        "Romance",
+        "Fiction",
+        "Chick Lit"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_162",
+    "name": "The Master and Margarita",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Mikhail Bulgakov",
+      "avg_rating": 4.29,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Russia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_163",
+    "name": "Mockingjay (The Hunger Games, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Suzanne Collins",
+      "avg_rating": 4.07,
+      "genres": [
+        "Young Adult",
+        "Dystopia",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_164",
+    "name": "The Complete Sherlock Holmes",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Arthur Conan Doyle",
+      "avg_rating": 4.5,
+      "genres": [
+        "Classics",
+        "Mystery",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_165",
+    "name": "In Cold Blood",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Truman Capote",
+      "avg_rating": 4.08,
+      "genres": [
+        "Nonfiction",
+        "True Crime",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_166",
+    "name": "The Crucible: A Play in Four Acts",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Arthur  Miller",
+      "avg_rating": 3.6,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_167",
+    "name": "Heart of Darkness",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Joseph Conrad",
+      "avg_rating": 3.43,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_168",
+    "name": "The Shadow of the Wind (The Cemetery of Forgotten Books, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Carlos Ruiz Zaf\u00f3n",
+      "avg_rating": 4.29,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Mystery"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_169",
+    "name": "The Red Tent",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Anita Diamant",
+      "avg_rating": 4.19,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Historical"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_170",
+    "name": "Love in the Time of Cholera",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Gabriel Garc\u00eda M\u00e1rquez",
+      "avg_rating": 3.93,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_171",
+    "name": "The Glass Castle",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Jeannette Walls",
+      "avg_rating": 4.3,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_172",
+    "name": "The Gift of the Magi",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "O. Henry",
+      "avg_rating": 4.1,
+      "genres": [
+        "Classics",
+        "Short Stories",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_173",
+    "name": "The Unbearable Lightness of Being",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Milan Kundera",
+      "avg_rating": 4.11,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_174",
+    "name": "Eat, Pray, Love",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Elizabeth Gilbert",
+      "avg_rating": 3.61,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Travel"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_175",
+    "name": "Interview with the Vampire (The Vampire Chronicles, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Anne Rice",
+      "avg_rating": 4.01,
+      "genres": [
+        "Horror",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_176",
+    "name": "The Canterbury Tales",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Geoffrey Chaucer",
+      "avg_rating": 3.52,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Poetry"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_177",
+    "name": "On the Road",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jack Kerouac",
+      "avg_rating": 3.62,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Travel"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_178",
+    "name": "The Art of War",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Sun Tzu",
+      "avg_rating": 3.97,
+      "genres": [
+        "Classics",
+        "Nonfiction",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_179",
+    "name": "Aesop's Fables",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Aesop",
+      "avg_rating": 4.05,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Short Stories"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_180",
+    "name": "The Screwtape Letters",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "C.S. Lewis",
+      "avg_rating": 4.25,
+      "genres": [
+        "Fiction",
+        "Christian",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_181",
+    "name": "Fight Club",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Chuck Palahniuk",
+      "avg_rating": 4.19,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_182",
+    "name": "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.R.R. Tolkien",
+      "avg_rating": 4.61,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_183",
+    "name": "Dr. Jekyll and Mr. Hyde",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Robert Louis Stevenson",
+      "avg_rating": 3.83,
+      "genres": [
+        "Classics",
+        "Horror",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_184",
+    "name": "Gulliver's Travels: Travels into Several Remote Nations of the World.",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jonathan Swift",
+      "avg_rating": 3.58,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_185",
+    "name": "The Godfather (The Godfather, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Mario Puzo",
+      "avg_rating": 4.38,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Crime"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_186",
+    "name": "Robinson Crusoe",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Daniel Defoe",
+      "avg_rating": 3.68,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Adventure"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_187",
+    "name": "Walden",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Henry David Thoreau",
+      "avg_rating": 3.78,
+      "genres": [
+        "Classics",
+        "Philosophy",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_188",
+    "name": "The Origin of Species",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science",
+      "author": "Charles Darwin",
+      "avg_rating": 4.0,
+      "genres": [
+        "Science",
+        "Nonfiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_189",
+    "name": "Invisible Man",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Ralph Ellison",
+      "avg_rating": 3.91,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_190",
+    "name": "Emma",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jane Austen",
+      "avg_rating": 4.04,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_191",
+    "name": "The Prince",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Niccol\u00f2 Machiavelli",
+      "avg_rating": 3.83,
+      "genres": [
+        "Classics",
+        "Philosophy",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_192",
+    "name": "Sophie's World",
+    "category": "Books",
+    "attributes": {
+      "genre": "Philosophy",
+      "author": "Jostein Gaarder",
+      "avg_rating": 3.96,
+      "genres": [
+        "Philosophy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_193",
+    "name": "The Complete Grimm's Fairy Tales",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jacob Grimm",
+      "avg_rating": 4.28,
+      "genres": [
+        "Classics",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_194",
+    "name": "The Trial",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Franz Kafka",
+      "avg_rating": 3.96,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_195",
+    "name": "The Time Machine",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "H.G. Wells",
+      "avg_rating": 3.9,
+      "genres": [
+        "Classics",
+        "Science Fiction",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_196",
+    "name": "Watchmen (Watchmen, #1-12)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Graphic Novels",
+      "author": "Alan Moore",
+      "avg_rating": 4.37,
+      "genres": [
+        "Graphic Novels",
+        "Comics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_197",
+    "name": "Roots: The Saga of an American Family",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Alex Haley",
+      "avg_rating": 4.44,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_198",
+    "name": "Candide",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Voltaire",
+      "avg_rating": 3.76,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_199",
+    "name": "Beloved",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Toni Morrison",
+      "avg_rating": 3.93,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_200",
+    "name": "Atonement",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Ian McEwan",
+      "avg_rating": 3.93,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_201",
+    "name": "Go Ask Alice",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Beatrice Sparks",
+      "avg_rating": 3.75,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_202",
+    "name": "My Sister's Keeper",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Jodi Picoult",
+      "avg_rating": 4.09,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Chick Lit"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_203",
+    "name": "Tuck Everlasting",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Natalie Babbitt",
+      "avg_rating": 3.89,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_204",
+    "name": "Stranger in a Strange Land",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Robert A. Heinlein",
+      "avg_rating": 3.92,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_205",
+    "name": "The Sun Also Rises",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Ernest Hemingway",
+      "avg_rating": 3.8,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_206",
+    "name": "Divergent (Divergent, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Veronica Roth",
+      "avg_rating": 4.15,
+      "genres": [
+        "Young Adult",
+        "Dystopia",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_207",
+    "name": "The Mists of Avalon (Avalon, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Marion Zimmer Bradley",
+      "avg_rating": 4.13,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_208",
+    "name": "Mere Christianity",
+    "category": "Books",
+    "attributes": {
+      "genre": "Christian",
+      "author": "C.S. Lewis",
+      "avg_rating": 4.35,
+      "genres": [
+        "Christian",
+        "Nonfiction",
+        "Religion"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_209",
+    "name": "The Tale of Peter Rabbit",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Beatrix Potter",
+      "avg_rating": 4.21,
+      "genres": [
+        "Childrens",
+        "Classics",
+        "Picture Books"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_210",
+    "name": "The Phantom Tollbooth",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Norton Juster",
+      "avg_rating": 4.19,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_211",
+    "name": "The Things They Carried",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Tim O'Brien",
+      "avg_rating": 4.14,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_212",
+    "name": "The Lightning Thief (Percy Jackson and the Olympians, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Rick Riordan",
+      "avg_rating": 4.29,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Mythology"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_213",
+    "name": "Murder on the Orient Express (Hercule Poirot, #10)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Mystery",
+      "author": "Agatha Christie",
+      "avg_rating": 4.2,
+      "genres": [
+        "Mystery",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_214",
+    "name": "Number the Stars",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Lois Lowry",
+      "avg_rating": 4.18,
+      "genres": [
+        "Historical Fiction",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_215",
+    "name": "The Constitution of the United States of America",
+    "category": "Books",
+    "attributes": {
+      "genre": "History",
+      "author": "Founding Fathers",
+      "avg_rating": 4.52,
+      "genres": [
+        "History",
+        "Nonfiction",
+        "Politics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_216",
+    "name": "Bury My Heart at Wounded Knee: An Indian History of the American West",
+    "category": "Books",
+    "attributes": {
+      "genre": "History",
+      "author": "Dee Brown",
+      "avg_rating": 4.24,
+      "genres": [
+        "History",
+        "Nonfiction",
+        "American History"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_217",
+    "name": "James and the Giant Peach",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Roald Dahl",
+      "avg_rating": 4.03,
+      "genres": [
+        "Childrens",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_218",
+    "name": "The Complete Maus",
+    "category": "Books",
+    "attributes": {
+      "genre": "Graphic Novels",
+      "author": "Art Spiegelman",
+      "avg_rating": 4.57,
+      "genres": [
+        "Graphic Novels",
+        "Comics",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_219",
+    "name": "The Ultimate Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1-5)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Douglas Adams",
+      "avg_rating": 4.38,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Humor"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_220",
+    "name": "Middlesex",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Jeffrey Eugenides",
+      "avg_rating": 4.03,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_221",
+    "name": "Schindler's List",
+    "category": "Books",
+    "attributes": {
+      "genre": "History",
+      "author": "Thomas Keneally",
+      "avg_rating": 4.34,
+      "genres": [
+        "History",
+        "Nonfiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_222",
+    "name": "The Autobiography of Malcolm X",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Malcolm X",
+      "avg_rating": 4.35,
+      "genres": [
+        "Nonfiction",
+        "Biography",
+        "History"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_223",
+    "name": "The Essential Calvin and Hobbes: A Calvin and Hobbes Treasury",
+    "category": "Books",
+    "attributes": {
+      "genre": "Comics",
+      "author": "Bill Watterson",
+      "avg_rating": 4.64,
+      "genres": [
+        "Comics",
+        "Humor",
+        "Graphic Novels"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_224",
+    "name": "A Little Princess",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Frances Hodgson Burnett",
+      "avg_rating": 4.22,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_225",
+    "name": "A Child Called \"It\" (Dave Pelzer, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Dave Pelzer",
+      "avg_rating": 4.12,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_226",
+    "name": "Three Cups of Tea: One Man's Mission to Promote Peace ... One School at a Time",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Greg Mortenson",
+      "avg_rating": 3.66,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_227",
+    "name": "Leaves of Grass",
+    "category": "Books",
+    "attributes": {
+      "genre": "Poetry",
+      "author": "Walt Whitman",
+      "avg_rating": 4.11,
+      "genres": [
+        "Poetry",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_228",
+    "name": "Into the Wild",
+    "category": "Books",
+    "attributes": {
+      "genre": "Travel",
+      "author": "Jon Krakauer",
+      "avg_rating": 4.0,
+      "genres": [
+        "Travel",
+        "Adventure",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_229",
+    "name": "Their Eyes Were Watching God",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Zora Neale Hurston",
+      "avg_rating": 3.97,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_230",
+    "name": "The Wind in the Willows",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Kenneth Grahame",
+      "avg_rating": 4.0,
+      "genres": [
+        "Fiction",
+        "Fantasy",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_231",
+    "name": "Speak",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Laurie Halse Anderson",
+      "avg_rating": 4.04,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_232",
+    "name": "Peter Pan",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "J.M. Barrie",
+      "avg_rating": 4.04,
+      "genres": [
+        "Classics",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_233",
+    "name": "The Republic",
+    "category": "Books",
+    "attributes": {
+      "genre": "Philosophy",
+      "author": "Plato",
+      "avg_rating": 3.96,
+      "genres": [
+        "Philosophy",
+        "Classics",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_234",
+    "name": "A People's History of the United States",
+    "category": "Books",
+    "attributes": {
+      "genre": "History",
+      "author": "Howard Zinn",
+      "avg_rating": 4.07,
+      "genres": [
+        "History",
+        "Nonfiction",
+        "Politics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_235",
+    "name": "The World According to Garp",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "John Irving",
+      "avg_rating": 4.1,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_236",
+    "name": "American Gods (American Gods, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Neil Gaiman",
+      "avg_rating": 4.11,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Mythology"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_237",
+    "name": "Holes (Holes, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Louis Sachar",
+      "avg_rating": 3.99,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Middle Grade"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_238",
+    "name": "Looking for Alaska",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "John Green",
+      "avg_rating": 3.98,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_239",
+    "name": "The Story of My Life",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Helen Keller",
+      "avg_rating": 4.08,
+      "genres": [
+        "Nonfiction",
+        "Biography",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_241",
+    "name": "Things Fall Apart (The African Trilogy, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Chinua Achebe",
+      "avg_rating": 3.72,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_242",
+    "name": "The Hound of the Baskervilles (Sherlock Holmes, #5)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Arthur Conan Doyle",
+      "avg_rating": 4.13,
+      "genres": [
+        "Classics",
+        "Mystery",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_243",
+    "name": "A Short History of Nearly Everything",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Bill Bryson",
+      "avg_rating": 4.21,
+      "genres": [
+        "Nonfiction",
+        "Science",
+        "History"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_244",
+    "name": "Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Terry Pratchett",
+      "avg_rating": 4.25,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Humor"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_246",
+    "name": "A Brief History of Time",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science",
+      "author": "Stephen Hawking",
+      "avg_rating": 4.21,
+      "genres": [
+        "Science",
+        "Nonfiction",
+        "Physics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_248",
+    "name": "Island of the Blue Dolphins",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Scott O'Dell",
+      "avg_rating": 3.86,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_249",
+    "name": "A Farewell to Arms",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Ernest Hemingway",
+      "avg_rating": 3.81,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_250",
+    "name": "Cat's Cradle",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Kurt Vonnegut Jr.",
+      "avg_rating": 4.16,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_251",
+    "name": "A Separate Peace",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "John Knowles",
+      "avg_rating": 3.59,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_252",
+    "name": "Blindness",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Jos\u00e9 Saramago",
+      "avg_rating": 4.16,
+      "genres": [
+        "Fiction",
+        "Dystopia",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_253",
+    "name": "The Complete Fairy Tales",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Hans Christian Andersen",
+      "avg_rating": 4.29,
+      "genres": [
+        "Classics",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_254",
+    "name": "The Raven",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Edgar Allan Poe",
+      "avg_rating": 4.29,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Horror"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_255",
+    "name": "The Shack",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "William Paul Young",
+      "avg_rating": 3.81,
+      "genres": [
+        "Fiction",
+        "Christian",
+        "Christian Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_256",
+    "name": "The God Delusion",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Richard Dawkins",
+      "avg_rating": 3.9,
+      "genres": [
+        "Nonfiction",
+        "Religion",
+        "Science"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_257",
+    "name": "Fried Green Tomatoes at the Whistle Stop Cafe (Whistle Stop #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Fannie Flagg",
+      "avg_rating": 4.28,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "LGBT"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_258",
+    "name": "Madame Bovary",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Gustave Flaubert",
+      "avg_rating": 3.7,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "France"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_259",
+    "name": "The Joy Luck Club",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Amy Tan",
+      "avg_rating": 3.96,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_260",
+    "name": "Tao Te Ching",
+    "category": "Books",
+    "attributes": {
+      "genre": "Philosophy",
+      "author": "Lao Tzu",
+      "avg_rating": 4.3,
+      "genres": [
+        "Philosophy",
+        "Nonfiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_261",
+    "name": "Sophie's Choice",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "William Styron",
+      "avg_rating": 4.18,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_262",
+    "name": "The Neverending Story",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Michael Ende",
+      "avg_rating": 4.18,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_263",
+    "name": "A Confederacy of Dunces",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "John Kennedy Toole",
+      "avg_rating": 3.88,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Humor"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_264",
+    "name": "Never Let Me Go",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Kazuo Ishiguro",
+      "avg_rating": 3.84,
+      "genres": [
+        "Fiction",
+        "Science Fiction",
+        "Dystopia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_265",
+    "name": "How to Win Friends and Influence People",
+    "category": "Books",
+    "attributes": {
+      "genre": "Self Help",
+      "author": "Dale Carnegie",
+      "avg_rating": 4.22,
+      "genres": [
+        "Self Help",
+        "Nonfiction",
+        "Business"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_266",
+    "name": "Extremely Loud & Incredibly Close",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Jonathan Safran Foer",
+      "avg_rating": 3.97,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_268",
+    "name": "The Clan of the Cave Bear (Earth's Children, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Jean M. Auel",
+      "avg_rating": 4.08,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_269",
+    "name": "Guns, Germs, and Steel: The Fates of Human Societies",
+    "category": "Books",
+    "attributes": {
+      "genre": "History",
+      "author": "Jared Diamond",
+      "avg_rating": 4.04,
+      "genres": [
+        "History",
+        "Nonfiction",
+        "Science"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_270",
+    "name": "Angels & Demons (Robert Langdon, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Dan Brown",
+      "avg_rating": 3.93,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_271",
+    "name": "Tess of the D'Urbervilles",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Thomas Hardy",
+      "avg_rating": 3.82,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_272",
+    "name": "The Color Purple",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Alice Walker",
+      "avg_rating": 4.26,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_273",
+    "name": "Outlander (Outlander, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Diana Gabaldon",
+      "avg_rating": 4.25,
+      "genres": [
+        "Historical Fiction",
+        "Romance",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_274",
+    "name": "Eclipse (The Twilight Saga, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Stephenie Meyer",
+      "avg_rating": 3.72,
+      "genres": [
+        "Young Adult",
+        "Fantasy",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_275",
+    "name": "The Tao of Pooh",
+    "category": "Books",
+    "attributes": {
+      "genre": "Philosophy",
+      "author": "Benjamin Hoff",
+      "avg_rating": 4.0,
+      "genres": [
+        "Philosophy",
+        "Nonfiction",
+        "Spirituality"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_276",
+    "name": "One Day in the Life of Ivan Denisovich",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Aleksandr Solzhenitsyn",
+      "avg_rating": 3.97,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Russia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_277",
+    "name": "The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change",
+    "category": "Books",
+    "attributes": {
+      "genre": "Self Help",
+      "author": "Stephen R. Covey",
+      "avg_rating": 4.15,
+      "genres": [
+        "Self Help",
+        "Nonfiction",
+        "Business"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_278",
+    "name": "Ulysses",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "James Joyce",
+      "avg_rating": 3.75,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_279",
+    "name": "A Light in the Attic",
+    "category": "Books",
+    "attributes": {
+      "genre": "Poetry",
+      "author": "Shel Silverstein",
+      "avg_rating": 4.35,
+      "genres": [
+        "Poetry",
+        "Childrens",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_280",
+    "name": "Nickel and Dimed: On (Not) Getting by in America",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Barbara Ehrenreich",
+      "avg_rating": 3.65,
+      "genres": [
+        "Nonfiction",
+        "Sociology",
+        "Politics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_281",
+    "name": "Breaking Dawn (The Twilight Saga, #4)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Stephenie Meyer",
+      "avg_rating": 3.73,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_282",
+    "name": "The Jungle",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Upton Sinclair",
+      "avg_rating": 3.76,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_283",
+    "name": "Lonesome Dove (Lonesome Dove, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Larry McMurtry",
+      "avg_rating": 4.52,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Westerns"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_284",
+    "name": "The Name of the Wind (The Kingkiller Chronicle, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Patrick Rothfuss",
+      "avg_rating": 4.52,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Epic Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_285",
+    "name": "The Phantom of the Opera",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Gaston Leroux",
+      "avg_rating": 3.96,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Horror"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_286",
+    "name": "Paradise Lost",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "John Milton",
+      "avg_rating": 3.83,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_287",
+    "name": "Horton Hears a Who!",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Dr. Seuss",
+      "avg_rating": 4.2,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_288",
+    "name": "The God of Small Things",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Arundhati Roy",
+      "avg_rating": 3.95,
+      "genres": [
+        "Fiction",
+        "India",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_289",
+    "name": "All Creatures Great and Small / All Things Bright and Beautiful",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "James Herriot",
+      "avg_rating": 4.32,
+      "genres": [
+        "Nonfiction",
+        "Classics",
+        "Animals"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_290",
+    "name": "Are You There God? It's Me, Margaret",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Judy Blume",
+      "avg_rating": 3.92,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_291",
+    "name": "The Green Mile",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Stephen King",
+      "avg_rating": 4.47,
+      "genres": [
+        "Horror",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_292",
+    "name": "The Iliad / The Odyssey",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Homer",
+      "avg_rating": 4.06,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Poetry"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_293",
+    "name": "The House of the Spirits",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Isabel Allende",
+      "avg_rating": 4.27,
+      "genres": [
+        "Fiction",
+        "Magical Realism",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_294",
+    "name": "Treasure Island",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Robert Louis Stevenson",
+      "avg_rating": 3.84,
+      "genres": [
+        "Fiction",
+        "Adventure",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_295",
+    "name": "The Shining (The Shining, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Stephen King",
+      "avg_rating": 4.26,
+      "genres": [
+        "Horror",
+        "Fiction",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_296",
+    "name": "V for Vendetta",
+    "category": "Books",
+    "attributes": {
+      "genre": "Graphic Novels",
+      "author": "Alan Moore",
+      "avg_rating": 4.26,
+      "genres": [
+        "Graphic Novels",
+        "Comics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_297",
+    "name": "The Complete Works",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 4.47,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_298",
+    "name": "New Moon (The Twilight Saga, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Stephenie Meyer",
+      "avg_rating": 3.58,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_299",
+    "name": "The Foundation Trilogy (Foundation, #1-3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Isaac Asimov",
+      "avg_rating": 4.41,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_300",
+    "name": "Julius Caesar",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 3.7,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_301",
+    "name": "Little House in the Big Woods (Little House, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Laura Ingalls Wilder",
+      "avg_rating": 4.2,
+      "genres": [
+        "Classics",
+        "Historical Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_302",
+    "name": "Neverwhere (London Below, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Neil Gaiman",
+      "avg_rating": 4.17,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Urban Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_303",
+    "name": "The Guernsey Literary and Potato Peel Pie Society",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Mary Ann Shaffer",
+      "avg_rating": 4.19,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_304",
+    "name": "The Elements of Style",
+    "category": "Books",
+    "attributes": {
+      "genre": "Writing",
+      "author": "William Strunk Jr.",
+      "avg_rating": 4.18,
+      "genres": [
+        "Writing",
+        "Nonfiction",
+        "Reference"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_305",
+    "name": "The Importance of Being Earnest",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Oscar Wilde",
+      "avg_rating": 4.18,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_306",
+    "name": "Harry Potter and the Order of the Phoenix (Harry Potter, #5)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.K. Rowling",
+      "avg_rating": 4.5,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_307",
+    "name": "For Whom the Bell Tolls",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Ernest Hemingway",
+      "avg_rating": 3.98,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_308",
+    "name": "David Copperfield",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Charles Dickens",
+      "avg_rating": 4.02,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_309",
+    "name": "Unbroken: A World War II Story of Survival, Resilience and Redemption",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Laura Hillenbrand",
+      "avg_rating": 4.37,
+      "genres": [
+        "Nonfiction",
+        "History",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_310",
+    "name": "The Girl Who Played with Fire (Millennium, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Stieg Larsson",
+      "avg_rating": 4.25,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_311",
+    "name": "The Thorn Birds",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Colleen McCullough",
+      "avg_rating": 4.24,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_312",
+    "name": "Zen and the Art of Motorcycle Maintenance: An Inquiry Into Values (Phaedrus, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Philosophy",
+      "author": "Robert M. Pirsig",
+      "avg_rating": 3.78,
+      "genres": [
+        "Philosophy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_313",
+    "name": "Death of a Salesman",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Arthur  Miller",
+      "avg_rating": 3.56,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_314",
+    "name": "A Walk in the Woods: Rediscovering America on the Appalachian Trail",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Bill Bryson",
+      "avg_rating": 4.06,
+      "genres": [
+        "Nonfiction",
+        "Travel",
+        "Memoir"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_315",
+    "name": "Othello",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 3.89,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_316",
+    "name": "The Communist Manifesto",
+    "category": "Books",
+    "attributes": {
+      "genre": "Philosophy",
+      "author": "Karl Marx",
+      "avg_rating": 3.64,
+      "genres": [
+        "Philosophy",
+        "Nonfiction",
+        "Politics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_317",
+    "name": "Beowulf",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Unknown",
+      "avg_rating": 3.47,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_318",
+    "name": "Norwegian Wood",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Haruki Murakami",
+      "avg_rating": 4.02,
+      "genres": [
+        "Fiction",
+        "Romance",
+        "Japan"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_319",
+    "name": "Wicked: The Life and Times of the Wicked Witch of the West (The Wicked Years, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Gregory Maguire",
+      "avg_rating": 3.54,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_320",
+    "name": "It",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Stephen King",
+      "avg_rating": 4.25,
+      "genres": [
+        "Horror",
+        "Fiction",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_321",
+    "name": "Room",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Emma Donoghue",
+      "avg_rating": 4.07,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_322",
+    "name": "A Fine Balance",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Rohinton Mistry",
+      "avg_rating": 4.37,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "India"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_323",
+    "name": "Eragon (The Inheritance Cycle, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Christopher Paolini",
+      "avg_rating": 3.94,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_324",
+    "name": "The Chosen (Reuven Malther, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Chaim Potok",
+      "avg_rating": 4.06,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_325",
+    "name": "Thirteen Reasons Why",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Jay Asher",
+      "avg_rating": 3.86,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_327",
+    "name": "The Awakening",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Kate Chopin",
+      "avg_rating": 3.67,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Feminism"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_328",
+    "name": "The Martian Chronicles",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Ray Bradbury",
+      "avg_rating": 4.15,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_329",
+    "name": "The Reader",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Bernhard Schlink",
+      "avg_rating": 3.77,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_330",
+    "name": "Who Moved My Cheese?",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Spencer Johnson",
+      "avg_rating": 3.86,
+      "genres": [
+        "Nonfiction",
+        "Self Help",
+        "Business"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_331",
+    "name": "The Plague",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Albert Camus",
+      "avg_rating": 4.02,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_332",
+    "name": "The Host (The Host, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Stephenie Meyer",
+      "avg_rating": 3.85,
+      "genres": [
+        "Young Adult",
+        "Science Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_333",
+    "name": "Lamb: The Gospel According to Biff, Christ's Childhood Pal",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Christopher Moore",
+      "avg_rating": 4.22,
+      "genres": [
+        "Fiction",
+        "Humor",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_334",
+    "name": "Calvin and Hobbes (Calvin and Hobbes, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Comics",
+      "author": "Bill Watterson",
+      "avg_rating": 4.6,
+      "genres": [
+        "Comics",
+        "Humor",
+        "Graphic Novels"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_335",
+    "name": "Cry, the Beloved Country",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Alan Paton",
+      "avg_rating": 3.91,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Africa"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_336",
+    "name": "Do Androids Dream of Electric Sheep?",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Philip K. Dick",
+      "avg_rating": 4.09,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_337",
+    "name": "Holy Bible: New International Version",
+    "category": "Books",
+    "attributes": {
+      "genre": "Religion",
+      "author": "Anonymous",
+      "avg_rating": 4.61,
+      "genres": [
+        "Religion",
+        "Christian",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_338",
+    "name": "Much Ado About Nothing",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 4.06,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_339",
+    "name": "The Elephant Tree",
+    "category": "Books",
+    "attributes": {
+      "genre": "Thriller",
+      "author": "R.D. Ronald",
+      "avg_rating": 3.69,
+      "genres": [
+        "Thriller",
+        "Fiction",
+        "Mystery"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_340",
+    "name": "Steppenwolf",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Hermann Hesse",
+      "avg_rating": 4.13,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_341",
+    "name": "The Girl Who Kicked the Hornet's Nest (Millennium, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Stieg Larsson",
+      "avg_rating": 4.23,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_342",
+    "name": "Faust, First Part",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Johann Wolfgang von Goethe",
+      "avg_rating": 3.87,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Plays"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_343",
+    "name": "Johnny Got His Gun",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Dalton Trumbo",
+      "avg_rating": 4.19,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "War"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_344",
+    "name": "The Cider House Rules",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "John Irving",
+      "avg_rating": 4.15,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_345",
+    "name": "Antigone (The Theban Plays, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Sophocles",
+      "avg_rating": 3.66,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Drama"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_346",
+    "name": "Inferno",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Dante Alighieri",
+      "avg_rating": 4.02,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_347",
+    "name": "The Pilgrim's Progress",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "John Bunyan",
+      "avg_rating": 4.03,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Christian"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_348",
+    "name": "Kafka on the Shore",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Haruki Murakami",
+      "avg_rating": 4.14,
+      "genres": [
+        "Fiction",
+        "Magical Realism",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_349",
+    "name": "Sh\u014dgun (Asian Saga, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "James Clavell",
+      "avg_rating": 4.4,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Japan"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_350",
+    "name": "Dead Poets Society",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "N.H. Kleinbaum",
+      "avg_rating": 4.19,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_351",
+    "name": "Fear and Loathing in Las Vegas",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Hunter S. Thompson",
+      "avg_rating": 4.07,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Humor"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_352",
+    "name": "The House at Pooh Corner (Winnie-the-Pooh #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "A.A. Milne",
+      "avg_rating": 4.37,
+      "genres": [
+        "Classics",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_353",
+    "name": "Common Sense",
+    "category": "Books",
+    "attributes": {
+      "genre": "History",
+      "author": "Thomas Paine",
+      "avg_rating": 3.99,
+      "genres": [
+        "History",
+        "Nonfiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_354",
+    "name": "Something Wicked This Way Comes (Green Town, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Ray Bradbury",
+      "avg_rating": 3.92,
+      "genres": [
+        "Horror",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_355",
+    "name": "Jurassic Park (Jurassic Park, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Michael Crichton",
+      "avg_rating": 4.08,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_356",
+    "name": "Oedipus Rex  (The Theban Plays, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Sophocles",
+      "avg_rating": 3.72,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_357",
+    "name": "Gone Girl",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Gillian Flynn",
+      "avg_rating": 4.12,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_358",
+    "name": "The Power of One (The Power of One, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Bryce Courtenay",
+      "avg_rating": 4.34,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Africa"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_359",
+    "name": "Hatchet (Brian's Saga, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Gary Paulsen",
+      "avg_rating": 3.77,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_360",
+    "name": "A Walk to Remember",
+    "category": "Books",
+    "attributes": {
+      "genre": "Romance",
+      "author": "Nicholas Sparks",
+      "avg_rating": 4.19,
+      "genres": [
+        "Romance",
+        "Fiction",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_361",
+    "name": "Wonder (Wonder, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "R.J. Palacio",
+      "avg_rating": 4.38,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Middle Grade"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_362",
+    "name": "The Complete Persepolis",
+    "category": "Books",
+    "attributes": {
+      "genre": "Graphic Novels",
+      "author": "Marjane Satrapi",
+      "avg_rating": 4.39,
+      "genres": [
+        "Graphic Novels",
+        "Nonfiction",
+        "Comics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_363",
+    "name": "Shantaram",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Gregory David Roberts",
+      "avg_rating": 4.27,
+      "genres": [
+        "Fiction",
+        "India",
+        "Travel"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_364",
+    "name": "The Art of Racing in the Rain",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Garth Stein",
+      "avg_rating": 4.22,
+      "genres": [
+        "Fiction",
+        "Animals",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_365",
+    "name": "City of Bones (The Mortal Instruments, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Cassandra Clare",
+      "avg_rating": 4.08,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Paranormal"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_366",
+    "name": "His Dark Materials (His Dark Materials #1-3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Philip Pullman",
+      "avg_rating": 4.28,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_367",
+    "name": "Silent Spring",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Rachel Carson",
+      "avg_rating": 4.02,
+      "genres": [
+        "Nonfiction",
+        "Science",
+        "Environment"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_368",
+    "name": "Cloud Atlas",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "David Mitchell",
+      "avg_rating": 4.01,
+      "genres": [
+        "Fiction",
+        "Science Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_369",
+    "name": "The Immortal Life of Henrietta Lacks",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Rebecca Skloot",
+      "avg_rating": 4.1,
+      "genres": [
+        "Nonfiction",
+        "Science",
+        "History"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_370",
+    "name": "Cosmos",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science",
+      "author": "Carl Sagan",
+      "avg_rating": 4.39,
+      "genres": [
+        "Science",
+        "Nonfiction",
+        "Physics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_371",
+    "name": "The Zombie Room",
+    "category": "Books",
+    "attributes": {
+      "genre": "Thriller",
+      "author": "R.D. Ronald",
+      "avg_rating": 3.74,
+      "genres": [
+        "Thriller",
+        "Fiction",
+        "Mystery"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_372",
+    "name": "Native Son",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Richard Wright",
+      "avg_rating": 4.02,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_373",
+    "name": "The Glass Menagerie",
+    "category": "Books",
+    "attributes": {
+      "genre": "Plays",
+      "author": "Tennessee Williams",
+      "avg_rating": 3.73,
+      "genres": [
+        "Plays",
+        "Classics",
+        "Drama"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_374",
+    "name": "Waiting for Godot",
+    "category": "Books",
+    "attributes": {
+      "genre": "Plays",
+      "author": "Samuel Beckett",
+      "avg_rating": 3.84,
+      "genres": [
+        "Plays",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_375",
+    "name": "Girl with a Pearl Earring",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Tracy Chevalier",
+      "avg_rating": 3.92,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Historical"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_376",
+    "name": "The Once and Future King",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "T.H. White",
+      "avg_rating": 4.07,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_377",
+    "name": "The Four Agreements",
+    "category": "Books",
+    "attributes": {
+      "genre": "Self Help",
+      "author": "Miguel Ruiz",
+      "avg_rating": 4.18,
+      "genres": [
+        "Self Help",
+        "Nonfiction",
+        "Spirituality"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_378",
+    "name": "Old Yeller",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Fred Gipson",
+      "avg_rating": 4.09,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_379",
+    "name": "Heidi",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Johanna Spyri",
+      "avg_rating": 4.02,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_381",
+    "name": "The Idiot",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Fyodor Dostoevsky",
+      "avg_rating": 4.2,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Russia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_382",
+    "name": "Twenty Thousand Leagues Under the Sea (Captain Nemo, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jules Verne",
+      "avg_rating": 3.89,
+      "genres": [
+        "Classics",
+        "Science Fiction",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_383",
+    "name": "American Psycho",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Bret Easton Ellis",
+      "avg_rating": 3.81,
+      "genres": [
+        "Fiction",
+        "Horror",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_384",
+    "name": "Black Beauty",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Anna Sewell",
+      "avg_rating": 3.98,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_385",
+    "name": "Narrative of the Life of Frederick Douglass",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Frederick Douglass",
+      "avg_rating": 4.09,
+      "genres": [
+        "Nonfiction",
+        "History",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_386",
+    "name": "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Steven D. Levitt",
+      "avg_rating": 4.0,
+      "genres": [
+        "Nonfiction",
+        "Economics",
+        "Business"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_387",
+    "name": "Life Application Study Bible: NIV",
+    "category": "Books",
+    "attributes": {
+      "genre": "Christian",
+      "author": "Anonymous",
+      "avg_rating": 4.64,
+      "genres": [
+        "Christian",
+        "Religion",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_388",
+    "name": "The Night Circus",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Erin Morgenstern",
+      "avg_rating": 4.03,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_389",
+    "name": "The Complete Poems of Emily Dickinson",
+    "category": "Books",
+    "attributes": {
+      "genre": "Poetry",
+      "author": "Emily Dickinson",
+      "avg_rating": 4.26,
+      "genres": [
+        "Poetry",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_390",
+    "name": "Mrs. Dalloway",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Virginia Woolf",
+      "avg_rating": 3.79,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_391",
+    "name": "The Jungle Books",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Rudyard Kipling",
+      "avg_rating": 4.01,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_392",
+    "name": "From the Mixed-Up Files of Mrs. Basil E. Frankweiler",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "E.L. Konigsburg",
+      "avg_rating": 4.15,
+      "genres": [
+        "Fiction",
+        "Childrens",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_393",
+    "name": "The War of the Worlds",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "H.G. Wells",
+      "avg_rating": 3.83,
+      "genres": [
+        "Classics",
+        "Science Fiction",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_394",
+    "name": "Little House on the Prairie (Little House, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Laura Ingalls Wilder",
+      "avg_rating": 4.21,
+      "genres": [
+        "Classics",
+        "Historical Fiction",
+        "Childrens"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_395",
+    "name": "Inkheart (Inkworld, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Cornelia Funke",
+      "avg_rating": 3.91,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_396",
+    "name": "The Sound and the Fury",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Faulkner",
+      "avg_rating": 3.86,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_397",
+    "name": "Mansfield Park",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jane Austen",
+      "avg_rating": 3.86,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_398",
+    "name": "My \u00c1ntonia (Great Plains Trilogy, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Willa Cather",
+      "avg_rating": 3.82,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_399",
+    "name": "All the Light We Cannot See",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Anthony Doerr",
+      "avg_rating": 4.32,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Historical"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_400",
+    "name": "Pippi Longstocking (Pippi L\u00e5ngstrump, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Astrid Lindgren",
+      "avg_rating": 4.15,
+      "genres": [
+        "Classics",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_401",
+    "name": "Stargirl (Stargirl, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Jerry Spinelli",
+      "avg_rating": 3.77,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_402",
+    "name": "The Epic of Gilgamesh",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Anonymous",
+      "avg_rating": 3.72,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_403",
+    "name": "The Diving Bell and the Butterfly",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Jean-Dominique Bauby",
+      "avg_rating": 3.98,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_404",
+    "name": "The Bluest Eye",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Toni Morrison",
+      "avg_rating": 4.1,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_405",
+    "name": "Breakfast at Tiffany's and Three Stories",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Truman Capote",
+      "avg_rating": 3.85,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Short Stories"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_406",
+    "name": "Anthem",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Ayn Rand",
+      "avg_rating": 3.62,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Dystopia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_407",
+    "name": "The Heart Is a Lonely Hunter",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Carson McCullers",
+      "avg_rating": 3.99,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_408",
+    "name": "The Art of Happiness",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Dalai Lama XIV",
+      "avg_rating": 4.17,
+      "genres": [
+        "Nonfiction",
+        "Philosophy",
+        "Spirituality"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_409",
+    "name": "The Remains of the Day",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Kazuo Ishiguro",
+      "avg_rating": 4.14,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_410",
+    "name": "Howl\u2019s Moving Castle (Howl\u2019s Moving Castle, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Diana Wynne Jones",
+      "avg_rating": 4.29,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_411",
+    "name": "The Thirteenth Tale",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Diane Setterfield",
+      "avg_rating": 3.97,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_412",
+    "name": "White Fang",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jack London",
+      "avg_rating": 4.01,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Adventure"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_413",
+    "name": "Marley and Me: Life and Love With the World's Worst Dog",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "John Grogan",
+      "avg_rating": 4.14,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Animals"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_415",
+    "name": "Still Alice",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Lisa Genova",
+      "avg_rating": 4.32,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Psychology"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_416",
+    "name": "She's Come Undone",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Wally Lamb",
+      "avg_rating": 3.9,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Chick Lit"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_417",
+    "name": "A Time to Kill (Jake Brigance, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "John Grisham",
+      "avg_rating": 4.1,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_418",
+    "name": "Houdini Heart",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Ki Longfellow",
+      "avg_rating": 3.82,
+      "genres": [
+        "Horror",
+        "Fantasy",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_419",
+    "name": "Around the World in Eighty Days",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jules Verne",
+      "avg_rating": 3.94,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Adventure"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_420",
+    "name": "The Voyage of the Dawn Treader (Chronicles of Narnia, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "C.S. Lewis",
+      "avg_rating": 4.09,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_421",
+    "name": "King Lear",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 3.91,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Drama"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_422",
+    "name": "Middlemarch",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "George Eliot",
+      "avg_rating": 4.0,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_423",
+    "name": "The Wind-Up Bird Chronicle",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Haruki Murakami",
+      "avg_rating": 4.15,
+      "genres": [
+        "Fiction",
+        "Magical Realism",
+        "Japan"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_424",
+    "name": "Northanger Abbey",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Jane Austen",
+      "avg_rating": 3.84,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_425",
+    "name": "The Omnivore's Dilemma: A Natural History of Four Meals",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Michael Pollan",
+      "avg_rating": 4.18,
+      "genres": [
+        "Nonfiction",
+        "Food",
+        "Science"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_426",
+    "name": "Different Seasons",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Stephen King",
+      "avg_rating": 4.35,
+      "genres": [
+        "Horror",
+        "Fiction",
+        "Short Stories"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_427",
+    "name": "Sarah's Key",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Tatiana de Rosnay",
+      "avg_rating": 4.17,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Holocaust"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_428",
+    "name": "The Hunchback of Notre-Dame",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Victor Hugo",
+      "avg_rating": 4.01,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_429",
+    "name": "Notes from Underground, White Nights, The Dream of a Ridiculous Man, and Selections from The House of the Dead",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Fyodor Dostoevsky",
+      "avg_rating": 4.18,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Russia"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_430",
+    "name": "Fast Food Nation: The Dark Side of the All-American Meal",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Eric Schlosser",
+      "avg_rating": 3.75,
+      "genres": [
+        "Nonfiction",
+        "Food",
+        "Health"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_431",
+    "name": "Veronika Decides to Die",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Paulo Coelho",
+      "avg_rating": 3.72,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_432",
+    "name": "Breakfast of Champions",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Kurt Vonnegut Jr.",
+      "avg_rating": 4.07,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_433",
+    "name": "I Know This Much Is True",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Wally Lamb",
+      "avg_rating": 4.2,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Novels"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_434",
+    "name": "I, Robot (Robot, #0.1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Isaac Asimov",
+      "avg_rating": 4.21,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_435",
+    "name": "A Portrait of the Artist as a Young Man",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "James Joyce",
+      "avg_rating": 3.63,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_436",
+    "name": "The Power of Myth",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Joseph Campbell",
+      "avg_rating": 4.26,
+      "genres": [
+        "Nonfiction",
+        "Mythology",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_437",
+    "name": "A Wizard of Earthsea (Earthsea Cycle, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Ursula K. Le Guin",
+      "avg_rating": 4.01,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Young Adult"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_438",
+    "name": "The Secret History",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Donna Tartt",
+      "avg_rating": 4.17,
+      "genres": [
+        "Fiction",
+        "Mystery",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_439",
+    "name": "Harper Lee's To Kill a Mockingbird",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Harold Bloom",
+      "avg_rating": 4.43,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_440",
+    "name": "Bridget Jones's Diary (Bridget Jones, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Helen Fielding",
+      "avg_rating": 3.8,
+      "genres": [
+        "Fiction",
+        "Chick Lit",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_441",
+    "name": "World War Z: An Oral History of the Zombie War",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Max Brooks",
+      "avg_rating": 4.02,
+      "genres": [
+        "Horror",
+        "Fiction",
+        "Zombies"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_442",
+    "name": "The Magician's Nephew (Chronicles of Narnia, #6)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "C.S. Lewis",
+      "avg_rating": 4.05,
+      "genres": [
+        "Fantasy",
+        "Classics",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_443",
+    "name": "Ishmael (Ishmael, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Daniel Quinn",
+      "avg_rating": 4.0,
+      "genres": [
+        "Fiction",
+        "Philosophy",
+        "Spirituality"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_444",
+    "name": "Trainspotting (Mark Renton, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Irvine Welsh",
+      "avg_rating": 4.1,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_445",
+    "name": "White Oleander",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Janet Fitch",
+      "avg_rating": 3.99,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Coming Of Age"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_446",
+    "name": "11/22/63",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Stephen King",
+      "avg_rating": 4.33,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Science Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_447",
+    "name": "Snow Flower and the Secret Fan",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Lisa See",
+      "avg_rating": 4.09,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "China"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_448",
+    "name": "The Amber Spyglass (His Dark Materials, #3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Philip Pullman",
+      "avg_rating": 4.1,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_449",
+    "name": "The Purpose Driven Life: What on Earth Am I Here for?",
+    "category": "Books",
+    "attributes": {
+      "genre": "Christian",
+      "author": "Rick Warren",
+      "avg_rating": 3.96,
+      "genres": [
+        "Christian",
+        "Nonfiction",
+        "Religion"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_450",
+    "name": "The Prince and the Pauper",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Mark Twain",
+      "avg_rating": 3.86,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_451",
+    "name": "The 5 Love Languages: The Secret to Love that Lasts",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Gary Chapman",
+      "avg_rating": 4.27,
+      "genres": [
+        "Nonfiction",
+        "Self Help",
+        "Relationships"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_452",
+    "name": "The Martian",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Andy Weir",
+      "avg_rating": 4.41,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Audiobook"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_453",
+    "name": "The Autobiography of Benjamin Franklin",
+    "category": "Books",
+    "attributes": {
+      "genre": "Biography",
+      "author": "Benjamin Franklin",
+      "avg_rating": 3.85,
+      "genres": [
+        "Biography",
+        "History",
+        "Nonfiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_454",
+    "name": "The Merchant of Venice",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "William Shakespeare",
+      "avg_rating": 3.79,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_455",
+    "name": "The Selfish Gene",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science",
+      "author": "Richard Dawkins",
+      "avg_rating": 4.15,
+      "genres": [
+        "Science",
+        "Nonfiction",
+        "Biology"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_456",
+    "name": "The Amazing Adventures of Kavalier & Clay",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Michael Chabon",
+      "avg_rating": 4.18,
+      "genres": [
+        "Fiction",
+        "Historical Fiction",
+        "Novels"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_458",
+    "name": "The Yellow Wallpaper and Other Stories",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Charlotte Perkins Gilman",
+      "avg_rating": 4.05,
+      "genres": [
+        "Classics",
+        "Short Stories",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_459",
+    "name": "The Rise and Fall of the Third Reich: A History of Nazi Germany",
+    "category": "Books",
+    "attributes": {
+      "genre": "History",
+      "author": "William L. Shirer",
+      "avg_rating": 4.19,
+      "genres": [
+        "History",
+        "Nonfiction",
+        "World War II"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_460",
+    "name": "The Prince of Tides",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Pat Conroy",
+      "avg_rating": 4.25,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_461",
+    "name": "A Clash of Kings  (A Song of Ice and Fire, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "George R.R. Martin",
+      "avg_rating": 4.41,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Epic Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_462",
+    "name": "The Hunger Games Trilogy Boxset (The Hunger Games, #1-3)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Young Adult",
+      "author": "Suzanne Collins",
+      "avg_rating": 4.49,
+      "genres": [
+        "Young Adult",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_463",
+    "name": "Cold Mountain",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Charles Frazier",
+      "avg_rating": 3.88,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Historical"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_464",
+    "name": "A Room of One's Own",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Virginia Woolf",
+      "avg_rating": 4.2,
+      "genres": [
+        "Classics",
+        "Nonfiction",
+        "Feminism"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_465",
+    "name": "The Memory Keeper's Daughter",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Kim Edwards",
+      "avg_rating": 3.69,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_466",
+    "name": "Outliers: The Story of Success",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Malcolm Gladwell",
+      "avg_rating": 4.19,
+      "genres": [
+        "Nonfiction",
+        "Psychology",
+        "Business"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_467",
+    "name": "Lady Chatterley's Lover",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "D.H. Lawrence",
+      "avg_rating": 3.5,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_468",
+    "name": "The Power of Now: A Guide to Spiritual Enlightenment",
+    "category": "Books",
+    "attributes": {
+      "genre": "Self Help",
+      "author": "Eckhart Tolle",
+      "avg_rating": 4.15,
+      "genres": [
+        "Self Help",
+        "Nonfiction",
+        "Spirituality"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_469",
+    "name": "The Witches",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Roald Dahl",
+      "avg_rating": 4.17,
+      "genres": [
+        "Fantasy",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_470",
+    "name": "To the Lighthouse",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Virginia Woolf",
+      "avg_rating": 3.8,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_471",
+    "name": "Infidel",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Ayaan Hirsi Ali",
+      "avg_rating": 4.18,
+      "genres": [
+        "Nonfiction",
+        "Memoir",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_473",
+    "name": "Amelia Bedelia  (Amelia Bedelia, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Childrens",
+      "author": "Peggy Parish",
+      "avg_rating": 4.18,
+      "genres": [
+        "Childrens",
+        "Picture Books",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_474",
+    "name": "The Eye of the World (The Wheel of Time, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Robert Jordan",
+      "avg_rating": 4.19,
+      "genres": [
+        "Fiction",
+        "Fantasy",
+        "Epic Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_476",
+    "name": "On the Beach",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Nevil Shute",
+      "avg_rating": 3.96,
+      "genres": [
+        "Fiction",
+        "Science Fiction",
+        "Post Apocalyptic"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_477",
+    "name": "Ivanhoe",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Walter Scott",
+      "avg_rating": 3.76,
+      "genres": [
+        "Classics",
+        "Fiction",
+        "Historical Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_479",
+    "name": "Like Water for Chocolate",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Laura Esquivel",
+      "avg_rating": 3.95,
+      "genres": [
+        "Fiction",
+        "Magical Realism",
+        "Romance"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_480",
+    "name": "The Stinky Cheese Man and Other Fairly Stupid Tales",
+    "category": "Books",
+    "attributes": {
+      "genre": "Picture Books",
+      "author": "Jon Scieszka",
+      "avg_rating": 4.2,
+      "genres": [
+        "Picture Books",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_481",
+    "name": "The Witch of Blackbird Pond",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Elizabeth George Speare",
+      "avg_rating": 4.01,
+      "genres": [
+        "Historical Fiction",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_482",
+    "name": "The Devil in the White City: Murder, Magic, and Madness at the Fair That Changed America",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Erik Larson",
+      "avg_rating": 4.0,
+      "genres": [
+        "Nonfiction",
+        "History",
+        "True Crime"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_483",
+    "name": "Artemis Fowl (Artemis Fowl, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Eoin Colfer",
+      "avg_rating": 3.86,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_484",
+    "name": "God Is Not Great: How Religion Poisons Everything",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Christopher Hitchens",
+      "avg_rating": 3.95,
+      "genres": [
+        "Nonfiction",
+        "Religion",
+        "Philosophy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_486",
+    "name": "The BFG",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Roald Dahl",
+      "avg_rating": 4.22,
+      "genres": [
+        "Fantasy",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_487",
+    "name": "Sybil: The Classic True Story of a Woman Possessed by Sixteen Personalities",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Flora Rheta Schreiber",
+      "avg_rating": 3.98,
+      "genres": [
+        "Nonfiction",
+        "Psychology",
+        "Biography"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_488",
+    "name": "The Silence of the Lambs  (Hannibal Lecter, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Horror",
+      "author": "Thomas  Harris",
+      "avg_rating": 4.24,
+      "genres": [
+        "Horror",
+        "Fiction",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_489",
+    "name": "The Tipping Point: How Little Things Can Make a Big Difference",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Malcolm Gladwell",
+      "avg_rating": 4.0,
+      "genres": [
+        "Nonfiction",
+        "Business",
+        "Psychology"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_490",
+    "name": "The Left Hand of Darkness",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Ursula K. Le Guin",
+      "avg_rating": 4.09,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_493",
+    "name": "The High Auction (Wisdom Revolution, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Misba",
+      "avg_rating": 4.48,
+      "genres": [
+        "Fantasy",
+        "Science Fiction Fantasy",
+        "Post Apocalyptic"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_494",
+    "name": "We Need to Talk About Kevin",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Lionel Shriver",
+      "avg_rating": 4.08,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_495",
+    "name": "The Killer Angels (The Civil War Trilogy, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Michael Shaara",
+      "avg_rating": 4.32,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Civil War"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_496",
+    "name": "My Side of the Mountain (Mountain, #1)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Jean Craighead George",
+      "avg_rating": 4.08,
+      "genres": [
+        "Fiction",
+        "Young Adult",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_497",
+    "name": "The Oldest Dance (Wisdom Revolution, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Misba",
+      "avg_rating": 4.48,
+      "genres": [
+        "Fantasy",
+        "Science Fiction Fantasy",
+        "Post Apocalyptic"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_498",
+    "name": "Franny and Zooey",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "J.D. Salinger",
+      "avg_rating": 3.97,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Short Stories"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_499",
+    "name": "Wild Swans: Three Daughters of China",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Jung Chang",
+      "avg_rating": 4.27,
+      "genres": [
+        "Nonfiction",
+        "History",
+        "China"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_500",
+    "name": "Alexander and the Terrible, Horrible, No Good, Very Bad Day",
+    "category": "Books",
+    "attributes": {
+      "genre": "Picture Books",
+      "author": "Judith Viorst",
+      "avg_rating": 4.24,
+      "genres": [
+        "Picture Books",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_501",
+    "name": "Sapiens: A Brief History of Humankind",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Yuval Noah Harari",
+      "avg_rating": 4.38,
+      "genres": [
+        "Nonfiction",
+        "History",
+        "Science"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_503",
+    "name": "The Wasp Factory",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Iain Banks",
+      "avg_rating": 3.79,
+      "genres": [
+        "Fiction",
+        "Horror",
+        "Thriller"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_504",
+    "name": "Guess How Much I Love You",
+    "category": "Books",
+    "attributes": {
+      "genre": "Picture Books",
+      "author": "Sam McBratney",
+      "avg_rating": 4.38,
+      "genres": [
+        "Picture Books",
+        "Childrens",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_505",
+    "name": "The Aeneid",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Virgil",
+      "avg_rating": 3.86,
+      "genres": [
+        "Classics",
+        "Poetry",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_506",
+    "name": "Illusions: The Adventures of a Reluctant Messiah",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Richard Bach",
+      "avg_rating": 4.15,
+      "genres": [
+        "Fiction",
+        "Philosophy",
+        "Spirituality"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_508",
+    "name": "Midnight in the Garden of Good and Evil",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "John Berendt",
+      "avg_rating": 3.92,
+      "genres": [
+        "Nonfiction",
+        "True Crime",
+        "Mystery"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_509",
+    "name": "World Without End (Kingsbridge, #2)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Ken Follett",
+      "avg_rating": 4.3,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Historical"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_510",
+    "name": "The Silmarillion",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "J.R.R. Tolkien",
+      "avg_rating": 3.99,
+      "genres": [
+        "Fantasy",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_511",
+    "name": "The Graveyard Book",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fantasy",
+      "author": "Neil Gaiman",
+      "avg_rating": 4.15,
+      "genres": [
+        "Fantasy",
+        "Young Adult",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_512",
+    "name": "2001: A Space Odyssey",
+    "category": "Books",
+    "attributes": {
+      "genre": "Science Fiction",
+      "author": "Arthur C. Clarke",
+      "avg_rating": 4.16,
+      "genres": [
+        "Science Fiction",
+        "Fiction",
+        "Classics"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_514",
+    "name": "On Writing: A Memoir of the Craft",
+    "category": "Books",
+    "attributes": {
+      "genre": "Nonfiction",
+      "author": "Stephen King",
+      "avg_rating": 4.33,
+      "genres": [
+        "Nonfiction",
+        "Writing",
+        "Memoir"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_515",
+    "name": "The Other Boleyn Girl (The Plantagenet and Tudor Novels, #9)",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Philippa Gregory",
+      "avg_rating": 4.08,
+      "genres": [
+        "Historical Fiction",
+        "Fiction",
+        "Historical"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_516",
+    "name": "The Satanic Verses",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Salman Rushdie",
+      "avg_rating": 3.71,
+      "genres": [
+        "Fiction",
+        "Classics",
+        "Magical Realism"
+      ]
+    }
+  },
+  {
+    "item_id": "gr_517",
+    "name": "Cyrano de Bergerac",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Edmond Rostand",
+      "avg_rating": 4.06,
+      "genres": [
+        "Classics",
+        "Plays",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "i_001",
+    "name": "The Grill House",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "American",
+      "price_range": "$$",
+      "vibe": "casual"
+    }
+  },
+  {
+    "item_id": "i_002",
+    "name": "Sakura Ramen",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Japanese",
+      "price_range": "$",
+      "vibe": "cozy"
+    }
+  },
+  {
+    "item_id": "i_003",
+    "name": "La Bella Italia",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Italian",
+      "price_range": "$$$",
+      "vibe": "romantic"
+    }
+  },
+  {
+    "item_id": "i_004",
+    "name": "Taco Libre",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Mexican",
+      "price_range": "$",
+      "vibe": "lively"
+    }
+  },
+  {
+    "item_id": "i_005",
+    "name": "The Vegan Corner",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Vegan",
+      "price_range": "$$",
+      "vibe": "chill"
+    }
+  },
+  {
+    "item_id": "i_006",
+    "name": "Burger Republic",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "American",
+      "price_range": "$",
+      "vibe": "casual"
+    }
+  },
+  {
+    "item_id": "i_007",
+    "name": "Spice Garden",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Indian",
+      "price_range": "$$",
+      "vibe": "warm"
+    }
+  },
+  {
+    "item_id": "i_101",
+    "name": "The Rooftop Lounge",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "bar",
+      "price_range": "$$",
+      "vibe": "chill"
+    }
+  },
+  {
+    "item_id": "i_102",
+    "name": "Eclipse Nightclub",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "club",
+      "price_range": "$$$",
+      "vibe": "energetic"
+    }
+  },
+  {
+    "item_id": "i_103",
+    "name": "The Jazz Cellar",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "jazz bar",
+      "price_range": "$$",
+      "vibe": "sophisticated"
+    }
+  },
+  {
+    "item_id": "i_104",
+    "name": "Brew & Board",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "pub",
+      "price_range": "$",
+      "vibe": "casual"
+    }
+  },
+  {
+    "item_id": "i_105",
+    "name": "Skyline Sky Bar",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "bar",
+      "price_range": "$$$",
+      "vibe": "upscale"
+    }
+  },
+  {
+    "item_id": "i_301",
+    "name": "Interstellar",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Sci-fi",
+      "director": "Nolan",
+      "runtime_min": 169
+    }
+  },
+  {
+    "item_id": "i_302",
+    "name": "The Grand Budapest Hotel",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Comedy",
+      "director": "Anderson",
+      "runtime_min": 99
+    }
+  },
+  {
+    "item_id": "i_303",
+    "name": "Parasite",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Thriller",
+      "director": "Bong",
+      "runtime_min": 132
+    }
+  },
+  {
+    "item_id": "i_304",
+    "name": "Everything Everywhere",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Comedy",
+      "director": "Daniels",
+      "runtime_min": 139
+    }
+  },
+  {
+    "item_id": "i_401",
+    "name": "Central Market",
+    "category": "Shopping",
+    "attributes": {
+      "type": "market",
+      "price_range": "$",
+      "vibe": "busy"
+    }
+  },
+  {
+    "item_id": "i_402",
+    "name": "The Vintage Store",
+    "category": "Shopping",
+    "attributes": {
+      "type": "boutique",
+      "price_range": "$$",
+      "vibe": "quirky"
+    }
+  },
+  {
+    "item_id": "i_403",
+    "name": "Tech Haven",
+    "category": "Shopping",
+    "attributes": {
+      "type": "electronics",
+      "price_range": "$$$",
+      "vibe": "modern"
+    }
+  },
+  {
+    "item_id": "i_501",
+    "name": "Riverside Park Trail",
+    "category": "Outdoors",
+    "attributes": {
+      "type": "hiking",
+      "difficulty": "easy",
+      "duration_hr": 2
+    }
+  },
+  {
+    "item_id": "i_502",
+    "name": "Summit Ridge Hike",
+    "category": "Outdoors",
+    "attributes": {
+      "type": "hiking",
+      "difficulty": "hard",
+      "duration_hr": 6
+    }
+  },
+  {
+    "item_id": "i_503",
+    "name": "City Cycling Route",
+    "category": "Outdoors",
+    "attributes": {
+      "type": "cycling",
+      "difficulty": "medium",
+      "duration_hr": 3
+    }
+  },
+  {
+    "item_id": "i_601",
+    "name": "City Art Museum",
+    "category": "Arts",
+    "attributes": {
+      "type": "museum",
+      "price_range": "$$",
+      "vibe": "cultural"
+    }
+  },
+  {
+    "item_id": "i_602",
+    "name": "Improv Comedy Night",
+    "category": "Arts",
+    "attributes": {
+      "type": "comedy",
+      "price_range": "$",
+      "vibe": "fun"
+    }
+  },
+  {
+    "item_id": "i_603",
+    "name": "Symphony at the Hall",
+    "category": "Arts",
+    "attributes": {
+      "type": "music",
+      "price_range": "$$$",
+      "vibe": "formal"
+    }
+  },
+  {
+    "item_id": "ng_f01",
+    "name": "Mama Put Kitchen",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Nigerian",
+      "price_range": "$",
+      "vibe": "local",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_f02",
+    "name": "Amala Sky Restaurant",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Nigerian",
+      "price_range": "$$",
+      "vibe": "upscale",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_f03",
+    "name": "Buka Hut",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Nigerian",
+      "price_range": "$",
+      "vibe": "casual",
+      "region": "Abuja"
+    }
+  },
+  {
+    "item_id": "ng_f04",
+    "name": "Suya Spot Express",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Nigerian-Grill",
+      "price_range": "$",
+      "vibe": "street food",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_f05",
+    "name": "Calabar Kitchen",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Nigerian-Calabar",
+      "price_range": "$$",
+      "vibe": "warm",
+      "region": "Calabar"
+    }
+  },
+  {
+    "item_id": "ng_f06",
+    "name": "Iya Basira Amala Joint",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Nigerian-Yoruba",
+      "price_range": "$",
+      "vibe": "authentic",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_f07",
+    "name": "Jollof Republic",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Nigerian",
+      "price_range": "$$",
+      "vibe": "modern",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_f08",
+    "name": "Kilimanjaro Restaurant",
+    "category": "Food",
+    "attributes": {
+      "cuisine": "Nigerian-FastFood",
+      "price_range": "$$",
+      "vibe": "family",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_n01",
+    "name": "Quilox Nightclub",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "club",
+      "price_range": "$$$",
+      "vibe": "VIP",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_n02",
+    "name": "Hard Rock Cafe Lagos",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "bar",
+      "price_range": "$$",
+      "vibe": "live music",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_n03",
+    "name": "Shiro Lagos",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "lounge",
+      "price_range": "$$$",
+      "vibe": "upscale",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_n04",
+    "name": "Sky Lounge Abuja",
+    "category": "Nightlife",
+    "attributes": {
+      "type": "rooftop bar",
+      "price_range": "$$",
+      "vibe": "chill",
+      "region": "Abuja"
+    }
+  },
+  {
+    "item_id": "ng_b01",
+    "name": "Half of a Yellow Sun",
+    "category": "Books",
+    "attributes": {
+      "genre": "Historical Fiction",
+      "author": "Chimamanda Ngozi Adichie",
+      "avg_rating": 4.31,
+      "genres": [
+        "Historical Fiction",
+        "African Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "ng_b02",
+    "name": "Things Fall Apart",
+    "category": "Books",
+    "attributes": {
+      "genre": "Classics",
+      "author": "Chinua Achebe",
+      "avg_rating": 3.72,
+      "genres": [
+        "Classics",
+        "African Literature",
+        "Fiction"
+      ]
+    }
+  },
+  {
+    "item_id": "ng_b03",
+    "name": "Purple Hibiscus",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Chimamanda Ngozi Adichie",
+      "avg_rating": 4.08,
+      "genres": [
+        "Fiction",
+        "African Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "ng_b04",
+    "name": "The Famished Road",
+    "category": "Books",
+    "attributes": {
+      "genre": "Magical Realism",
+      "author": "Ben Okri",
+      "avg_rating": 3.6,
+      "genres": [
+        "Magical Realism",
+        "African Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "ng_b05",
+    "name": "Americanah",
+    "category": "Books",
+    "attributes": {
+      "genre": "Contemporary Fiction",
+      "author": "Chimamanda Ngozi Adichie",
+      "avg_rating": 4.28,
+      "genres": [
+        "Fiction",
+        "Contemporary",
+        "African Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "ng_b06",
+    "name": "My Life in the Bush of Ghosts",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Amos Tutuola",
+      "avg_rating": 3.78,
+      "genres": [
+        "Fiction",
+        "African Literature",
+        "Fantasy"
+      ]
+    }
+  },
+  {
+    "item_id": "ng_b07",
+    "name": "Stay With Me",
+    "category": "Books",
+    "attributes": {
+      "genre": "Fiction",
+      "author": "Ayobami Adebayo",
+      "avg_rating": 3.88,
+      "genres": [
+        "Fiction",
+        "African Literature",
+        "Contemporary"
+      ]
+    }
+  },
+  {
+    "item_id": "ng_b08",
+    "name": "An Orchestra of Minorities",
+    "category": "Books",
+    "attributes": {
+      "genre": "Literary Fiction",
+      "author": "Chigozie Obioma",
+      "avg_rating": 3.72,
+      "genres": [
+        "Literary Fiction",
+        "African Literature"
+      ]
+    }
+  },
+  {
+    "item_id": "ng_m01",
+    "name": "The Wedding Party",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Comedy",
+      "director": "Kemi Adetiba",
+      "runtime_min": 120,
+      "industry": "Nollywood"
+    }
+  },
+  {
+    "item_id": "ng_m02",
+    "name": "Lionheart",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Drama",
+      "director": "Genevieve Nnaji",
+      "runtime_min": 95,
+      "industry": "Nollywood"
+    }
+  },
+  {
+    "item_id": "ng_m03",
+    "name": "King of Boys",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Crime/Thriller",
+      "director": "Kemi Adetiba",
+      "runtime_min": 163,
+      "industry": "Nollywood"
+    }
+  },
+  {
+    "item_id": "ng_m04",
+    "name": "Citation",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Drama",
+      "director": "Kunle Afolayan",
+      "runtime_min": 120,
+      "industry": "Nollywood"
+    }
+  },
+  {
+    "item_id": "ng_m05",
+    "name": "Gangs of Lagos",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Action/Drama",
+      "director": "Jade Osiberu",
+      "runtime_min": 120,
+      "industry": "Nollywood"
+    }
+  },
+  {
+    "item_id": "ng_m06",
+    "name": "A Sunday Affair",
+    "category": "Movies",
+    "attributes": {
+      "genre": "Romantic Comedy",
+      "director": "Biodun Stephen",
+      "runtime_min": 105,
+      "industry": "Nollywood"
+    }
+  },
+  {
+    "item_id": "ng_s01",
+    "name": "Computer Village Ikeja",
+    "category": "Shopping",
+    "attributes": {
+      "type": "electronics market",
+      "price_range": "$",
+      "vibe": "bustling",
+      "region": "Lagos"
+    }
+  },
+  {
+    "item_id": "ng_s02",
+    "name": "Lekki Arts & Crafts Market",
+    "category": "Shopping",
+    "attributes": {
+      "type": "crafts market",
+      "price_range": "$$",
+      "vibe": "cultural",
+      "region": "Lagos"
+    }
+  }
+]

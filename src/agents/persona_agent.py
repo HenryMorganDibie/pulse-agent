@@ -173,7 +173,7 @@ async def _textual_pipeline(persona: UserPersona) -> Optional[TextualProfile]:
         )
 
         user = f"""Analyse these reviews and return a JSON object with exactly these keys:
-- dominant_tone: one of "expressive", "analytical", "terse", "narrative", "mixed"
+- dominant_tone: one of "expressive", "analytical", "terse", "narrative", "nigerian", "mixed" (use "nigerian" if the writing uses Nigerian English, pidgin expressions, or Nigerian cultural references)
 - avg_review_length: integer (average word count per review)
 - sentiment_polarity: float between -1.0 (very negative) and 1.0 (very positive)
 - vocabulary_richness: float between 0.0 and 1.0 (type-token ratio estimate)
