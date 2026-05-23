@@ -12,7 +12,6 @@ import numpy as np
 import pandas as pd
 
 from pathlib import Path
-from unittest.mock import patch
 
 from src.agents.graph import run_task_a, run_task_b
 from src.evaluation.metrics import (
@@ -27,20 +26,20 @@ from src.evaluation.metrics import (
 OUTPUT_PATH = Path("data/ablation_results.json")
 
 # ---------------------------------------------------------
-# HACKATHON SAFE MODE (VERY IMPORTANT)
+# SAFE CONFIG
 # ---------------------------------------------------------
 
-SAMPLE_SIZE = 3  # 🔥 ultra-safe for TPD limit
-REQUEST_DELAY_SECONDS = 4  # slower = safer
-FAILURE_COOLDOWN_SECONDS = 20
+SAMPLE_SIZE = 7         
+REQUEST_DELAY_SECONDS = 4
+FAILURE_COOLDOWN_SECONDS = 15
 MAX_RETRIES = 2
 
-MAX_HISTORY = 2  # 🔥 reduces token usage massively
+MAX_HISTORY = 2
 MAX_RECS = 5
 
 
 # ---------------------------------------------------------
-# Helpers
+# HELPERS
 # ---------------------------------------------------------
 
 def _build_persona(train_df: pd.DataFrame, user_id: str) -> dict:
@@ -52,24 +51,16 @@ def _build_persona(train_df: pd.DataFrame, user_id: str) -> dict:
             "item_id": str(row["item_id"]),
             "category": str(row.get("source", "unknown")),
             "rating": float(row["rating"]),
-            "text": str(row["review_text"])[:120],  # 🔥 truncate text
-            "timestamp": (
-                str(row["timestamp"])
-                if pd.notna(row["timestamp"])
-                else None
-            ),
+            "text": str(row["review_text"])[:120],
+            "timestamp": str(row["timestamp"]) if pd.notna(row["timestamp"]) else None,
         }
         for _, row in history.iterrows()
-    ][:MAX_HISTORY]  # 🔥 limit history
+    ][:MAX_HISTORY]
 
     return {
         "user_id": user_id,
         "review_history": review_history,
-        "avg_rating": (
-            float(history["rating"].mean())
-            if len(history) > 0
-            else 3.0
-        ),
+        "avg_rating": float(history["rating"].mean()) if len(history) > 0 else 3.0,
         "preferred_categories": [],
         "tone_profile": "mixed",
         "conversation_history": [],
@@ -77,26 +68,21 @@ def _build_persona(train_df: pd.DataFrame, user_id: str) -> dict:
 
 
 # ---------------------------------------------------------
-# SAFE WRAPPERS (IMPORTANT)
+# SAFE CALL WRAPPER
 # ---------------------------------------------------------
 
 async def _safe_call(fn, *args):
 
     for attempt in range(MAX_RETRIES):
-
         try:
             return await fn(*args)
 
         except Exception as e:
-
             msg = str(e)
 
-            if "429" in msg or "rate_limit" in msg.lower():
-
+            if "429" in msg or "rate" in msg.lower():
                 wait = FAILURE_COOLDOWN_SECONDS * (attempt + 1)
-
                 print(f"    🔁 Rate limit → sleeping {wait}s")
-
                 await asyncio.sleep(wait)
                 continue
 
@@ -120,9 +106,9 @@ async def _run_task_a_sample(test_df, train_df):
     y_true, y_pred = [], []
     generated, references = [], []
 
-    for idx, (_, row) in enumerate(sample.iterrows(), 1):
+    for i, (_, row) in enumerate(sample.iterrows(), 1):
 
-        print(f"    Task A {idx}/{len(sample)}")
+        print(f"    Task A {i}/{len(sample)}")
 
         persona = _build_persona(train_df, str(row["user_id"]))
 
@@ -141,7 +127,6 @@ async def _run_task_a_sample(test_df, train_df):
             y_pred.append(float(result["simulated_rating"]))
 
             if result.get("simulated_review"):
-
                 generated.append(result["simulated_review"][:120])
                 references.append(str(row["review_text"])[:120])
 
@@ -161,9 +146,9 @@ async def _run_task_b_sample(test_df, train_df):
     rows = []
     y_true_list, y_pred_list = [], []
 
-    for idx, user_id in enumerate(user_ids, 1):
+    for i, user_id in enumerate(user_ids, 1):
 
-        print(f"    Task B {idx}/{len(user_ids)}")
+        print(f"    Task B {i}/{len(user_ids)}")
 
         persona = _build_persona(train_df, str(user_id))
 
@@ -181,9 +166,13 @@ async def _run_task_b_sample(test_df, train_df):
             item_id = rec.get("item_id") if isinstance(rec, dict) else rec.item_id
             pred = rec.get("predicted_rating", 3.0) if isinstance(rec, dict) else rec.predicted_rating
 
+            # IMPORTANT FIX: only evaluate real ground truth matches
             true_row = user_test[user_test["item_id"] == item_id]
 
-            true = float(true_row["rating"].values[0]) if len(true_row) > 0 else 3.0
+            if len(true_row) == 0:
+                continue
+
+            true = float(true_row["rating"].values[0])
 
             y_true_list.append(true)
             y_pred_list.append(pred)
@@ -223,12 +212,12 @@ def _task_b_metrics(df, yt, yp):
 
     return {
         "NDCG@10": ndcg_at_k(df, yt, yp, k=10),
-        "HitRate@10": hit_rate_at_k(df, yt, yp, k=10),
+        "HitRate@10": hit_rate_at_k(df, yt, yp, k=10, threshold=3.5),
     }
 
 
 # ---------------------------------------------------------
-# ABLATION RUNNER
+# RUNNER
 # ---------------------------------------------------------
 
 async def run_full(test_df, train_df):
@@ -263,7 +252,6 @@ async def main():
     print(f"Train: {len(train_df):,} | Test: {len(test_df):,}")
 
     start = time.time()
-
     results = {}
 
     for name, fn in ABLATION_CONFIGS:

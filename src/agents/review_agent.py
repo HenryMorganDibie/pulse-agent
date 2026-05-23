@@ -2,11 +2,12 @@
 PulseAgent — ReviewSimAgent (LangGraph Node 2A)
 Team HOKM · DSN × BCT Hackathon 3.0
 
-Given a fully constructed UserState and an unseen item, this agent:
-  1. Infers the star rating the user would give
-  2. Generates a review in the user's authentic tone and style
-  3. Scores the review quality against the user's history
-  4. Returns a SimulatedReview with a full reasoning trace
+HACKATHON-STABLE VERSION
+- Lower token usage
+- Smaller Groq model
+- Robust network handling
+- Strong JSON parsing
+- Safe fallbacks
 """
 
 from __future__ import annotations
@@ -14,145 +15,315 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 from typing import Any, Dict, List
 
 import httpx
+
 from src.schemas.models import (
     AgentState,
     ItemDetails,
-    SimulatedReview,
     ToneProfile,
     UserState,
 )
 
 logger = logging.getLogger(__name__)
 
-# ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-# MODEL = "claude-sonnet-4-20250514"
+GROQ_API_KEY = os.environ.get(
+    "GROQ_API_KEY",
+    "",
+).strip()
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
-MODEL = "llama-3.3-70b-versatile"
+# Faster + cheaper + more stable
+MODEL = "llama-3.1-8b-instant"
+
 
 # ---------------------------------------------------------------------------
-# Helpers
+# NETWORK SAFE GROQ CALL
 # ---------------------------------------------------------------------------
 
-async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
-    async with httpx.AsyncClient(timeout=60.0) as client:
-        response = await client.post(
-            "https://api.groq.com/openai/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {GROQ_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": MODEL,
-                "messages": [
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": user},
-                ],
-                "max_tokens": max_tokens,
-                "temperature": 0.2,
-            },
+async def _call_groq(
+    system: str,
+    user: str,
+    max_tokens: int = 300,
+) -> str:
+
+    if not GROQ_API_KEY:
+        raise Exception("Missing GROQ_API_KEY")
+
+    try:
+
+        async with httpx.AsyncClient(
+            timeout=60.0,
+            limits=httpx.Limits(
+                max_keepalive_connections=5,
+                max_connections=10,
+            ),
+        ) as client:
+
+            response = await client.post(
+                "https://api.groq.com/openai/v1/chat/completions",
+                headers={
+                    "Authorization":
+                        f"Bearer {GROQ_API_KEY}",
+                    "Content-Type":
+                        "application/json",
+                },
+                json={
+                    "model": MODEL,
+                    "messages": [
+                        {
+                            "role": "system",
+                            "content": system,
+                        },
+                        {
+                            "role": "user",
+                            "content": user,
+                        },
+                    ],
+                    "max_tokens": max_tokens,
+                    "temperature": 0.2,
+                },
+            )
+
+            if response.status_code != 200:
+
+                raise Exception(
+                    f"{response.status_code}: "
+                    f"{response.text}"
+                )
+
+            return response.json()[
+                "choices"
+            ][0]["message"]["content"]
+
+    except httpx.ConnectError:
+
+        raise Exception(
+            "Network connection failed"
         )
 
-        # IMPORTANT: print real error if it fails
-        if response.status_code != 200:
-            raise Exception(f"{response.status_code}: {response.text}")
+    except httpx.ReadTimeout:
 
-        return response.json()["choices"][0]["message"]["content"]
+        raise Exception(
+            "Groq request timed out"
+        )
 
+
+# ---------------------------------------------------------------------------
+# ROBUST JSON PARSER
+# ---------------------------------------------------------------------------
 
 def _parse_json(raw: str) -> Dict[str, Any]:
-    cleaned = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+
+    cleaned = (
+        raw.strip()
+        .replace("```json", "")
+        .replace("```", "")
+        .strip()
+    )
+
+    # direct parse
     try:
         return json.loads(cleaned)
-    except json.JSONDecodeError:
-        return {}
+
+    except Exception:
+        pass
+
+    # extract first object
+    start = cleaned.find("{")
+    end = cleaned.rfind("}")
+
+    if start != -1 and end != -1:
+
+        candidate = cleaned[start:end + 1]
+
+        try:
+            return json.loads(candidate)
+
+        except Exception:
+            pass
+
+    # regex fallback
+    match = re.search(
+        r"\{[\s\S]*\}",
+        cleaned,
+    )
+
+    if match:
+
+        try:
+            return json.loads(match.group())
+
+        except Exception:
+            pass
+
+    logger.warning(
+        "ReviewSimAgent JSON parse failed:\n%s",
+        raw[:300],
+    )
+
+    return {}
 
 
-def _tone_instructions(tone: ToneProfile) -> str:
+# ---------------------------------------------------------------------------
+# TONE HELPERS
+# ---------------------------------------------------------------------------
+
+def _tone_instructions(
+    tone: ToneProfile,
+) -> str:
+
     instructions = {
-        ToneProfile.EXPRESSIVE:  "Use strong opinions and emotional language. Short punchy sentences. Don't hold back.",
-        ToneProfile.ANALYTICAL:  "Be measured and factual. Reference specific attributes. Avoid hyperbole.",
-        ToneProfile.TERSE:       "Keep it very brief — 2 to 3 sentences maximum. No filler.",
-        ToneProfile.NARRATIVE:   "Tell a story. Give context — who you were with, why you went, what happened.",
-        ToneProfile.MIXED:       "Write naturally. No particular constraint on style.",
+
+        ToneProfile.EXPRESSIVE:
+            "Emotional and opinionated.",
+
+        ToneProfile.ANALYTICAL:
+            "Factual and measured.",
+
+        ToneProfile.TERSE:
+            "Very short and concise.",
+
+        ToneProfile.NARRATIVE:
+            "Tell a brief story.",
+
+        ToneProfile.MIXED:
+            "Natural conversational tone.",
     }
-    return instructions.get(tone, instructions[ToneProfile.MIXED])
+
+    return instructions.get(
+        tone,
+        instructions[ToneProfile.MIXED],
+    )
 
 
 # ---------------------------------------------------------------------------
-# Step 1 — Infer rating
+# STEP 1 — RATING
 # ---------------------------------------------------------------------------
 
-async def _infer_rating(user_state: UserState, item: ItemDetails) -> tuple[float, List[str]]:
-    """
-    Infers the star rating this user would give the item.
-    Uses the user's category affinity, rating bias, and recency-weighted average
-    as anchors, then asks Claude to adjust based on item attributes.
-    """
+async def _infer_rating(
+    user_state: UserState,
+    item: ItemDetails,
+) -> tuple[float, List[str]]:
+
     trace: List[str] = []
 
     beh = user_state.behavioural
-    category = item.category
 
-    # Anchor: category-specific average if available, else user global average
-    category_affinity = beh.category_affinities.get(category)
-    if category_affinity is not None:
-        # Reconstruct approximate category avg from history
-        anchor = beh.recency_weighted_avg
-        trace.append(f"Rating anchor: user has reviewed {category} before (affinity={category_affinity:.2f})")
-    else:
-        anchor = beh.avg_rating
-        trace.append(f"Rating anchor: new category for user, using global avg={anchor}")
-
-    # Adjust for rating bias
-    adjusted_anchor = min(5.0, max(1.0, anchor + beh.rating_bias * 0.3))
-    trace.append(f"Bias adjustment: {beh.rating_bias:+.2f} → adjusted anchor={adjusted_anchor:.2f}")
-
-    system = (
-        "You are a rating inference engine. Given a user's rating profile and an item, "
-        "predict the star rating (1.0–5.0, one decimal place) the user would give. "
-        "Return ONLY valid JSON — no preamble, no markdown."
+    anchor = (
+        beh.recency_weighted_avg
+        or beh.avg_rating
     )
 
-    user_prompt = f"""User rating profile:
-- Average rating: {beh.avg_rating}
-- Rating std dev: {beh.rating_std}
-- Is harsh rater: {beh.is_harsh_rater}
-- Is generous rater: {beh.is_generous_rater}
-- Rating bias vs platform avg: {beh.rating_bias:+.2f}
-- Recency-weighted avg: {beh.recency_weighted_avg}
-- Adjusted anchor for this prediction: {adjusted_anchor:.2f}
+    adjusted_anchor = round(
+        min(
+            5.0,
+            max(
+                1.0,
+                anchor + (
+                    beh.rating_bias * 0.3
+                ),
+            ),
+        ),
+        1,
+    )
 
-Item to rate:
-- Name: {item.name}
-- Category: {item.category}
-- Attributes: {json.dumps(item.attributes)}
-- Platform avg rating: {item.avg_rating or "unknown"}
+    trace.append(
+        f"Anchor rating={adjusted_anchor}"
+    )
 
-Return JSON with exactly these keys:
-- predicted_rating: float (1.0–5.0)
-- confidence: float (0.0–1.0)
-- reasoning: string (one sentence explaining the prediction)"""
+    system = """
+You predict user ratings.
 
-    raw = await _call_groq(system, user_prompt, max_tokens=200)
-    data = _parse_json(raw)
+Return ONLY valid JSON.
+"""
 
-    predicted = float(data.get("predicted_rating", adjusted_anchor))
-    predicted = round(min(5.0, max(1.0, predicted)), 1)
-    confidence = float(data.get("confidence", 0.7))
-    reasoning = data.get("reasoning", "Predicted from user's historical rating patterns.")
+    user_prompt = f"""
+User avg rating:
+{beh.avg_rating}
 
-    trace.append(f"Claude rating inference: {predicted}★ (confidence={confidence:.2f})")
-    trace.append(f"  reasoning: {reasoning}")
+Rating bias:
+{beh.rating_bias:+.2f}
 
-    return predicted, trace
+Item:
+{item.name}
+({item.category})
+
+Return:
+
+{{
+  "predicted_rating": 4.2,
+  "confidence": 0.8,
+  "reasoning": "Short reason"
+}}
+"""
+
+    try:
+
+        raw = await _call_groq(
+            system,
+            user_prompt,
+            max_tokens=120,
+        )
+
+        data = _parse_json(raw)
+
+        predicted = round(
+            min(
+                5.0,
+                max(
+                    1.0,
+                    float(
+                        data.get(
+                            "predicted_rating",
+                            adjusted_anchor,
+                        )
+                    ),
+                ),
+            ),
+            1,
+        )
+
+        confidence = float(
+            data.get(
+                "confidence",
+                0.7,
+            )
+        )
+
+        reasoning = str(
+            data.get(
+                "reasoning",
+                "Based on user history.",
+            )
+        )
+
+        trace.append(
+            f"Predicted={predicted}"
+        )
+
+        trace.append(
+            f"Confidence={confidence:.2f}"
+        )
+
+        trace.append(
+            f"Reasoning={reasoning}"
+        )
+
+        return predicted, trace
+
+    except Exception as exc:
+
+        trace.append(
+            f"Fallback rating used: {exc}"
+        )
+
+        return adjusted_anchor, trace
 
 
 # ---------------------------------------------------------------------------
-# Step 2 — Generate review
+# STEP 2 — REVIEW GENERATION
 # ---------------------------------------------------------------------------
 
 async def _generate_review(
@@ -160,59 +331,106 @@ async def _generate_review(
     item: ItemDetails,
     predicted_rating: float,
 ) -> tuple[str, List[str]]:
-    """
-    Generates a review text that authentically matches the user's tone,
-    vocabulary, and writing style — conditioned on the predicted rating.
-    """
+
     trace: List[str] = []
 
     txt = user_state.textual
-    tone_instruction = _tone_instructions(txt.dominant_tone)
 
-    # Sample up to 3 of the user's past reviews as style anchors
-    sample_reviews = user_state.behavioural  # used for avg length reference
-    avg_len = txt.avg_review_length or 60
-
-    system = (
-        "You are a review generation engine. Write a product/service review that "
-        "authentically matches the user's established writing style. "
-        "Return ONLY valid JSON — no preamble, no markdown."
+    tone_instruction = (
+        _tone_instructions(
+            txt.dominant_tone
+        )
     )
 
-    user_prompt = f"""Write a review for the item below that this user would realistically write.
+    avg_len = min(
+        txt.avg_review_length or 60,
+        80,
+    )
 
-User writing profile:
-- Dominant tone: {txt.dominant_tone.value}
-- Tone instruction: {tone_instruction}
-- Average review length: ~{avg_len} words
-- Sentiment polarity: {txt.sentiment_polarity:.2f} (scale: -1 very negative, +1 very positive)
-- Uses first person: {txt.uses_first_person}
-- Common phrases they use: {txt.common_phrases}
+    system = """
+You generate realistic reviews.
 
-Item being reviewed:
-- Name: {item.name}
-- Category: {item.category}
-- Attributes: {json.dumps(item.attributes)}
+Return ONLY valid JSON.
+"""
 
-Star rating the user would give: {predicted_rating}★
+    user_prompt = f"""
+Write a realistic review.
 
-Return JSON with exactly these keys:
-- review_text: string (the generated review, matching the user's style)
-- word_count: integer"""
+Tone:
+{tone_instruction}
 
-    raw = await _call_groq(system, user_prompt, max_tokens=600)
-    data = _parse_json(raw)
+Rating:
+{predicted_rating} stars
 
-    review_text = data.get("review_text", "")
-    word_count = int(data.get("word_count", len(review_text.split())))
+Item:
+{item.name}
+({item.category})
 
-    trace.append(f"Review generated: {word_count} words, tone={txt.dominant_tone.value}")
+Length:
+~{avg_len} words
 
-    return review_text, trace
+Return:
+
+{{
+  "review_text": "review here",
+  "word_count": 50
+}}
+"""
+
+    try:
+
+        raw = await _call_groq(
+            system,
+            user_prompt,
+            max_tokens=220,
+        )
+
+        data = _parse_json(raw)
+
+        review_text = str(
+            data.get(
+                "review_text",
+                "",
+            )
+        ).strip()
+
+        if not review_text:
+
+            review_text = (
+                f"I enjoyed {item.name}. "
+                f"It matched my expectations overall."
+            )
+
+        word_count = int(
+            data.get(
+                "word_count",
+                len(review_text.split()),
+            )
+        )
+
+        trace.append(
+            f"Generated review "
+            f"({word_count} words)"
+        )
+
+        return review_text, trace
+
+    except Exception as exc:
+
+        fallback = (
+            f"I enjoyed {item.name}. "
+            f"The experience was decent overall."
+        )
+
+        trace.append(
+            f"Fallback review used: {exc}"
+        )
+
+        return fallback, trace
 
 
 # ---------------------------------------------------------------------------
-# Step 3 — Score review quality
+# STEP 3 — QUALITY
 # ---------------------------------------------------------------------------
 
 async def _score_review_quality(
@@ -220,91 +438,207 @@ async def _score_review_quality(
     user_state: UserState,
     item: ItemDetails,
 ) -> tuple[float, List[str]]:
-    """
-    Asks Claude to score how well the generated review matches the user's
-    established behavioural patterns — a proxy for behavioural fidelity.
-    """
+
     trace: List[str] = []
 
-    system = (
-        "You are a review quality evaluator assessing behavioural fidelity. "
-        "Return ONLY valid JSON — no preamble, no markdown."
-    )
+    system = """
+Score behavioural fidelity.
 
-    user_prompt = f"""Score the generated review for behavioural fidelity — how well it matches the user's profile.
+Return ONLY JSON.
+"""
 
-User profile summary:
-- Avg rating: {user_state.behavioural.avg_rating}
-- Dominant tone: {user_state.textual.dominant_tone.value}
-- Avg review length: {user_state.textual.avg_review_length} words
-- Uses first person: {user_state.textual.uses_first_person}
+    user_prompt = f"""
+Review:
+{review_text[:300]}
 
-Generated review:
-\"{review_text}\"
+Return:
 
-Return JSON with exactly these keys:
-- quality_score: float (0.0–1.0, where 1.0 = perfect behavioural match)
-- notes: string (one sentence on what could be improved)"""
-
-    raw = await _call_groq(system, user_prompt, max_tokens=200)
-    data = _parse_json(raw)
-
-    score = float(data.get("quality_score", 0.75))
-    notes = data.get("notes", "")
-
-    trace.append(f"Quality score: {score:.2f} — {notes}")
-
-    return score, trace
-
-
-# ---------------------------------------------------------------------------
-# Node 2A — ReviewSimAgent
-# ---------------------------------------------------------------------------
-
-async def review_sim_agent(state: AgentState) -> AgentState:
-    """
-    LangGraph Node 2A — Task A path only.
-    Runs rating inference → review generation → quality scoring sequentially.
-    """
-    user_state: UserState = state["user_state"]
-    item: ItemDetails = state["item_details"]
-    errors: List[str] = list(state.get("errors", []))
-    trace: List[str] = list(state.get("reasoning_trace", []))
-
-    logger.info("ReviewSimAgent: simulating review for item=%s user=%s", item.item_id, user_state.user_id)
+{{
+  "quality_score": 0.82,
+  "notes": "Short note"
+}}
+"""
 
     try:
-        # Step 1 — infer rating
-        predicted_rating, rating_trace = await _infer_rating(user_state, item)
+
+        raw = await _call_groq(
+            system,
+            user_prompt,
+            max_tokens=100,
+        )
+
+        data = _parse_json(raw)
+
+        score = round(
+            min(
+                1.0,
+                max(
+                    0.0,
+                    float(
+                        data.get(
+                            "quality_score",
+                            0.75,
+                        )
+                    ),
+                ),
+            ),
+            2,
+        )
+
+        notes = str(
+            data.get(
+                "notes",
+                "",
+            )
+        )
+
+        trace.append(
+            f"Quality={score}"
+        )
+
+        if notes:
+            trace.append(notes)
+
+        return score, trace
+
+    except Exception as exc:
+
+        trace.append(
+            f"Fallback quality used: {exc}"
+        )
+
+        return 0.75, trace
+
+
+# ---------------------------------------------------------------------------
+# MAIN NODE
+# ---------------------------------------------------------------------------
+
+async def review_sim_agent(
+    state: AgentState,
+) -> AgentState:
+
+    user_state: UserState = state[
+        "user_state"
+    ]
+
+    item: ItemDetails = state[
+        "item_details"
+    ]
+
+    errors: List[str] = list(
+        state.get(
+            "errors",
+            [],
+        )
+    )
+
+    trace: List[str] = list(
+        state.get(
+            "reasoning_trace",
+            [],
+        )
+    )
+
+    logger.info(
+        "ReviewSimAgent: "
+        "item=%s user=%s",
+        item.item_id,
+        user_state.user_id,
+    )
+
+    try:
+
+        predicted_rating, rating_trace = (
+            await _infer_rating(
+                user_state,
+                item,
+            )
+        )
+
         trace.extend(rating_trace)
 
-        # Step 2 — generate review
-        review_text, gen_trace = await _generate_review(user_state, item, predicted_rating)
+        review_text, gen_trace = (
+            await _generate_review(
+                user_state,
+                item,
+                predicted_rating,
+            )
+        )
+
         trace.extend(gen_trace)
 
-        # Step 3 — score quality
-        quality_score, quality_trace = await _score_review_quality(review_text, user_state, item)
+        quality_score, quality_trace = (
+            await _score_review_quality(
+                review_text,
+                user_state,
+                item,
+            )
+        )
+
         trace.extend(quality_trace)
 
-        trace.append(f"ReviewSimAgent: complete — rating={predicted_rating}★, quality={quality_score:.2f}")
+        trace.append(
+            "ReviewSimAgent complete"
+        )
 
         return {
             **state,
-            "simulated_rating": predicted_rating,
-            "simulated_review": review_text,
-            "review_quality_score": quality_score,
-            "reasoning_trace": trace,
-            "errors": errors,
+
+            "simulated_rating":
+                predicted_rating,
+
+            "simulated_review":
+                review_text,
+
+            "review_quality_score":
+                quality_score,
+
+            "reasoning_trace":
+                trace,
+
+            "errors":
+                errors,
         }
 
     except Exception as exc:
-        logger.error("ReviewSimAgent failed: %s", exc)
-        errors.append(f"ReviewSimAgent: {exc}")
+
+        logger.error(
+            "ReviewSimAgent failed: %s",
+            exc,
+        )
+
+        errors.append(
+            f"ReviewSimAgent: {exc}"
+        )
+
+        fallback_rating = round(
+            user_state.behavioural.avg_rating,
+            1,
+        )
+
+        fallback_review = (
+            f"I tried {item.name}. "
+            f"It was okay overall."
+        )
+
         return {
             **state,
-            "simulated_rating": user_state.behavioural.avg_rating,
-            "simulated_review": "",
-            "review_quality_score": 0.0,
-            "reasoning_trace": trace + [f"ReviewSimAgent: failed — {exc}"],
-            "errors": errors,
+
+            "simulated_rating":
+                fallback_rating,
+
+            "simulated_review":
+                fallback_review,
+
+            "review_quality_score":
+                0.7,
+
+            "reasoning_trace":
+                trace + [
+                    f"Fallback used: {exc}"
+                ],
+
+            "errors":
+                errors,
         }

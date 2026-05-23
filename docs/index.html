@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseAgent — HOKM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:       #0d0d0d;
+      --paper:     #f5f2eb;
+      --accent:    #c84b2f;
+      --accent2:   #2e5f8a;
+      --muted:     #7a7467;
+      --border:    #d9d4c8;
+      --card:      #ffffff;
+      --mono:      'DM Mono', monospace;
+      --sans:      'DM Sans', sans-serif;
+      --display:   'Syne', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.6;
+    }
+
+    /* ── header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(245, 242, 235, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .logo span { color: var(--accent); }
+
+    .badge {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    /* ── hero ── */
+    .hero {
+      padding: 5rem 3rem 4rem;
+      max-width: 900px;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    /* ── tabs ── */
+    .tabs-wrapper {
+      padding: 0 3rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0;
+    }
+
+    .tab-btn {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      padding: 1rem 2rem;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.2s;
+      position: relative;
+      bottom: -1px;
+    }
+
+    .tab-btn:hover { color: var(--ink); }
+
+    .tab-btn.active {
+      color: var(--ink);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── main layout ── */
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: calc(100vh - 220px);
+    }
+
+    .panel {
+      padding: 2.5rem 3rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .panel:last-child { border-right: none; }
+
+    .panel-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── form elements ── */
+    .field { margin-bottom: 1.2rem; }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--card);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--ink);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent2);
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── star rating ── */
+    .stars {
+      display: flex;
+      gap: 0.3rem;
+      margin-top: 0.3rem;
+    }
+
+    .star {
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--border);
+      transition: color 0.15s;
+      line-height: 1;
+    }
+
+    .star.on { color: #e8a020; }
+
+    /* ── review history ── */
+    .history-list { margin-bottom: 1rem; }
+
+    .history-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      background: var(--card);
+      font-size: 0.85rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .history-item .stars-small { color: #e8a020; font-size: 0.85rem; }
+    .history-item .cat-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent2);
+      background: rgba(46,95,138,0.08);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .history-item .text { color: var(--muted); line-height: 1.5; flex: 1; }
+    .del-btn {
+      background: none;
+      border: none;
+      color: var(--border);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .del-btn:hover { color: var(--accent); }
+
+    /* ── add review toggle ── */
+    .add-review-toggle {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent2);
+      background: none;
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+
+    .add-review-toggle:hover {
+      border-color: var(--accent2);
+      background: rgba(46,95,138,0.04);
+    }
+
+    .add-review-form {
+      margin-top: 0.8rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--card);
+      display: none;
+    }
+
+    .add-review-form.open { display: block; animation: fadeIn 0.2s ease; }
+
+    /* ── submit button ── */
+    .submit-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      border-radius: 6px;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover { background: var(--accent); }
+    .submit-btn:disabled { background: var(--border); cursor: not-allowed; }
+
+    /* ── results ── */
+    .result-panel { background: var(--card); }
+
+    .result-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      min-height: 300px;
+      color: var(--border);
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .result-empty .icon { font-size: 3rem; }
+    .result-empty p { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+
+    /* ── rating display ── */
+    .rating-display {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .rating-big {
+      font-family: var(--display);
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .rating-stars { font-size: 1.2rem; color: #e8a020; }
+
+    .confidence-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      background: var(--accent2);
+      border-radius: 2px;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .review-text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--ink);
+      font-style: italic;
+      padding: 1.2rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(200,75,47,0.04);
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── trace ── */
+    .trace-toggle {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .trace-toggle:hover { color: var(--ink); }
+
+    .trace-list {
+      margin-top: 0.8rem;
+      display: none;
+    }
+
+    .trace-list.open { display: block; }
+
+    .trace-item {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+
+    /* ── recommendation cards ── */
+    .rec-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      animation: fadeIn 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    .rec-rank {
+      font-family: var(--display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      width: 2rem;
+      text-align: right;
+    }
+
+    .rec-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .rec-expl {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .rec-cat {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent2);
+      background: rgba(46,95,138,0.08);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .rec-rating {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    /* ── intent badge ── */
+    .intent-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(46,95,138,0.08);
+      border: 1px solid rgba(46,95,138,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent2);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── loader ── */
+    .loader {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      min-height: 300px;
+      gap: 1.5rem;
+    }
+
+    .loader.active { display: flex; }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .loader-text {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ── error ── */
+    .error-box {
+      padding: 1rem;
+      background: rgba(200,75,47,0.06);
+      border: 1px solid rgba(200,75,47,0.2);
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      display: none;
+    }
+
+    .error-box.show { display: block; }
+
+    /* ── tab content ── */
+    .tab-content { display: none; }
+    .tab-content.active { display: grid; grid-template-columns: 1fr 1fr; }
+
+    /* ── cold start pill ── */
+    .cold-pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      margin-left: 0.5rem;
+    }
+
+    .cold-pill.cold { background: rgba(200,75,47,0.1); color: var(--accent); }
+    .cold-pill.warm { background: rgba(46,95,138,0.1); color: var(--accent2); }
+
+    /* ── section heading ── */
+    .section-heading {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── animations ── */
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── footer ── */
+    footer {
+      padding: 1.5rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 768px) {
+      header { padding: 1rem 1.5rem; }
+      .hero  { padding: 3rem 1.5rem 2rem; }
+      .tabs-wrapper { padding: 0 1.5rem; overflow-x: auto; }
+      .tab-content.active,
+      .main { grid-template-columns: 1fr; }
+      .panel { padding: 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+      footer { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <div class="logo">Pulse<span>Agent</span></div>
+  <div class="badge">Team HOKM · DSN × BCT Hackathon 3.0</div>
+</header>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-tag">LLM Agent Challenge · Tasks A + B</div>
+  <h1>Know your user.<br /><em>Before they speak.</em></h1>
+  <p>PulseAgent models how specific users think, write, and choose — simulating authentic reviews and surfacing recommendations that match intent, not just history.</p>
+</div>
+
+<!-- ── Tabs ── -->
+<div class="tabs-wrapper">
+  <button class="tab-btn active" onclick="switchTab('a')">📝 Task A — Review Simulation</button>
+  <button class="tab-btn" onclick="switchTab('b')">🎯 Task B — Recommendation</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- TASK A                                      -->
+<!-- ════════════════════════════════════════════ -->
+<div class="tab-content active" id="tab-a">
+
+  <!-- Input -->
+  <div class="panel">
+    <div class="panel-label">Input — User + Item</div>
+
+    <!-- User -->
+    <div class="section-heading">User Persona</div>
+
+    <div class="row">
+      <div class="field">
+        <label>User ID</label>
+        <input type="text" id="a-user-id" value="u_001" />
+      </div>
+      <div class="field">
+        <label>Tone Profile</label>
+        <select id="a-tone">
+          <option value="mixed">Mixed</option>
+          <option value="expressive">Expressive</option>
+          <option value="analytical">Analytical</option>
+          <option value="terse">Terse</option>
+          <option value="narrative">Narrative</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Review history -->
+    <div class="field">
+      <label>Review History</label>
+      <div class="history-list" id="a-history-list"></div>
+      <button class="add-review-toggle" onclick="toggleAddReview('a')">+ Add a review</button>
+      <div class="add-review-form" id="a-add-form">
+        <div class="row">
+          <div class="field">
+            <label>Category</label>
+            <select id="a-new-cat">
+              <option>Food</option><option>Nightlife</option><option>Books</option>
+              <option>Movies</option><option>Shopping</option><option>Outdoors</option><option>Arts</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Rating</label>
+            <div class="stars" id="a-new-stars">
+              <span class="star on" data-v="1">★</span>
+              <span class="star on" data-v="2">★</span>
+              <span class="star on" data-v="3">★</span>
+              <span class="star on" data-v="4">★</span>
+              <span class="star" data-v="5">★</span>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Review Text</label>
+          <textarea id="a-new-text" placeholder="Write the review..."></textarea>
+        </div>
+        <button class="submit-btn" style="margin-top:0" onclick="addReview('a')">Add Review</button>
+      </div>
+    </div>
+
+    <!-- Item -->
+    <div class="section-heading" style="margin-top:1.5rem">Item Details</div>
+
+    <div class="row">
+      <div class="field">
+        <label>Item Name</label>
+        <input type="text" id="a-item-name" value="The Grill House" />
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <select id="a-item-cat">
+          <option>Food</option><option>Nightlife</option><option>Books</option>
+          <option>Movies</option><option>Shopping</option><option>Outdoors</option><option>Arts</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Cuisine / Type</label>
+        <input type="text" id="a-cuisine" value="American" />
+      </div>
+      <div class="field">
+        <label>Price Range</label>
+        <select id="a-price">
+          <option>$</option><option selected>$$</option><option>$$$</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="error-box" id="a-error"></div>
+    <button class="submit-btn" onclick="runTaskA()" id="a-btn">▶ Simulate Review</button>
+  </div>
+
+  <!-- Output -->
+  <div class="panel result-panel" id="a-result-panel">
+    <div class="result-empty" id="a-empty">
+      <div class="icon">🧠</div>
+      <p>Fill in the form and hit<br />Simulate Review to see results</p>
+    </div>
+    <div class="loader" id="a-loader">
+      <div class="spinner"></div>
+      <div class="loader-text">
+        Running PersonaConstructionAgent...<br />
+        Building behavioural + textual + contextual profiles<br />
+        ReviewSimAgent inferring rating + generating review
+      </div>
+    </div>
+    <div id="a-output" style="display:none">
+      <div class="panel-label">Results</div>
+      <div class="rating-display">
+        <div class="rating-big" id="a-out-rating">—</div>
+        <div class="rating-stars" id="a-out-stars"></div>
+      </div>
+      <div class="confidence-bar">
+        <div class="confidence-fill" id="a-out-conf" style="width:0%"></div>
+      </div>
+      <div id="a-out-review" class="review-text"></div>
+      <button class="trace-toggle" onclick="toggleTrace('a')">
+        <span id="a-trace-arrow">▶</span> Reasoning Trace
+      </button>
+      <div class="trace-list" id="a-trace"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- TASK B                                      -->
+<!-- ════════════════════════════════════════════ -->
+<div class="tab-content" id="tab-b">
+
+  <!-- Input -->
+  <div class="panel">
+    <div class="panel-label">Input — User + Intent</div>
+
+    <div class="section-heading">User Persona</div>
+
+    <div class="row">
+      <div class="field">
+        <label>User ID</label>
+        <input type="text" id="b-user-id" value="u_042" />
+      </div>
+      <div class="field">
+        <label>Tone Profile</label>
+        <select id="b-tone">
+          <option value="mixed" selected>Mixed</option>
+          <option value="expressive">Expressive</option>
+          <option value="analytical">Analytical</option>
+          <option value="terse">Terse</option>
+          <option value="narrative">Narrative</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Review History</label>
+      <div class="history-list" id="b-history-list"></div>
+      <button class="add-review-toggle" onclick="toggleAddReview('b')">+ Add a review</button>
+      <div class="add-review-form" id="b-add-form">
+        <div class="row">
+          <div class="field">
+            <label>Category</label>
+            <select id="b-new-cat">
+              <option>Food</option><option>Nightlife</option><option>Books</option>
+              <option>Movies</option><option>Shopping</option><option>Outdoors</option><option>Arts</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Rating</label>
+            <div class="stars" id="b-new-stars">
+              <span class="star on" data-v="1">★</span>
+              <span class="star on" data-v="2">★</span>
+              <span class="star on" data-v="3">★</span>
+              <span class="star on" data-v="4">★</span>
+              <span class="star" data-v="5">★</span>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Review Text</label>
+          <textarea id="b-new-text" placeholder="Write the review..."></textarea>
+        </div>
+        <button class="submit-btn" style="margin-top:0" onclick="addReview('b')">Add Review</button>
+      </div>
+    </div>
+
+    <div class="section-heading" style="margin-top:1.5rem">What are you looking for?</div>
+
+    <div class="field">
+      <textarea id="b-query" rows="3" placeholder="e.g. something chill for the weekend, not too expensive..."></textarea>
+    </div>
+
+    <div class="error-box" id="b-error"></div>
+    <button class="submit-btn" onclick="runTaskB()" id="b-btn">▶ Get Recommendations</button>
+  </div>
+
+  <!-- Output -->
+  <div class="panel result-panel" id="b-result-panel">
+    <div class="result-empty" id="b-empty">
+      <div class="icon">🎯</div>
+      <p>Describe what you're looking for<br />and hit Get Recommendations</p>
+    </div>
+    <div class="loader" id="b-loader">
+      <div class="spinner"></div>
+      <div class="loader-text">
+        Running ReasoningAgent...<br />
+        Extracting intent · detecting cold-start<br />
+        RankingAgent scoring + injecting diversity
+      </div>
+    </div>
+    <div id="b-output" style="display:none">
+      <div class="panel-label">Results</div>
+      <div id="b-intent-badge" class="intent-badge"></div>
+      <div id="b-recs"></div>
+      <button class="trace-toggle" onclick="toggleTrace('b')" style="margin-top:1rem">
+        <span id="b-trace-arrow">▶</span> Reasoning Trace
+      </button>
+      <div class="trace-list" id="b-trace"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <p>PulseAgent · Team HOKM · DSN × BCT Hackathon 3.0</p>
+  <p>
+    <a href="https://pulse-agent-5rg3.onrender.com/docs" target="_blank">API Docs ↗</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/HenryMorganDibie/pulse-agent" target="_blank">GitHub ↗</a>
+  </p>
+</footer>
+
+<script>
+  const API = 'https://pulse-agent-5rg3.onrender.com';
+
+  // ── State ──
+  const state = {
+    a: { history: [
+      { item_id: 'i_001', category: 'Food',     rating: 4.0, text: 'Really solid spot. Food was fresh and service was quick.' },
+      { item_id: 'i_002', category: 'Food',     rating: 3.5, text: 'Decent enough but nothing special. Wouldn\'t rush back.' },
+      { item_id: 'i_003', category: 'Nightlife',rating: 4.5, text: 'Great atmosphere. Exactly what I needed.' },
+    ], starRating: 4 },
+    b: { history: [], starRating: 4 },
+  };
+
+  // ── Tab switching ──
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    document.querySelectorAll('.tab-btn')[tab === 'a' ? 0 : 1].classList.add('active');
+  }
+
+  // ── Render history ──
+  function renderHistory(task) {
+    const list = document.getElementById(task + '-history-list');
+    list.innerHTML = '';
+    state[task].history.forEach((r, i) => {
+      const stars = '★'.repeat(Math.round(r.rating)) + '☆'.repeat(5 - Math.round(r.rating));
+      list.innerHTML += `
+        <div class="history-item">
+          <div>
+            <span class="cat-tag">${r.category}</span>
+            <div class="stars-small">${stars} ${r.rating}</div>
+          </div>
+          <div class="text">${r.text.slice(0, 100)}${r.text.length > 100 ? '…' : ''}</div>
+          <button class="del-btn" onclick="deleteReview('${task}', ${i})">×</button>
+        </div>`;
+    });
+  }
+
+  function deleteReview(task, i) {
+    state[task].history.splice(i, 1);
+    renderHistory(task);
+  }
+
+  // ── Star rating widget ──
+  function initStars(task) {
+    const container = document.getElementById(task + '-new-stars');
+    container.querySelectorAll('.star').forEach(star => {
+      star.addEventListener('click', () => {
+        state[task].starRating = parseInt(star.dataset.v);
+        container.querySelectorAll('.star').forEach(s => {
+          s.classList.toggle('on', parseInt(s.dataset.v) <= state[task].starRating);
+        });
+      });
+    });
+  }
+
+  // ── Toggle add review form ──
+  function toggleAddReview(task) {
+    document.getElementById(task + '-add-form').classList.toggle('open');
+  }
+
+  // ── Add review ──
+  function addReview(task) {
+    const text = document.getElementById(task + '-new-text').value.trim();
+    const cat  = document.getElementById(task + '-new-cat').value;
+    if (!text) return;
+    state[task].history.push({
+      item_id:  'i_' + String(Date.now()).slice(-4),
+      category: cat,
+      rating:   state[task].starRating,
+      text,
+    });
+    document.getElementById(task + '-new-text').value = '';
+    document.getElementById(task + '-add-form').classList.remove('open');
+    renderHistory(task);
+  }
+
+  // ── Build persona ──
+  function buildPersona(task, withConversation) {
+    const history = state[task].history;
+    const avg = history.length
+      ? parseFloat((history.reduce((s, r) => s + r.rating, 0) / history.length).toFixed(2))
+      : 3.5;
+    return {
+      user_id:               document.getElementById(task + '-user-id').value,
+      review_history:        history,
+      avg_rating:            avg,
+      preferred_categories:  [...new Set(history.map(r => r.category))],
+      tone_profile:          document.getElementById(task + '-tone').value,
+      conversation_history:  withConversation || [],
+    };
+  }
+
+  // ── Toggle trace ──
+  function toggleTrace(task) {
+    const list  = document.getElementById(task + '-trace');
+    const arrow = document.getElementById(task + '-trace-arrow');
+    const open  = list.classList.toggle('open');
+    arrow.textContent = open ? '▼' : '▶';
+  }
+
+  // ── Show error ──
+  function showError(task, msg) {
+    const box = document.getElementById(task + '-error');
+    box.textContent = msg;
+    box.classList.add('show');
+  }
+
+  function clearError(task) {
+    document.getElementById(task + '-error').classList.remove('show');
+  }
+
+  // ── Loading state ──
+  function setLoading(task, on) {
+    document.getElementById(task + '-empty').style.display  = on ? 'none' : '';
+    document.getElementById(task + '-loader').classList.toggle('active', on);
+    document.getElementById(task + '-output').style.display = on ? 'none' : '';
+    document.getElementById(task + '-btn').disabled = on;
+  }
+
+  // ════════════════════════════════════════════
+  // TASK A
+  // ════════════════════════════════════════════
+
+  async function runTaskA() {
+    clearError('a');
+    const persona = buildPersona('a');
+
+    const payload = {
+      user_persona: persona,
+      item_details: {
+        item_id:    'i_' + String(Date.now()).slice(-4),
+        name:       document.getElementById('a-item-name').value,
+        category:   document.getElementById('a-item-cat').value,
+        attributes: {
+          cuisine:     document.getElementById('a-cuisine').value,
+          price_range: document.getElementById('a-price').value,
+        },
+      },
+    };
+
+    document.getElementById('a-empty').style.display = 'none';
+    document.getElementById('a-output').style.display = 'none';
+    setLoading('a', true);
+
+    try {
+      const res  = await fetch(API + '/simulate-review', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.detail || res.statusText);
+      }
+
+      const data = await res.json();
+      setLoading('a', false);
+      renderTaskA(data);
+
+    } catch (e) {
+      setLoading('a', false);
+      document.getElementById('a-empty').style.display = '';
+      showError('a', '⚠ ' + e.message);
+    }
+  }
+
+  function renderTaskA(data) {
+    const rating = data.simulated_rating;
+    const conf   = Math.round((data.confidence || 0) * 100);
+    const stars  = '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
+
+    document.getElementById('a-out-rating').textContent = rating.toFixed(1);
+    document.getElementById('a-out-stars').textContent  = stars;
+    document.getElementById('a-out-conf').style.width   = conf + '%';
+    document.getElementById('a-out-review').textContent = data.simulated_review || '(no review generated)';
+
+    const traceEl = document.getElementById('a-trace');
+    traceEl.innerHTML = (data.reasoning_trace || [])
+      .map(t => `<div class="trace-item">${t}</div>`).join('');
+
+    document.getElementById('a-output').style.display = 'block';
+
+    // animate confidence bar
+    setTimeout(() => {
+      document.getElementById('a-out-conf').style.width = conf + '%';
+    }, 50);
+  }
+
+  // ════════════════════════════════════════════
+  // TASK B
+  // ════════════════════════════════════════════
+
+  async function runTaskB() {
+    clearError('b');
+    const query   = document.getElementById('b-query').value.trim();
+    const persona = buildPersona('b', query ? [{ role: 'user', content: query }] : []);
+
+    document.getElementById('b-empty').style.display  = 'none';
+    document.getElementById('b-output').style.display = 'none';
+    setLoading('b', true);
+
+    try {
+      const res = await fetch(API + '/recommend', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ user_persona: persona }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.detail || res.statusText);
+      }
+
+      const data = await res.json();
+      setLoading('b', false);
+      renderTaskB(data);
+
+    } catch (e) {
+      setLoading('b', false);
+      document.getElementById('b-empty').style.display = '';
+      showError('b', '⚠ ' + e.message);
+    }
+  }
+
+  function renderTaskB(data) {
+    const intent    = data.inferred_intent || '—';
+    const coldStart = data.cold_start;
+    const recs      = data.recommendations || [];
+
+    document.getElementById('b-intent-badge').innerHTML =
+      `🎯 ${intent} <span class="cold-pill ${coldStart ? 'cold' : 'warm'}">${coldStart ? 'cold-start' : 'warm user'}</span>`;
+
+    const recsEl = document.getElementById('b-recs');
+    recsEl.innerHTML = recs.map((r, i) => `
+      <div class="rec-card" style="animation-delay:${i * 0.08}s">
+        <div class="rec-rank">${r.rank}</div>
+        <div>
+          <div class="rec-name">${r.name}</div>
+          <div class="rec-expl">${r.explanation}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="rec-rating">★ ${r.predicted_rating}</div>
+          <div class="rec-cat">${r.category}</div>
+        </div>
+      </div>`).join('');
+
+    const traceEl = document.getElementById('b-trace');
+    traceEl.innerHTML = (data.reasoning_trace || [])
+      .map(t => `<div class="trace-item">${t}</div>`).join('');
+
+    document.getElementById('b-output').style.display = 'block';
+  }
+
+  // ── Init ──
+  renderHistory('a');
+  renderHistory('b');
+  initStars('a');
+  initStars('b');
+</script>
+</body>
+</html>

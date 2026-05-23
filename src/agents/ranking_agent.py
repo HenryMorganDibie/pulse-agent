@@ -1,6 +1,12 @@
 """
 PulseAgent — RankingAgent (LangGraph Node 3B)
 Team HOKM · DSN × BCT Hackathon 3.0
+
+HACKATHON SAFE VERSION
+- Lower token usage
+- Better JSON recovery
+- Strong fallback handling
+- More stable Groq calls
 """
 
 from __future__ import annotations
@@ -8,6 +14,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 from typing import Any, Dict, List
 
 import httpx
@@ -21,87 +28,193 @@ from src.schemas.models import (
 
 logger = logging.getLogger(__name__)
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
-MODEL = "llama-3.3-70b-versatile"
+GROQ_API_KEY = os.environ.get(
+    "GROQ_API_KEY",
+    "",
+).strip()
 
-_TOP_K = 10
+# FAST + CHEAP + STABLE
+MODEL = "llama-3.1-8b-instant"
+
+_TOP_K = 5
+
 
 # ---------------------------------------------------------------------------
 # LLM CALL
 # ---------------------------------------------------------------------------
 
-async def _call_groq(system: str, user: str, max_tokens: int = 512, temperature: float = 0.4) -> str:
-    async with httpx.AsyncClient(timeout=60.0) as client:
+async def _call_groq(
+    system: str,
+    user: str,
+    max_tokens: int = 400,
+    temperature: float = 0.2,
+) -> str:
+
+    async with httpx.AsyncClient(
+        timeout=45.0,
+    ) as client:
+
         response = await client.post(
             "https://api.groq.com/openai/v1/chat/completions",
             headers={
-                "Authorization": f"Bearer {GROQ_API_KEY}",
-                "Content-Type": "application/json",
+                "Authorization":
+                    f"Bearer {GROQ_API_KEY}",
+
+                "Content-Type":
+                    "application/json",
             },
             json={
                 "model": MODEL,
+
                 "messages": [
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": user},
+                    {
+                        "role": "system",
+                        "content": system,
+                    },
+                    {
+                        "role": "user",
+                        "content": user,
+                    },
                 ],
+
                 "max_tokens": max_tokens,
                 "temperature": temperature,
             },
         )
 
-        # IMPORTANT: print real error if it fails
         if response.status_code != 200:
-            raise Exception(f"{response.status_code}: {response.text}")
 
-        return response.json()["choices"][0]["message"]["content"]
+            raise Exception(
+                f"{response.status_code}: "
+                f"{response.text}"
+            )
+
+        data = response.json()
+
+        return (
+            data["choices"][0]
+            ["message"]["content"]
+        )
 
 
 # ---------------------------------------------------------------------------
-# JSON PARSER
+# SAFE JSON PARSER
 # ---------------------------------------------------------------------------
 
 def _parse_json(raw: str) -> Any:
-    """Extract JSON from LLM response — handles fences, prefixes, and partial wrapping."""
-    import re
+    """
+    Ultra-robust parser for malformed LLM JSON.
+    """
+
+    if not raw:
+        return []
+
     cleaned = (
         raw.strip()
-        .removeprefix("```json")
-        .removeprefix("```")
-        .removesuffix("```")
+        .replace("```json", "")
+        .replace("```", "")
         .strip()
     )
+
+    # direct parse
     try:
         return json.loads(cleaned)
-    except json.JSONDecodeError:
+
+    except Exception:
         pass
 
-    # Try to extract a JSON array directly using regex
-    match = re.search(r'\[.*\]', cleaned, re.DOTALL)
-    if match:
+    # locate first JSON array
+    start = cleaned.find("[")
+    end = cleaned.rfind("]")
+
+    if start != -1 and end != -1:
+
+        candidate = cleaned[
+            start:end + 1
+        ]
+
         try:
-            return json.loads(match.group())
-        except json.JSONDecodeError:
+            return json.loads(candidate)
+
+        except Exception:
             pass
 
-    # Try to extract a JSON object
-    match = re.search(r'\{.*\}', cleaned, re.DOTALL)
+    # regex extraction
+    match = re.search(
+        r"\[[\s\S]*\]",
+        cleaned,
+    )
+
     if match:
+
         try:
-            return json.loads(match.group())
-        except json.JSONDecodeError:
+            return json.loads(
+                match.group()
+            )
+
+        except Exception:
             pass
 
-    logger.warning("RankingAgent: failed to parse JSON from response: %s", raw[:300])
-    return {}
+    # emergency recovery
+    partial_items = re.findall(
+        r'\{[\s\S]*?"item_id"[\s\S]*?\}',
+        cleaned,
+    )
+
+    recovered = []
+
+    for p in partial_items:
+
+        try:
+            recovered.append(
+                json.loads(p)
+            )
+
+        except Exception:
+            continue
+
+    if recovered:
+
+        logger.warning(
+            "RankingAgent partially "
+            "recovered malformed JSON"
+        )
+
+        return recovered
+
+    logger.warning(
+        "RankingAgent failed "
+        "to parse JSON:\n%s",
+        raw[:500],
+    )
+
+    return []
 
 
 # ---------------------------------------------------------------------------
 # HELPERS
 # ---------------------------------------------------------------------------
 
-def _candidate_summary(candidate: CandidateItem) -> str:
-    attr_str = ", ".join(f"{k}={v}" for k, v in candidate.attributes.items())
-    return f"[{candidate.item_id}] {candidate.name} ({candidate.category}) — {attr_str}"
+def _candidate_summary(
+    candidate: CandidateItem,
+) -> str:
+
+    attrs = []
+
+    for k, v in list(
+        candidate.attributes.items()
+    )[:3]:
+
+        attrs.append(f"{k}={v}")
+
+    attr_str = ", ".join(attrs)
+
+    return (
+        f"[{candidate.item_id}] "
+        f"{candidate.name} "
+        f"({candidate.category}) "
+        f"{attr_str}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -112,57 +225,165 @@ async def _score_and_rank(
     candidates: List[CandidateItem],
     user_state: UserState,
     intent: str,
-) -> tuple[List[Dict[str, Any]], List[str]]:
+) -> tuple[
+    List[Dict[str, Any]],
+    List[str],
+]:
 
     trace: List[str] = []
 
     if not candidates:
-        return [], ["RankingAgent: no candidates"]
+
+        return [], [
+            "RankingAgent: "
+            "no candidates"
+        ]
 
     beh = user_state.behavioural
-    txt = user_state.textual
 
     candidate_list = "\n".join(
         f"{i+1}. {_candidate_summary(c)}"
-        for i, c in enumerate(candidates[:15])
+        for i, c in enumerate(
+            candidates[:5]
+        )
     )
 
-    system = (
-        "You are a recommendation ranking engine. "
-        "Output ONLY a raw JSON array. No explanation, no markdown, no text before or after the array."
-    )
+    system = """
+You are a recommendation engine.
 
-    user_prompt = f"""Rank these items for a user. Return a JSON array, nothing else.
+CRITICAL:
+- Output ONLY JSON array
+- No markdown
+- No commentary
+- Keep explanations SHORT
+"""
 
-User avg rating: {beh.avg_rating} | rating bias: {beh.rating_bias:+.2f} | generous: {beh.is_generous_rater} | harsh: {beh.is_harsh_rater}
-User category history: {dict(beh.category_affinities)}
-User tone: {txt.dominant_tone.value} | sentiment: {txt.sentiment_polarity:.2f}
-Intent: "{intent}"
+    user_prompt = f"""
+User avg rating:
+{beh.avg_rating:.1f}
 
-Items to rank:
+Intent:
+{intent}
+
+Items:
 {candidate_list}
 
+Return EXACT JSON:
+
+[
+  {{
+    "item_id":"i_001",
+    "predicted_rating":4.2,
+    "relevance_score":0.84,
+    "explanation":"Good category match."
+  }}
+]
+
 Rules:
-- predicted_rating must VARY. Anchor on {beh.avg_rating}, adjust ±0.5 based on how well each item fits intent and user profile.
-- relevance_score must VARY. Best item ~0.9, worst ~0.4.
-- explanation: 2 sentences referencing the specific item attributes and user profile. No generic phrases.
-- score_breakdown: 4 floats (0-1): category_fit, intent_match, price_fit, vibe_fit
+- Max 5 items
+- predicted_rating between 1 and 5
+- relevance_score between 0 and 1
+- VERY SHORT explanations
+"""
 
-Return ONLY this JSON array (no other text):
-[{{"item_id":"...","predicted_rating":0.0,"relevance_score":0.0,"score_breakdown":{{"category_fit":0.0,"intent_match":0.0,"price_fit":0.0,"vibe_fit":0.0}},"explanation":"..."}}]"""
+    try:
 
-    raw = await _call_groq(system, user_prompt, 3000)
-    logger.info("RankingAgent raw response (first 300 chars): %s", raw[:300])
+        raw = await _call_groq(
+            system,
+            user_prompt,
+            max_tokens=350,
+        )
+
+    except Exception as e:
+
+        logger.warning(
+            "Groq call failed: %s",
+            e,
+        )
+
+        return [], [
+            f"Groq failed: {e}"
+        ]
+
+    logger.info(
+        "RankingAgent raw:\n%s",
+        raw[:300],
+    )
+
     data = _parse_json(raw)
 
     if not isinstance(data, list):
-        if isinstance(data, dict):
-            data = next((v for v in data.values() if isinstance(v, list)), [])
-        else:
-            data = []
 
-    trace.append(f"RankingAgent: scored {len(data)} items")
-    return data, trace
+        data = []
+
+    cleaned_items = []
+
+    for item in data:
+
+        try:
+
+            cleaned_items.append({
+
+                "item_id":
+                    str(
+                        item.get(
+                            "item_id",
+                            "",
+                        )
+                    ),
+
+                "predicted_rating":
+                    round(
+                        min(
+                            5.0,
+                            max(
+                                1.0,
+                                float(
+                                    item.get(
+                                        "predicted_rating",
+                                        beh.avg_rating,
+                                    )
+                                ),
+                            ),
+                        ),
+                        1,
+                    ),
+
+                "relevance_score":
+                    round(
+                        min(
+                            1.0,
+                            max(
+                                0.0,
+                                float(
+                                    item.get(
+                                        "relevance_score",
+                                        0.5,
+                                    )
+                                ),
+                            ),
+                        ),
+                        3,
+                    ),
+
+                "explanation":
+                    str(
+                        item.get(
+                            "explanation",
+                            "Good match.",
+                        )
+                    )[:100],
+            })
+
+        except Exception:
+            continue
+
+    trace.append(
+        f"RankingAgent scored "
+        f"{len(cleaned_items)} items"
+    )
+
+    return cleaned_items, trace
 
 
 # ---------------------------------------------------------------------------
@@ -171,76 +392,115 @@ Return ONLY this JSON array (no other text):
 
 def _inject_diversity(
     scored_items: List[Dict[str, Any]],
-    candidates_by_id: Dict[str, CandidateItem],
+    candidates_by_id: Dict[
+        str,
+        CandidateItem,
+    ],
     top_k: int = _TOP_K,
 ) -> List[Dict[str, Any]]:
 
     if not scored_items:
+
         return []
 
     seen = set()
+
     deduped = []
 
     for item in scored_items:
+
         item_id = item["item_id"]
+
         if item_id not in seen:
+
             seen.add(item_id)
+
             deduped.append(item)
 
-    selected = []
-    remaining = deduped
-    recent_categories = []
+    deduped = sorted(
+        deduped,
+        key=lambda x:
+            x.get(
+                "relevance_score",
+                0.0,
+            ),
+        reverse=True,
+    )
 
-    while remaining and len(selected) < top_k:
-        placed = False
-
-        for i, item in enumerate(remaining):
-            item_id = item["item_id"]
-            cat = candidates_by_id.get(item_id).category if item_id in candidates_by_id else "unknown"
-
-            if recent_categories[-2:].count(cat) < 2 or i == len(remaining) - 1:
-                selected.append(item)
-                recent_categories.append(cat)
-                remaining.pop(i)
-                placed = True
-                break
-
-        if not placed:
-            selected.append(remaining.pop(0))
-
-    return selected
+    return deduped[:top_k]
 
 
 # ---------------------------------------------------------------------------
 # STEP 3 — NDCG
 # ---------------------------------------------------------------------------
 
-def _assign_ndcg_scores(ranked_items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def _assign_ndcg_scores(
+    ranked_items: List[
+        Dict[str, Any]
+    ],
+) -> List[Dict[str, Any]]:
 
     if not ranked_items:
+
         return []
 
     ideal = sorted(
-        [float(i.get("relevance_score", 0.5)) for i in ranked_items],
+        [
+            float(
+                i.get(
+                    "relevance_score",
+                    0.5,
+                )
+            )
+            for i in ranked_items
+        ],
         reverse=True,
     )
 
-    ideal_dcg = sum(rel / (i + 2) for i, rel in enumerate(ideal)) or 1.0
+    ideal_dcg = sum(
+        rel / (i + 2)
+        for i, rel in enumerate(
+            ideal
+        )
+    )
+
+    if ideal_dcg == 0:
+
+        ideal_dcg = 1.0
 
     result = []
 
-    for i, item in enumerate(ranked_items):
-        rel = float(item.get("relevance_score", 0.5))
-        dcg = rel / (i + 2)
-        ndcg = round(min(1.0, dcg / ideal_dcg), 4)
+    for i, item in enumerate(
+        ranked_items
+    ):
 
-        result.append({**item, "ndcg_score": ndcg})
+        rel = float(
+            item.get(
+                "relevance_score",
+                0.5,
+            )
+        )
+
+        dcg = rel / (i + 2)
+
+        ndcg = round(
+            min(
+                1.0,
+                dcg / ideal_dcg,
+            ),
+            4,
+        )
+
+        result.append({
+            **item,
+            "ndcg_score": ndcg,
+        })
 
     return result
 
 
 # ---------------------------------------------------------------------------
-# STEP 4 — EXPLANATION
+# EXPLANATION
 # ---------------------------------------------------------------------------
 
 async def _generate_explanation(
@@ -250,130 +510,258 @@ async def _generate_explanation(
 ) -> str:
 
     if not ranked_items:
-        return "No recommendations available."
 
-    top3 = ", ".join(r.name for r in ranked_items[:3])
-
-    system = "You are a recommendation explainer."
-
-    user_prompt = f"""
-Explain why these were recommended:
-
-Intent: {intent}
-Top items: {top3}
-"""
-
-    try:
-        return (await _call_groq(system, user_prompt, 200)).strip()
-    except Exception:
-        return f"Recommendations based on your interest in {intent}."
-
-
-# ---------------------------------------------------------------------------
-# NODE 3B — MAIN AGENT
-# ---------------------------------------------------------------------------
-
-async def ranking_agent(state: AgentState) -> AgentState:
-
-    candidates: List[CandidateItem] = state.get("candidate_items", [])
-    user_state: UserState = state["user_state"]
-    intent: str = state.get("inferred_intent", "")
-    trace: List[str] = list(state.get("reasoning_trace", []))
-    errors: List[str] = list(state.get("errors", []))
-
-    try:
-        candidates_by_id = {c.item_id: c for c in candidates}
-
-        scored_items, scoring_trace = await _score_and_rank(
-            candidates, user_state, intent
+        return (
+            "No recommendations "
+            "available."
         )
-        trace.extend(scoring_trace)
 
+    top_names = ", ".join(
+        r.name
+        for r in ranked_items[:3]
+    )
+
+    return (
+        f"Recommendations generated "
+        f"using user preference signals "
+        f"and intent '{intent}'. "
+        f"Top matches: {top_names}."
+    )
+
+
+# ---------------------------------------------------------------------------
+# MAIN NODE
+# ---------------------------------------------------------------------------
+
+async def ranking_agent(
+    state: AgentState,
+) -> AgentState:
+
+    candidates = state.get(
+        "candidate_items",
+        [],
+    )
+
+    user_state = state[
+        "user_state"
+    ]
+
+    intent = state.get(
+        "inferred_intent",
+        "",
+    )
+
+    trace = list(
+        state.get(
+            "reasoning_trace",
+            [],
+        )
+    )
+
+    errors = list(
+        state.get(
+            "errors",
+            [],
+        )
+    )
+
+    try:
+
+        candidates_by_id = {
+            c.item_id: c
+            for c in candidates
+        }
+
+        scored_items, scoring_trace = (
+            await _score_and_rank(
+                candidates,
+                user_state,
+                intent,
+            )
+        )
+
+        trace.extend(
+            scoring_trace
+        )
+
+        # FALLBACK
         if not scored_items:
+
+            logger.warning(
+                "RankingAgent using "
+                "fallback ranking"
+            )
+
             scored_items = [
                 {
-                    "item_id": c.item_id,
-                    "predicted_rating": user_state.behavioural.avg_rating,
-                    "relevance_score": c.retrieval_score,
-                    "explanation": f"Matches {c.category}",
+                    "item_id":
+                        c.item_id,
+
+                    "predicted_rating":
+                        round(
+                            user_state
+                            .behavioural
+                            .avg_rating,
+                            1,
+                        ),
+
+                    "relevance_score":
+                        c.retrieval_score,
+
+                    "explanation":
+                        f"Matches "
+                        f"{c.category}",
                 }
-                for c in sorted(candidates, key=lambda x: x.retrieval_score, reverse=True)
+                for c in sorted(
+                    candidates,
+                    key=lambda x:
+                        x.retrieval_score,
+                    reverse=True,
+                )[:_TOP_K]
             ]
 
-        diverse = _inject_diversity(scored_items, candidates_by_id)
-        scored_with_ndcg = _assign_ndcg_scores(diverse)
+        diverse = _inject_diversity(
+            scored_items,
+            candidates_by_id,
+        )
 
-        ranked: List[RankedItem] = []
+        scored_with_ndcg = (
+            _assign_ndcg_scores(
+                diverse
+            )
+        )
 
-        for idx, item in enumerate(scored_with_ndcg, start=1):
+        ranked = []
+
+        for idx, item in enumerate(
+            scored_with_ndcg,
+            start=1,
+        ):
 
             item_id = item["item_id"]
-            candidate = candidates_by_id.get(item_id)
+
+            candidate = (
+                candidates_by_id.get(
+                    item_id
+                )
+            )
 
             if not candidate:
+
                 continue
-
-            predicted_rating = float(item.get("predicted_rating", user_state.behavioural.avg_rating))
-            explanation = item.get("explanation", "")
-            ndcg = item.get("ndcg_score")
-
-            # Score decomposition — log to trace for judges / evaluation
-            breakdown = item.get("score_breakdown", {})
-            if breakdown:
-                trace.append(
-                    f"  #{idx} {candidate.name}: "
-                    f"category_fit={breakdown.get('category_fit', '?')} "
-                    f"intent_match={breakdown.get('intent_match', '?')} "
-                    f"price_fit={breakdown.get('price_fit', '?')} "
-                    f"vibe_fit={breakdown.get('vibe_fit', '?')} "
-                    f"→ {predicted_rating}★ (ndcg={ndcg})"
-                )
 
             ranked.append(
                 RankedItem(
                     rank=idx,
+
                     item_id=item_id,
+
                     name=candidate.name,
-                    category=candidate.category,
-                    predicted_rating=round(min(5.0, max(1.0, predicted_rating)), 1),
-                    explanation=explanation,
-                    ndcg_score=ndcg,
+
+                    category=
+                        candidate.category,
+
+                    predicted_rating=
+                        item.get(
+                            "predicted_rating",
+                            3.0,
+                        ),
+
+                    explanation=
+                        item.get(
+                            "explanation",
+                            "",
+                        ),
+
+                    ndcg_score=
+                        item.get(
+                            "ndcg_score"
+                        ),
                 )
             )
 
-        explanation_text = await _generate_explanation(ranked, user_state, intent)
+        explanation_text = (
+            await _generate_explanation(
+                ranked,
+                user_state,
+                intent,
+            )
+        )
 
         return {
             **state,
-            "ranked_recommendations": ranked,
-            "explanation": explanation_text,
-            "reasoning_trace": trace,
-            "errors": errors,
+
+            "ranked_recommendations":
+                ranked,
+
+            "explanation":
+                explanation_text,
+
+            "reasoning_trace":
+                trace,
+
+            "errors":
+                errors,
         }
 
     except Exception as exc:
-        logger.error("RankingAgent failed: %s", exc)
+
+        logger.error(
+            "RankingAgent failed: %s",
+            exc,
+        )
+
         errors.append(str(exc))
 
         fallback = [
             RankedItem(
                 rank=i + 1,
+
                 item_id=c.item_id,
+
                 name=c.name,
+
                 category=c.category,
-                predicted_rating=round(user_state.behavioural.avg_rating, 1),
-                explanation=f"Based on {c.category}",
+
+                predicted_rating=round(
+                    user_state
+                    .behavioural
+                    .avg_rating,
+                    1,
+                ),
+
+                explanation=
+                    f"Based on "
+                    f"{c.category}",
+
                 ndcg_score=None,
             )
             for i, c in enumerate(
-                sorted(candidates, key=lambda x: x.retrieval_score, reverse=True)[:_TOP_K]
+                sorted(
+                    candidates,
+                    key=lambda x:
+                        x.retrieval_score,
+                    reverse=True,
+                )[:_TOP_K]
             )
         ]
 
         return {
             **state,
-            "ranked_recommendations": fallback,
-            "explanation": "Fallback recommendations generated.",
-            "reasoning_trace": trace + ["RankingAgent failed"],
-            "errors": errors,
+
+            "ranked_recommendations":
+                fallback,
+
+            "explanation":
+                "Fallback recommendations "
+                "generated.",
+
+            "reasoning_trace":
+                trace + [
+                    "RankingAgent "
+                    "fallback used"
+                ],
+
+            "errors":
+                errors,
         }
