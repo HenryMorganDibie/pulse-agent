@@ -4,7 +4,7 @@ An autonomous multi-agent system that models user behaviour from review history 
 how users would rate and review unseen items — and deliver personalised recommendations
 that reason about intent, context, and preference before ranking.
 
-Built for the DSN × BCT Hackathon 3.0 LLM Agent Challenge. Powered by Claude Sonnet and LangGraph.
+Built for the DSN × BCT Hackathon 3.0 LLM Agent Challenge. Powered by Groq (LLMs) and LangGraph.
 
 **Live Demo UI:** [https://henrymorgandibie.github.io/pulse-agent/](https://henrymorgandibie.github.io/pulse-agent/)
 
