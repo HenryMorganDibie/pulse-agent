@@ -2,8 +2,11 @@
 PulseAgent — PersonaConstructionAgent (LangGraph Node 1)
 Team HOKM · DSN × BCT Hackathon 3.0
 
-Three concurrent async pipelines — behavioural, textual, contextual —
-each fails independently. Results are merged into a typed UserState.
+HARDENED VERSION:
+- Prevents ToneProfile enum crashes
+- Sanitizes ALL LLM outputs
+- Safe fallback at every layer
+- Stable for ablation + production
 """
 
 from __future__ import annotations
@@ -34,7 +37,7 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
 MODEL = "llama-3.3-70b-versatile"
 
 # ---------------------------------------------------------------------------
-# SAFE TONE SPACE (CRITICAL FIX)
+# SAFE TONE SPACE (CRITICAL)
 # ---------------------------------------------------------------------------
 
 ALLOWED_TONES = {
@@ -46,8 +49,14 @@ ALLOWED_TONES = {
 }
 
 # ---------------------------------------------------------------------------
-# Helpers
+# SAFE HELPERS
 # ---------------------------------------------------------------------------
+
+def _safe_tone(value: Any) -> str:
+    if not isinstance(value, str):
+        return "mixed"
+    return value if value in ALLOWED_TONES else "mixed"
+
 
 async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
     async with httpx.AsyncClient(timeout=60.0) as client:
@@ -82,6 +91,7 @@ def _parse_json(raw: str) -> Dict[str, Any]:
         .removesuffix("```")
         .strip()
     )
+
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError:
@@ -89,12 +99,13 @@ def _parse_json(raw: str) -> Dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
-# PIPELINE 1 — Behavioural
+# PIPELINE 1 — BEHAVIOURAL (SAFE)
 # ---------------------------------------------------------------------------
 
 async def _behavioural_pipeline(persona: UserPersona) -> Optional[BehaviouralProfile]:
     try:
         history = persona.review_history
+
         if not history:
             return BehaviouralProfile(
                 avg_rating=3.0,
@@ -147,7 +158,7 @@ async def _behavioural_pipeline(persona: UserPersona) -> Optional[BehaviouralPro
 
 
 # ---------------------------------------------------------------------------
-# PIPELINE 2 — Textual (FIXED TONE SAFETY)
+# PIPELINE 2 — TEXTUAL (FULLY SAFE ENUM FIX)
 # ---------------------------------------------------------------------------
 
 async def _textual_pipeline(persona: UserPersona) -> Optional[TextualProfile]:
@@ -169,18 +180,16 @@ async def _textual_pipeline(persona: UserPersona) -> Optional[TextualProfile]:
             for r in history[-10:]
         )
 
-        system = (
-            "You are a linguistic analyst. "
-            "Return ONLY valid JSON."
-        )
+        system = "Return ONLY valid JSON."
 
         user = f"""
-Analyze reviews and return JSON with:
+Analyze reviews.
 
-- dominant_tone: "expressive", "analytical", "terse", "narrative", or "mixed"
+Return:
+- dominant_tone: expressive | analytical | terse | narrative | mixed
 - avg_review_length: int
-- sentiment_polarity: float [-1,1]
-- vocabulary_richness: float [0,1]
+- sentiment_polarity: float
+- vocabulary_richness: float
 - uses_first_person: bool
 - common_phrases: list
 
@@ -191,10 +200,9 @@ Reviews:
         raw = await _call_groq(system, user, max_tokens=400)
         data = _parse_json(raw)
 
-        # ---------------- SAFE TONE FIX ----------------
-        tone = data.get("dominant_tone", "mixed")
-        if tone not in ALLOWED_TONES:
-            tone = "mixed"
+        # ---------------- CRITICAL FIX ----------------
+        tone_raw = data.get("dominant_tone", "mixed")
+        tone = _safe_tone(tone_raw)
 
         return TextualProfile(
             dominant_tone=ToneProfile(tone),
@@ -211,7 +219,7 @@ Reviews:
 
 
 # ---------------------------------------------------------------------------
-# PIPELINE 3 — Contextual
+# PIPELINE 3 — CONTEXTUAL
 # ---------------------------------------------------------------------------
 
 async def _contextual_pipeline(persona: UserPersona) -> Optional[ContextualProfile]:
@@ -235,6 +243,7 @@ async def _contextual_pipeline(persona: UserPersona) -> Optional[ContextualProfi
 
         if timestamped:
             latest = max(timestamped, key=lambda r: r.timestamp)
+
             try:
                 last_dt = datetime.fromisoformat(latest.timestamp)
                 now = datetime.now(timezone.utc)
@@ -276,7 +285,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
     pipeline_errors: List[str] = []
 
     if behavioural is None:
-        pipeline_errors.append("behavioural fallback used")
+        pipeline_errors.append("behavioural fallback")
         behavioural = BehaviouralProfile(
             avg_rating=3.0,
             rating_std=0.0,
@@ -288,7 +297,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
         )
 
     if textual is None:
-        pipeline_errors.append("textual fallback used")
+        pipeline_errors.append("textual fallback")
         textual = TextualProfile(
             dominant_tone=ToneProfile.MIXED,
             avg_review_length=0,
@@ -299,7 +308,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
         )
 
     if contextual is None:
-        pipeline_errors.append("contextual fallback used")
+        pipeline_errors.append("contextual fallback")
         contextual = ContextualProfile(
             is_cold_start=True,
             sparse_history=True,
@@ -321,7 +330,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
         "user_state": user_state,
         "errors": errors + pipeline_errors,
         "reasoning_trace": list(state.get("reasoning_trace", [])) + [
-            f"PersonaConstructionAgent: built state for {persona.user_id}",
+            f"PersonaConstructionAgent built for {persona.user_id}",
             f"avg_rating={behavioural.avg_rating}",
             f"tone={textual.dominant_tone}",
             f"cold_start={contextual.is_cold_start}",
