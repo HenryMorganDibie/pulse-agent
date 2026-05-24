@@ -818,6 +818,7 @@
         <button class="preset-chip" data-preset="yelp_2" onclick="loadPreset('a', 'yelp_2')">Yelp — Food Lover</button>
         <button class="preset-chip" data-preset="amazon_1" onclick="loadPreset('a', 'amazon_1')">Amazon — Beauty</button>
         <button class="preset-chip" data-preset="nigerian_1" onclick="loadPreset('a', 'nigerian_1')">Nigerian — Lagos Foodie</button>
+        <button class="preset-chip" data-preset="goodreads_1" onclick="loadPreset('a', 'goodreads_1')">Goodreads — Book Lover</button>
       </div>
     </div>
 
@@ -832,7 +833,7 @@
           <div class="field">
             <label>Category</label>
             <select id="a-new-cat">
-              <option>Food</option><option>Nightlife</option><option>Books</option><option>Goodreads</option>
+              <option>Food</option><option>Nightlife</option><option>Books</option>
               <option>Movies</option><option>Shopping</option><option>Outdoors</option><option>Arts</option>
             </select>
           </div>
@@ -866,7 +867,7 @@
       <div class="field">
         <label>Category</label>
         <select id="a-item-cat">
-          <option>Food</option><option>Nightlife</option><option>Books</option><option>Goodreads</option>
+          <option>Food</option><option>Nightlife</option><option>Books</option>
           <option>Movies</option><option>Shopping</option><option>Outdoors</option><option>Arts</option>
         </select>
       </div>
@@ -965,6 +966,7 @@
         <button class="preset-chip active" data-preset="yelp_2" onclick="loadPreset('b', 'yelp_2')">Yelp — Food Lover</button>
         <button class="preset-chip" data-preset="amazon_1" onclick="loadPreset('b', 'amazon_1')">Amazon — Beauty</button>
         <button class="preset-chip" data-preset="nigerian_1" onclick="loadPreset('b', 'nigerian_1')">Nigerian — Lagos Foodie</button>
+        <button class="preset-chip" data-preset="goodreads_1" onclick="loadPreset('b', 'goodreads_1')">Goodreads — Book Lover</button>
       </div>
     </div>
 
@@ -978,7 +980,7 @@
           <div class="field">
             <label>Category</label>
             <select id="b-new-cat">
-              <option>Food</option><option>Nightlife</option><option>Books</option><option>Goodreads</option>
+              <option>Food</option><option>Nightlife</option><option>Books</option>
               <option>Movies</option><option>Shopping</option><option>Outdoors</option><option>Arts</option>
             </select>
           </div>
@@ -1111,6 +1113,17 @@
         { item_id: 'ng_f04', category: 'Food', rating: 4, text: 'The suya here is proper. Nice and spicy, the yaji well balanced. Only thing — the wait time too long sha. But when the food land, e sweet me.' },
         { item_id: 'ng_f02', category: 'Food', rating: 3, text: 'Amala was okay but I expected more for the price. The ewedu could have been smoother. Service was fine though, the place clean and the AC was working well.' },
         { item_id: 'ng_n02', category: 'Nightlife', rating: 5, text: 'The vibes here are mad! Live band was playing Fela and Burna Boy covers. Drinks were reasonably priced for the area. Perfect spot for a chill Saturday night.' },
+      ],
+    },
+    goodreads_1: {
+      user_id: 'gr_user_bookworm_01',
+      label: 'Goodreads — Book Lover',
+      source: 'goodreads',
+      history: [
+        { item_id: 'gr_0', category: 'Books', rating: 5, text: 'A timeless classic. Harper Lee captures the essence of justice and childhood innocence in the American South. One of the most important novels ever written.' },
+        { item_id: 'gr_1', category: 'Books', rating: 5, text: 'Pure magic from the first page. Rowling built an entire world that feels real. I reread this every year and it never gets old.' },
+        { item_id: 'gr_4', category: 'Books', rating: 4, text: 'Orwell at his sharpest. A short but devastating allegory about power and corruption. The ending still hits hard after multiple reads.' },
+        { item_id: 'gr_2', category: 'Books', rating: 4, text: 'Witty, romantic, and surprisingly modern for its time. Austen writes characters you can\'t help but love — even the flawed ones.' },
       ],
     },
   };
