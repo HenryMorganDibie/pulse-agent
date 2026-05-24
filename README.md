@@ -6,6 +6,8 @@ that reason about intent, context, and preference before ranking.
 
 Built for the DSN × BCT Hackathon 3.0 LLM Agent Challenge. Powered by Claude Sonnet and LangGraph.
 
+**Live Demo UI:** [https://henrymorgandibie.github.io/pulse-agent/](https://henrymorgandibie.github.io/pulse-agent/)
+
 ---
 
 ## Architecture

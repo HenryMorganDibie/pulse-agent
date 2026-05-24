@@ -336,26 +336,42 @@ async def evaluate_task_b(
                 test_df["user_id"] == user_id
             ]
 
+            # Build category-level ground truth from the user's test items.
+            # Catalog item_ids (gr_0, i_001, …) differ from dataset item_ids,
+            # so we match on category instead: the user's avg rating in a
+            # category is the relevance signal for recommended items in that
+            # category.
+            source_col = (
+                "source" if "source" in user_test.columns
+                else "category"
+            )
+            cat_truth = (
+                user_test
+                .groupby(source_col)["rating"]
+                .mean()
+                .to_dict()
+            )
+
             for rec in recs:
 
                 item_id = rec.get("item_id")
+                rec_category = rec.get("category", "")
 
                 pred_rating = rec.get(
                     "predicted_rating",
                     3.0,
                 )
 
-                true_row = user_test[
-                    user_test["item_id"] == item_id
-                ]
-
-                true_rating = (
-                    float(true_row["rating"].values[0])
-                    if len(true_row) > 0
-                    else 3.0
+                # Use the user's average rating in this category as
+                # ground truth.  Falls back to overall test-set avg.
+                true_rating = cat_truth.get(
+                    rec_category,
+                    float(user_test["rating"].mean())
+                    if len(user_test) > 0
+                    else 3.0,
                 )
 
-                all_true.append(true_rating)
+                all_true.append(float(true_rating))
                 all_pred.append(pred_rating)
 
                 result_df_rows.append({
