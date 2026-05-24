@@ -100,6 +100,8 @@ async def _extract_intent(
     system = (
         "You are an intent extraction engine for a recommendation system. "
         "Given a user's profile and conversation history, infer what they want. "
+        "Be culturally aware — if the user's history includes Nigerian venues, food (suya, jollof, amala), "
+        "or pidgin expressions, factor Nigerian context into the intent and target categories. "
         "Return ONLY valid JSON — no preamble, no markdown fences."
     )
 

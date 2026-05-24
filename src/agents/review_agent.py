@@ -188,6 +188,9 @@ def _tone_instructions(
         ToneProfile.NARRATIVE:
             "Tell a brief story.",
 
+        ToneProfile.NIGERIAN:
+            "Write in Nigerian English style. Use warm, direct language with occasional pidgin expressions (e.g. 'sha', 'abeg', 'no be small thing', 'e sweet me'). Be enthusiastic and communal in tone, like recommending to a friend. Reference local context naturally.",
+
         ToneProfile.MIXED:
             "Natural conversational tone.",
     }

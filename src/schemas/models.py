@@ -24,6 +24,7 @@ class ToneProfile(str, Enum):
     ANALYTICAL  = "analytical"   # fact-forward, measured
     TERSE       = "terse"        # short, clipped sentences
     NARRATIVE   = "narrative"    # storytelling, context-heavy
+    NIGERIAN    = "nigerian"     # Nigerian English — pidgin-influenced, warm, direct
     MIXED       = "mixed"        # no dominant pattern detected
 
 
