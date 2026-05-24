@@ -173,7 +173,7 @@ full reasoning trace showing every decision the agent made.
 ## Docker
 
 ```bash
-# Build and run both API + Streamlit UI
+# Build and run API service
 docker-compose up --build
 ```
 
