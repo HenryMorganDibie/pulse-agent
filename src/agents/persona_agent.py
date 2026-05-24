@@ -7,6 +7,7 @@ HARDENED VERSION:
 - Sanitizes ALL LLM outputs
 - Safe fallback at every layer
 - Stable for ablation + production
+- Fault-tolerant async execution
 """
 
 from __future__ import annotations
@@ -37,7 +38,7 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
 MODEL = "llama-3.3-70b-versatile"
 
 # ---------------------------------------------------------------------------
-# SAFE TONE SPACE (CRITICAL)
+# SAFE TONE SPACE (CRITICAL FOR ABRATION + PAPER REPRODUCIBILITY)
 # ---------------------------------------------------------------------------
 
 ALLOWED_TONES = {
@@ -48,15 +49,16 @@ ALLOWED_TONES = {
     "mixed",
 }
 
-# ---------------------------------------------------------------------------
-# SAFE HELPERS
-# ---------------------------------------------------------------------------
 
 def _safe_tone(value: Any) -> str:
     if not isinstance(value, str):
         return "mixed"
     return value if value in ALLOWED_TONES else "mixed"
 
+
+# ---------------------------------------------------------------------------
+# LLM CALL
+# ---------------------------------------------------------------------------
 
 async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
     async with httpx.AsyncClient(timeout=60.0) as client:
@@ -94,12 +96,12 @@ def _parse_json(raw: str) -> Dict[str, Any]:
 
     try:
         return json.loads(cleaned)
-    except json.JSONDecodeError:
+    except Exception:
         return {}
 
 
 # ---------------------------------------------------------------------------
-# PIPELINE 1 — BEHAVIOURAL (SAFE)
+# PIPELINE 1 — BEHAVIOURAL
 # ---------------------------------------------------------------------------
 
 async def _behavioural_pipeline(persona: UserPersona) -> Optional[BehaviouralProfile]:
@@ -128,13 +130,9 @@ async def _behavioural_pipeline(persona: UserPersona) -> Optional[BehaviouralPro
         total = sum(cat_counts.values()) or 1
         affinities = {k: v / total for k, v in cat_counts.items()}
 
-        sorted_history = sorted(
-            history,
-            key=lambda r: r.timestamp or "0000",
-            reverse=True,
-        )
-
+        sorted_history = sorted(history, key=lambda r: r.timestamp or "0000", reverse=True)
         weights = [1 / (i + 1) for i in range(len(sorted_history))]
+
         recency_avg = sum(
             r.rating * w for r, w in zip(sorted_history, weights)
         ) / sum(weights)
@@ -158,7 +156,7 @@ async def _behavioural_pipeline(persona: UserPersona) -> Optional[BehaviouralPro
 
 
 # ---------------------------------------------------------------------------
-# PIPELINE 2 — TEXTUAL (FULLY SAFE ENUM FIX)
+# PIPELINE 2 — TEXTUAL (FIXED ENUM SAFETY)
 # ---------------------------------------------------------------------------
 
 async def _textual_pipeline(persona: UserPersona) -> Optional[TextualProfile]:
@@ -185,7 +183,7 @@ async def _textual_pipeline(persona: UserPersona) -> Optional[TextualProfile]:
         user = f"""
 Analyze reviews.
 
-Return:
+Return ONLY:
 - dominant_tone: expressive | analytical | terse | narrative | mixed
 - avg_review_length: int
 - sentiment_polarity: float
@@ -200,9 +198,7 @@ Reviews:
         raw = await _call_groq(system, user, max_tokens=400)
         data = _parse_json(raw)
 
-        # ---------------- CRITICAL FIX ----------------
-        tone_raw = data.get("dominant_tone", "mixed")
-        tone = _safe_tone(tone_raw)
+        tone = _safe_tone(data.get("dominant_tone", "mixed"))
 
         return TextualProfile(
             dominant_tone=ToneProfile(tone),
@@ -269,12 +265,13 @@ async def _contextual_pipeline(persona: UserPersona) -> Optional[ContextualProfi
 
 
 # ---------------------------------------------------------------------------
-# NODE 1 — MAIN
+# NODE 1 — MAIN (HARDENED)
 # ---------------------------------------------------------------------------
 
 async def persona_construction_agent(state: AgentState) -> AgentState:
     persona: UserPersona = state["user_persona"]
     errors: List[str] = list(state.get("errors", []))
+    trace: List[str] = list(state.get("reasoning_trace", []))
 
     behavioural, textual, contextual = await asyncio.gather(
         _behavioural_pipeline(persona),
@@ -286,6 +283,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
 
     if behavioural is None:
         pipeline_errors.append("behavioural fallback")
+
         behavioural = BehaviouralProfile(
             avg_rating=3.0,
             rating_std=0.0,
@@ -298,6 +296,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
 
     if textual is None:
         pipeline_errors.append("textual fallback")
+
         textual = TextualProfile(
             dominant_tone=ToneProfile.MIXED,
             avg_review_length=0,
@@ -309,6 +308,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
 
     if contextual is None:
         pipeline_errors.append("contextual fallback")
+
         contextual = ContextualProfile(
             is_cold_start=True,
             sparse_history=True,
@@ -329,10 +329,11 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
         **state,
         "user_state": user_state,
         "errors": errors + pipeline_errors,
-        "reasoning_trace": list(state.get("reasoning_trace", [])) + [
-            f"PersonaConstructionAgent built for {persona.user_id}",
+        "reasoning_trace": trace + [
+            f"PersonaConstructionAgent: built UserState for {persona.user_id}",
             f"avg_rating={behavioural.avg_rating}",
             f"tone={textual.dominant_tone}",
             f"cold_start={contextual.is_cold_start}",
+            *[f"pipeline_error={e}" for e in pipeline_errors],
         ],
     }
