@@ -103,7 +103,7 @@ pip install -r requirements.txt
 ### 3. Set API Key
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
+export GROQ_API_KEY=your-groq-api-key
 ```
 
 ### 4. Run
@@ -161,7 +161,7 @@ full reasoning trace showing every decision the agent made.
     "  contextual.is_cold_start=False",
     "Rating anchor: user has reviewed Food before (affinity=0.80)",
     "Bias adjustment: +0.30 → adjusted anchor=4.21",
-    "Claude rating inference: 4.5★ (confidence=0.87)",
+    "Groq LLM inference: 4.5★ (confidence=0.87)",
     "Review generated: 18 words, tone=expressive",
     "Quality score: 0.87 — Strong match with user's established tone and length."
   ]
