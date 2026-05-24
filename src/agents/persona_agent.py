@@ -2,9 +2,8 @@
 PulseAgent — PersonaConstructionAgent (LangGraph Node 1)
 Team HOKM · DSN × BCT Hackathon 3.0
 
-Three concurrent async pipelines — behavioural, textual, contextual — each
-fails independently. Results are merged into a typed UserState that both
-Task A and Task B agents consume downstream.
+Three concurrent async pipelines — behavioural, textual, contextual —
+each fails independently. Results are merged into a typed UserState.
 """
 
 from __future__ import annotations
@@ -18,6 +17,7 @@ from statistics import mean, stdev
 from typing import Any, Dict, List, Optional
 
 import httpx
+
 from src.schemas.models import (
     AgentState,
     BehaviouralProfile,
@@ -30,11 +30,20 @@ from src.schemas.models import (
 
 logger = logging.getLogger(__name__)
 
-# ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-# MODEL = "claude-sonnet-4-20250514"
-
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "").strip()
 MODEL = "llama-3.3-70b-versatile"
+
+# ---------------------------------------------------------------------------
+# SAFE TONE SPACE (CRITICAL FIX)
+# ---------------------------------------------------------------------------
+
+ALLOWED_TONES = {
+    "expressive",
+    "analytical",
+    "terse",
+    "narrative",
+    "mixed",
+}
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -59,7 +68,6 @@ async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
             },
         )
 
-        # IMPORTANT: print real error if it fails
         if response.status_code != 200:
             raise Exception(f"{response.status_code}: {response.text}")
 
@@ -67,8 +75,13 @@ async def _call_groq(system: str, user: str, max_tokens: int = 512) -> str:
 
 
 def _parse_json(raw: str) -> Dict[str, Any]:
-    """Strip markdown fences and parse JSON — never raises on bad input."""
-    cleaned = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+    cleaned = (
+        raw.strip()
+        .removeprefix("```json")
+        .removeprefix("```")
+        .removesuffix("```")
+        .strip()
+    )
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError:
@@ -76,15 +89,10 @@ def _parse_json(raw: str) -> Dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
-# Pipeline 1 — Behavioural signals
+# PIPELINE 1 — Behavioural
 # ---------------------------------------------------------------------------
 
 async def _behavioural_pipeline(persona: UserPersona) -> Optional[BehaviouralProfile]:
-    """
-    Derives star-rating patterns, category affinities, and rating bias
-    from the user's review history. Pure computation — no LLM call needed.
-    Falls back to neutral defaults for cold-start users.
-    """
     try:
         history = persona.review_history
         if not history:
@@ -102,25 +110,24 @@ async def _behavioural_pipeline(persona: UserPersona) -> Optional[BehaviouralPro
         avg = mean(ratings)
         std = stdev(ratings) if len(ratings) > 1 else 0.0
 
-        # Category affinities — normalised review counts
         cat_counts: Dict[str, int] = {}
         for r in history:
             cat_counts[r.category] = cat_counts.get(r.category, 0) + 1
-        total = sum(cat_counts.values()) or 1
-        affinities = {cat: count / total for cat, count in cat_counts.items()}
 
-        # Recency weighting — more recent reviews carry more weight
+        total = sum(cat_counts.values()) or 1
+        affinities = {k: v / total for k, v in cat_counts.items()}
+
         sorted_history = sorted(
             history,
             key=lambda r: r.timestamp or "0000",
             reverse=True,
         )
+
         weights = [1 / (i + 1) for i in range(len(sorted_history))]
         recency_avg = sum(
             r.rating * w for r, w in zip(sorted_history, weights)
         ) / sum(weights)
 
-        # Rating bias vs platform average (default platform avg = 3.7)
         platform_avg = 3.7
         bias = avg - platform_avg
 
@@ -140,16 +147,13 @@ async def _behavioural_pipeline(persona: UserPersona) -> Optional[BehaviouralPro
 
 
 # ---------------------------------------------------------------------------
-# Pipeline 2 — Textual signals
+# PIPELINE 2 — Textual (FIXED TONE SAFETY)
 # ---------------------------------------------------------------------------
 
 async def _textual_pipeline(persona: UserPersona) -> Optional[TextualProfile]:
-    """
-    Calls Claude to analyse the linguistic patterns in the user's review
-    history — tone, sentiment, vocabulary, writing style.
-    """
     try:
         history = persona.review_history
+
         if not history:
             return TextualProfile(
                 dominant_tone=ToneProfile.MIXED,
@@ -160,34 +164,40 @@ async def _textual_pipeline(persona: UserPersona) -> Optional[TextualProfile]:
                 common_phrases=[],
             )
 
-        # Build a compact review corpus (cap at 10 most recent reviews)
         corpus = "\n".join(
             f"[{r.category} · {r.rating}★] {r.text}"
             for r in history[-10:]
         )
 
         system = (
-            "You are a linguistic analyst specialising in user review behaviour. "
-            "Analyse the provided review corpus and return ONLY valid JSON — "
-            "no preamble, no markdown fences."
+            "You are a linguistic analyst. "
+            "Return ONLY valid JSON."
         )
 
-        user = f"""Analyse these reviews and return a JSON object with exactly these keys:
-- dominant_tone: one of "expressive", "analytical", "terse", "narrative", "nigerian", "mixed" (use "nigerian" if the writing uses Nigerian English, pidgin expressions, or Nigerian cultural references)
-- avg_review_length: integer (average word count per review)
-- sentiment_polarity: float between -1.0 (very negative) and 1.0 (very positive)
-- vocabulary_richness: float between 0.0 and 1.0 (type-token ratio estimate)
-- uses_first_person: boolean
-- common_phrases: list of up to 5 short phrases that recur or characterise this writer
+        user = f"""
+Analyze reviews and return JSON with:
+
+- dominant_tone: "expressive", "analytical", "terse", "narrative", or "mixed"
+- avg_review_length: int
+- sentiment_polarity: float [-1,1]
+- vocabulary_richness: float [0,1]
+- uses_first_person: bool
+- common_phrases: list
 
 Reviews:
-{corpus}"""
+{corpus}
+"""
 
         raw = await _call_groq(system, user, max_tokens=400)
         data = _parse_json(raw)
 
+        # ---------------- SAFE TONE FIX ----------------
+        tone = data.get("dominant_tone", "mixed")
+        if tone not in ALLOWED_TONES:
+            tone = "mixed"
+
         return TextualProfile(
-            dominant_tone=ToneProfile(data.get("dominant_tone", "mixed")),
+            dominant_tone=ToneProfile(tone),
             avg_review_length=int(data.get("avg_review_length", 0)),
             sentiment_polarity=float(data.get("sentiment_polarity", 0.0)),
             vocabulary_richness=float(data.get("vocabulary_richness", 0.0)),
@@ -201,41 +211,39 @@ Reviews:
 
 
 # ---------------------------------------------------------------------------
-# Pipeline 3 — Contextual signals
+# PIPELINE 3 — Contextual
 # ---------------------------------------------------------------------------
 
 async def _contextual_pipeline(persona: UserPersona) -> Optional[ContextualProfile]:
-    """
-    Derives cold-start flags, cross-domain signals, and temporal context
-    from the user's review history. Pure computation — no LLM call needed.
-    """
     try:
         history = persona.review_history
+
         is_cold_start = len(history) == 0
         sparse = len(history) < 5
 
-        # Active categories
         active_cats = list({r.category for r in history})
 
-        # Cross-domain signals — categories outside the user's top 2
         cat_counts: Dict[str, int] = {}
         for r in history:
             cat_counts[r.category] = cat_counts.get(r.category, 0) + 1
-        top_cats = sorted(cat_counts, key=lambda c: cat_counts[c], reverse=True)[:2]
+
+        top_cats = sorted(cat_counts, key=cat_counts.get, reverse=True)[:2]
         cross_domain = [c for c in active_cats if c not in top_cats]
 
-        # Days since last review
         recency_days: Optional[int] = None
         timestamped = [r for r in history if r.timestamp]
+
         if timestamped:
-            latest = max(timestamped, key=lambda r: r.timestamp)  # type: ignore[arg-type]
+            latest = max(timestamped, key=lambda r: r.timestamp)
             try:
                 last_dt = datetime.fromisoformat(latest.timestamp)
                 now = datetime.now(timezone.utc)
+
                 if last_dt.tzinfo is None:
                     last_dt = last_dt.replace(tzinfo=timezone.utc)
+
                 recency_days = (now - last_dt).days
-            except ValueError:
+            except Exception:
                 pass
 
         return ContextualProfile(
@@ -252,33 +260,23 @@ async def _contextual_pipeline(persona: UserPersona) -> Optional[ContextualProfi
 
 
 # ---------------------------------------------------------------------------
-# Node 1 — PersonaConstructionAgent
+# NODE 1 — MAIN
 # ---------------------------------------------------------------------------
 
 async def persona_construction_agent(state: AgentState) -> AgentState:
-    """
-    LangGraph Node 1 — runs three concurrent pipelines and merges results
-    into a typed UserState. Each pipeline is fault-isolated: if one fails,
-    the others still complete and we log the error rather than crashing.
-    """
     persona: UserPersona = state["user_persona"]
     errors: List[str] = list(state.get("errors", []))
 
-    logger.info("PersonaConstructionAgent: building state for user %s", persona.user_id)
-
-    # Run all three pipelines concurrently
     behavioural, textual, contextual = await asyncio.gather(
         _behavioural_pipeline(persona),
         _textual_pipeline(persona),
         _contextual_pipeline(persona),
-        return_exceptions=False,
     )
 
     pipeline_errors: List[str] = []
 
-    # Fallback defaults if a pipeline returned None
     if behavioural is None:
-        pipeline_errors.append("behavioural_pipeline: returned None, using defaults")
+        pipeline_errors.append("behavioural fallback used")
         behavioural = BehaviouralProfile(
             avg_rating=3.0,
             rating_std=0.0,
@@ -290,7 +288,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
         )
 
     if textual is None:
-        pipeline_errors.append("textual_pipeline: returned None, using defaults")
+        pipeline_errors.append("textual fallback used")
         textual = TextualProfile(
             dominant_tone=ToneProfile.MIXED,
             avg_review_length=0,
@@ -301,7 +299,7 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
         )
 
     if contextual is None:
-        pipeline_errors.append("contextual_pipeline: returned None, using defaults")
+        pipeline_errors.append("contextual fallback used")
         contextual = ContextualProfile(
             is_cold_start=True,
             sparse_history=True,
@@ -318,21 +316,14 @@ async def persona_construction_agent(state: AgentState) -> AgentState:
         pipeline_errors=pipeline_errors,
     )
 
-    logger.info(
-        "PersonaConstructionAgent: state built for %s (errors=%d)",
-        persona.user_id,
-        len(pipeline_errors),
-    )
-
     return {
         **state,
         "user_state": user_state,
         "errors": errors + pipeline_errors,
         "reasoning_trace": list(state.get("reasoning_trace", [])) + [
-            f"PersonaConstructionAgent: built UserState for {persona.user_id}",
-            f"  behavioural.avg_rating={behavioural.avg_rating}",
-            f"  textual.dominant_tone={textual.dominant_tone}",
-            f"  contextual.is_cold_start={contextual.is_cold_start}",
-            *[f"  pipeline_error: {e}" for e in pipeline_errors],
+            f"PersonaConstructionAgent: built state for {persona.user_id}",
+            f"avg_rating={behavioural.avg_rating}",
+            f"tone={textual.dominant_tone}",
+            f"cold_start={contextual.is_cold_start}",
         ],
     }
